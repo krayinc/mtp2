@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Mtp2</title>
-  <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
+  <head>
+    <title>MTP2</title>
+    <%= stylesheet_link_tag :all %>
+    <%= javascript_include_tag :defaults %>
+    <%= csrf_meta_tag %>
+  </head>
+  <body>
 
-<%= yield %>
-
-</body>
+    <!-- begin Header  -->
+    <div id='header'>
+      <div>
+        <%- if logged_in? -%>
+          <%= current_user.name %>
+          <%= link_to 'Logout from Twitter', logout_path %>
+        <%- else -%>
+          <%= link_to 'Login with Twitter', login_path %>
+        <%- end -%>
+      </div>
+    </div>
+    <!-- end Header  -->
+    
+    <!-- begin Content  -->
+    <div id='content'>
+      <%- flash.each do |name, msg| -%>
+        <%= content_tag :div, msg, :id => "flash-#{name}"%>
+      <%- end -%>
+      <%= yield %>
+    </div>
+    <!-- end Content  -->
+    
+    <!-- begin Footer  -->
+    <div id='footer'>
+    </div>
+    <!-- end Footer  -->
+    
+  </body>
 </html>
