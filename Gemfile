@@ -6,6 +6,10 @@ gem 'rails', '3.0.1'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3-ruby', :require => 'sqlite3'
+gem 'twitter-auth', :require => 'twitter_auth/engine', :git => 'git://github.com/rokudenashi/twitter-auth.git', :branch => 'rails_3'
+gem 'json'
+gem 'jquery-rails'
+gem 'rails3-generators'
 
 # Use unicorn as the web server
 # gem 'unicorn'
