@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
   # GET /comments
   # GET /comments.xml
   def index
