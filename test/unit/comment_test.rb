@@ -1,10 +1,11 @@
 require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
-  end
+  should belong_to(:commenter)
+  should validate_presence_of(:commenter_id)
+  should validate_presence_of(:commentable_id)
+  should validate_presence_of(:commentable_type)
+  should validate_presence_of(:body)
 end
 
 # == Schema Information

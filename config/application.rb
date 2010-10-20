@@ -38,5 +38,11 @@ module Mtp2
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.generators do |g|
+      g.test_framework  :shoulda, :fixture => true
+      g.fixture_replacement :factory_girl, :dir => 'test/factories'
+    end
+    
   end
 end
