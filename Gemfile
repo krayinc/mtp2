@@ -10,6 +10,7 @@ gem 'twitter-auth', :require => 'twitter_auth/engine', :git => 'git://github.com
 gem 'json'
 gem 'jquery-rails'
 gem 'rails3-generators'
+gem 'annotate'
 
 # Use unicorn as the web server
 # gem 'unicorn'
