@@ -2,10 +2,11 @@ require 'test_helper'
 
 class CommentTest < ActiveSupport::TestCase
   should belong_to(:commenter)
+  should belong_to(:commentable)
   should validate_presence_of(:commenter_id)
   should validate_presence_of(:commentable_id)
   should validate_presence_of(:commentable_type)
-  should validate_presence_of(:body)
+  should_ensure_length_in_range(:body, 1..140)
 end
 
 # == Schema Information
