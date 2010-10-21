@@ -1,9 +1,8 @@
 require 'test_helper'
 
 class SpotTest < ActiveSupport::TestCase
-  should "be valid" do
-    assert Spot.new.valid?
-  end
+  should have_many(:ratings)
+  should_have_instance_methods :rate
 end
 
 # == Schema Information
