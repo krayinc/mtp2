@@ -32,6 +32,7 @@ group :development, :test do
   gem "autotest"
   gem 'webrat'
   gem 'factory_girl_rails'
+  gem 'unicorn'
 end
 
 # Bundle gems for the local environment. Make sure to

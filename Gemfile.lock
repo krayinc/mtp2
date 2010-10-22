@@ -99,6 +99,8 @@ GEM
     treetop (1.4.8)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
+    unicorn (1.1.4)
+      rack
     webrat (0.7.2)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -118,4 +120,5 @@ DEPENDENCIES
   rspec-rails
   sqlite3-ruby
   twitter-auth!
+  unicorn
   webrat
