@@ -2,6 +2,7 @@ Mtp2::Application.routes.draw do
   root :to => "home#index"
   match "home/dev" => "home#dev"
   resources :comments
+  resources :plans
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -1,0 +1,24 @@
+<%= semantic_form_for @plan, :remote => !@plan.new_record? do |f| %>
+  <% if @plan.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
+
+      <ul>
+      <% @plan.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% f.inputs do %>
+    <%= f.input :title %>
+    <%= f.input :status, :as => :select, :collection => Plan::Status, :value_method => Proc.new{|c| c[1]}, :label_method => Proc.new{|c| c[0]} %>
+    <%= f.input :outline %>
+    <%= f.input :public %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.commit_button %>
+  </div>
+<% end %>

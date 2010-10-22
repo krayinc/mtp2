@@ -11,6 +11,8 @@ gem 'json'
 gem 'jquery-rails'
 gem 'rails3-generators'
 gem 'annotate'
+gem 'formtastic'
+gem 'attribute_normalizer'
 
 # Use unicorn as the web server
 # gem 'unicorn'

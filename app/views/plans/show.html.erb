@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <%= image_tag @plan.owner.profile_image_url %><%= @plan.owner.name %>
+  <h2><%= @plan.title %></h2>
+  <div><%= plan_status_label @plan.status %> </div>
+  <div><%= @plan.outline %></div>
+</div>
+
+<%- if @plan.owner == current_user -%>
+<%= link_to 'Edit', edit_plan_path(@plan) %> |
+<%- end -%>
+<%= link_to 'Back', plans_path %>
