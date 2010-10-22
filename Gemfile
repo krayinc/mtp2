@@ -28,13 +28,12 @@ gem 'annotate'
 # gem 'aws-s3', :require => 'aws/s3'
 
 group :development, :test do
-  gem "shoulda"
+  gem "rspec-rails"
   gem "autotest"
-  gem "ZenTest"
-  gem "redgreen"
-  gem 'test_notifier'
-  gem 'autotest-rails'
-  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git', :branch => 'master'
+  gem 'autotest-fsevent'
+  gem 'autotest-growl'
+  gem 'webrat'
+  gem 'factory_girl_rails'
 end
 
 # Bundle gems for the local environment. Make sure to

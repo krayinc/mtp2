@@ -16,13 +16,14 @@ class Spot < ActiveRecord::Base
     self.ratings.exists?(['user_id = ?', get_user_id(user_or_user_id)])
   end
   
-  def get_user_id(user_or_user_id)
-    if user_or_user_id.kind_of?(User)
-      user_id = user_or_user_id.id
-    elsif user_or_user_id.kind_of?(Integer)
-      user_id = user_or_user_id
+  protected
+    def get_user_id(user_or_user_id)
+      if user_or_user_id.kind_of?(User)
+        user_id = user_or_user_id.id
+      elsif user_or_user_id.kind_of?(Integer)
+        user_id = user_or_user_id
+      end
     end
-  end
   
 end
 

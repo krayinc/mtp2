@@ -40,8 +40,7 @@ module Mtp2
     config.filter_parameters += [:password]
 
     config.generators do |g|
-      g.test_framework  :shoulda, :fixture => true
-      g.fixture_replacement :factory_girl, :dir => 'test/factories'
+      g.test_framework  :rspec, :fixture => true
     end
     
   end
