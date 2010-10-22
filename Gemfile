@@ -30,8 +30,6 @@ gem 'annotate'
 group :development, :test do
   gem "rspec-rails"
   gem "autotest"
-  gem 'autotest-fsevent'
-  gem 'autotest-growl'
   gem 'webrat'
   gem 'factory_girl_rails'
 end
