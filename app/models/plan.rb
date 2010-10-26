@@ -9,4 +9,5 @@ class Plan < ActiveRecord::Base
   validates :status, :inclusion => { :in => 1..3 }
 
   normalize_attribute :title, :with => :strip
+  logic_for_commentable
 end
