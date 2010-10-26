@@ -11,3 +11,18 @@ class Plan < ActiveRecord::Base
   normalize_attribute :title, :with => :strip
   logic_for_commentable
 end
+
+# == Schema Information
+#
+# Table name: plans
+#
+#  id         :integer         not null, primary key
+#  user_id    :integer         not null
+#  title      :string(255)     not null
+#  status     :integer(1)      not null
+#  outline    :text
+#  created_at :datetime
+#  updated_at :datetime
+#  public     :boolean         default(FALSE), not null
+#
+
