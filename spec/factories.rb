@@ -1,3 +1,17 @@
-Factory.define :comments do |f|
-  
+Factory.define :user do |f|
+  f.sequence(:login) {|n| "username_#{n}" }
+  f.sequence(:twitter_id) {|n| n }
+end
+
+Factory.define :plan do |f|
+  f.owner {|owner| owner.association(:user)}
+  f.title 'Title'
+  f.status 1
+  f.outline 'Outline Text...'
+  f.public false
+end
+
+Factory.define :voting do |f|
+  f.user {|user| user.association(:user)}
+  f.votable {|votable| votable.association(:plan)}
 end
