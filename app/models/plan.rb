@@ -10,6 +10,7 @@ class Plan < ActiveRecord::Base
 
   normalize_attribute :title, :with => :strip
   logic_for_commentable
+  logic_for_votable
 end
 
 # == Schema Information
