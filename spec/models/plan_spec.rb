@@ -12,6 +12,15 @@ describe Plan do
     it { should respond_to(:voted_by?).with(1).argument }
   end
   
+  context 'when save with empty attributes' do
+    subject do
+      plan  = Plan.new
+      plan.save
+      plan
+    end
+    it { should have(1).error_on(:title) }
+  end
+  
   context 'an instance' do
     before :each do
       @user = Factory(:user)

@@ -12,7 +12,14 @@ describe Spot do
     it { should respond_to(:rated_by?).with(1).argument }
   end
   
-  
+  context 'when save with empty attributes' do
+    subject do
+      spot = Spot.new
+      spot.save
+      spot
+    end
+    it { should have(1).error_on(:name) }
+  end
 end
 
 # == Schema Information
