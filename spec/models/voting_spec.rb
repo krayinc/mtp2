@@ -18,6 +18,19 @@ describe Voting do
     it { should have(1).error_on(:votable_id) }
     it { should have(1).error_on(:votable_type) }
   end
+
+  context 'when creating a duplicate rating' do
+    it do
+      @valid_attributes = {
+        :user_id =>'value for user', 
+        :votable_id =>'value for votable_id',
+        :votable_type => 'value for votable_type'
+      }
+      
+      Voting.create!(@valid_attributes)
+      Voting.new(@valid_attributes).should be_invalid
+    end
+  end
 end
 
 # == Schema Information
