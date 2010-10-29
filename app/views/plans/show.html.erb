@@ -13,16 +13,20 @@
   </h3>
   
   <div class='new-comment-box'>
-    <%- comment = @plan.comments.build %>
-    <%- form_for comment, :remote => true do |f| -%>
-    <%= f.hidden_field :commentable_id %>
-    <%= f.hidden_field :commentable_type %>
-      <div class="field">
-        <%= f.text_area :body, :size => '30x5' %>
-      </div>
-      <div class="submit">
-        <%= f.submit 'コメントする' %>
-      </div>
+    <%- unless logged_in? -%>
+      <p><strong><%= link_to 'ログイン', login_path %> してこのプランにコメントしよう！</strong></p>
+    <%- else -%>
+      <%- comment = @plan.comments.build %>
+      <%- form_for comment, :remote => true do |f| -%>
+      <%= f.hidden_field :commentable_id %>
+      <%= f.hidden_field :commentable_type %>
+        <div class="field">
+          <%= f.text_area :body, :size => '30x5' %>
+        </div>
+        <div class="submit">
+          <%= f.submit 'コメントする' %>
+        </div>
+      <%- end -%>
     <%- end -%>
   </div>
   
