@@ -14,7 +14,7 @@
   
   <div class='new-comment-box'>
     <%- comment = @plan.comments.build %>
-    <%- form_for comment do |f| -%>
+    <%- form_for comment, :remote => true do |f| -%>
     <%= f.hidden_field :commentable_id %>
     <%= f.hidden_field :commentable_type %>
       <div class="field">
@@ -29,7 +29,7 @@
   <div class='comments-box'>
     <ul>
       <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
-        <li><%= comment.body %></li>
+        <%= render :partial => 'comment', :locals => {:comment => comment} %>
       <%- end -%>
     </ul>
   </div>
@@ -40,3 +40,18 @@
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%- end -%>
 <%= link_to 'Back', plans_path %>
+
+<script type="text/javascript">
+  $('form#new_comment #comment_submit').attr('disabled','disabled');
+  $('form#new_comment #comment_body').keyup(function(event){
+    if ($(this).val().length > 0) {
+      $('form#new_comment #comment_submit').removeAttr('disabled');
+    } else {
+      $('form#new_comment #comment_submit').attr('disabled','disabled');
+    }
+  });
+  $('form#new_comment').bind('ajax:success', function(event){
+    $('form#new_comment #comment_submit').attr('disabled','disabled');
+    $('form#new_comment #comment_body').val('');
+  });
+</script>

@@ -1,0 +1,3 @@
+$('.comments-box ul').prepend('<%= escape_javascript render(:partial => 'plans/comment', :locals => {:comment => @comment}) %>');
+$('.comments-box ul li:first').hide().fadeIn();
+$('.comments-box ul li:gt(4)').fadeOut();
