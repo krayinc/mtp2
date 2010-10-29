@@ -51,6 +51,17 @@
   
 </div>
 
+<div id='section'>
+  <h3>
+    行き先(<%= @plan.destinations.count %>)
+  </h3>
+  <ol>
+    <%- @plan.destinations.each do |destination| -%>
+      <li><%= destination.spot.name %></li>
+    <%- end -%>
+  </ol>
+</div>
+
 <%- if @plan.owner == current_user -%>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%- end -%>
