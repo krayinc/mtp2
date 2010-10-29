@@ -7,6 +7,35 @@
   <div><%= @plan.outline %></div>
 </div>
 
+<div class='section'>
+  <h3>
+    コメント
+  </h3>
+  
+  <div class='new-comment-box'>
+    <%- comment = @plan.comments.build %>
+    <%- form_for comment do |f| -%>
+    <%= f.hidden_field :commentable_id %>
+    <%= f.hidden_field :commentable_type %>
+      <div class="field">
+        <%= f.text_area :body, :size => '30x5' %>
+      </div>
+      <div class="submit">
+        <%= f.submit 'コメントする' %>
+      </div>
+    <%- end -%>
+  </div>
+  
+  <div class='comments-box'>
+    <ul>
+      <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
+        <li><%= comment.body %></li>
+      <%- end -%>
+    </ul>
+  </div>
+  
+</div>
+
 <%- if @plan.owner == current_user -%>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%- end -%>
