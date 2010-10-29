@@ -8,6 +8,17 @@
 </div>
 
 <div class='section'>
+  <h3>投票</h3>
+  <div>
+    <span id='tolal-point'><%= @plan.total_votes %>ポイント</span>
+    <span class='voting-box'>
+      <span id='btn-unvote' style='display:none;'><%= link_to '投票済', unvote_plan_path, :remote => true, :method => :put %></span>
+      <span id='btn-vote' style='display:none;'><%= link_to '投票する', vote_plan_path, :remote => true, :method => :put %></span>
+    </span>
+  </div>
+</div>
+
+<div class='section'>
   <h3>
     コメント
   </h3>
@@ -58,4 +69,25 @@
     $('form#new_comment #comment_submit').attr('disabled','disabled');
     $('form#new_comment #comment_body').val('');
   });
+  
+  function changeTotalVoteView(point){
+    $('#tolal-point').text(point + 'ポイント');
+  }
+  
+  function onVote(){
+    $('#btn-unvote').show();
+    $('#btn-vote').hide();
+  }
+  
+  function onUnVote(){
+    $('#btn-unvote').hide();
+    $('#btn-vote').show();
+  }
+  
+  <%- if @plan.voted_by? current_user -%>
+  onVote();
+  <%- else -%>
+  onUnVote();
+  <%- end -%>
+  
 </script>
