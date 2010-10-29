@@ -8,6 +8,11 @@ Mtp2::Application.routes.draw do
       put 'unvote'
     end
   end
+  resources :spots, :only => [] do
+    member do
+      put 'rate'
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

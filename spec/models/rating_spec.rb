@@ -32,7 +32,7 @@ describe Rating do
     context 'and rate from same user with 5 point' do
       subject { lambda { @ratable.rate!(5, @user) } }
       it 'should not change Rating.count' do
-         should_not change(Rating, :count) 
+        should_not change(Rating, :count) 
       end
       it 'rating#score should have been changed to 5 from 3' do
         should change { Rating.last.score }.from(3).to(5) 

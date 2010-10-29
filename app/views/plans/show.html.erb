@@ -57,7 +57,25 @@
   </h3>
   <ol>
     <%- @plan.destinations.each do |destination| -%>
-      <li><%= destination.spot.name %></li>
+      <li>
+        <p><%= destination.spot.name %></p>
+        <div class='rating-box'>
+          <%= destination.spot.average_rating %>
+          <form>
+            <div class='stars-wrapper'>
+              <select name='selrate'>
+                <%- (1..5).each do |n| -%>
+                  <%- if destination.spot.average_rating.to_i == n -%>
+                  <option value='<%= n %>' selected='selected'></option>
+                  <%- else -%>
+                  <option value='<%= n %>'></option>
+                  <%- end -%>
+                <%- end -%>
+              </select>
+            </div>
+          </form>
+        </div>
+      </li>
     <%- end -%>
   </ol>
 </div>
@@ -100,5 +118,28 @@
   <%- else -%>
   onUnVote();
   <%- end -%>
+  
+  /**
+   * Ratings
+   */
+  var rate_spot_path = '<%= rate_spot_path %>';
+  $('.stars-wrapper').stars({
+    inputType: 'select',
+    cancelShow: false,
+    oneVoteOnly: true,
+    callback: function(ui, type, value) {
+      $.ajax({
+        type: 'POST',
+        url: rate_spot_path,
+        data: {
+          _method: 'put',
+          score: value
+        },
+        dataType: 'json',
+        complete: function(msg) {
+        },
+      })
+    }
+  });
   
 </script>
