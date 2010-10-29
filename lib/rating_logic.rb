@@ -12,13 +12,16 @@ module RatingLogic
     end
     module InstanceMethods
       def rate!(score, user_or_user_id)
-        rating = Rating.new(:ratable => self)
-        rating.user_id = get_user_id(user_or_user_id)
-        rating.score = score
-        rating.save
+        rating = Rating.find_or_create_by_user_id_and_ratable_id_and_ratable_type(
+                        get_user_id(user_or_user_id),
+                        self.id, self.class.to_s)
+        rating.update_attribute(:score, score)
       end
       def average_rating
-        self.ratings.average(:score)
+        self.ratings.average(:score) || 0
+      end
+      def ratings_count
+        self.ratings.count
       end
       def rated_by?(user_or_user_id)
         self.ratings.exists?(['user_id = ?', get_user_id(user_or_user_id)])

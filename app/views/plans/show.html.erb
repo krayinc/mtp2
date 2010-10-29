@@ -8,6 +8,17 @@
 </div>
 
 <div class='section'>
+  <h3>投票</h3>
+  <div>
+    <span id='tolal-point'><%= @plan.total_votes %>ポイント</span>
+    <span class='voting-box'>
+      <span id='btn-unvote' style='display:none;'><%= link_to '投票済', unvote_plan_path, :remote => true, :method => :put %></span>
+      <span id='btn-vote' style='display:none;'><%= link_to '投票する', vote_plan_path, :remote => true, :method => :put %></span>
+    </span>
+  </div>
+</div>
+
+<div class='section'>
   <h3>
     コメント
   </h3>
@@ -40,6 +51,58 @@
   
 </div>
 
+<div id='section'>
+  <h3>
+    行き先(<%= @plan.destinations.count %>)
+  </h3>
+  <ol>
+    <%- @plan.destinations.each do |destination| -%>
+      <li>
+        <p><%= destination.spot.name %></p>
+        <div class='rating-box'>
+          <%= destination.spot.average_rating %>
+          <form>
+            <div class='stars-wrapper' id='star-<%= destination.spot.id %>'>
+              <select name='selrate'>
+                <%- (1..5).each do |n| -%>
+                  <%- if destination.spot.average_rating.to_i == n -%>
+                  <option value='<%= n %>' selected='selected'></option>
+                  <%- else -%>
+                  <option value='<%= n %>'></option>
+                  <%- end -%>
+                <%- end -%>
+              </select>
+            </div>
+          </form>
+        </div>
+      </li>
+      <script type='text/javascript'>
+        /**
+         * Ratings
+         */
+        $('#star-<%= destination.spot.id %>').stars({
+          inputType: 'select',
+          cancelShow: false,
+          oneVoteOnly: true,
+          callback: function(ui, type, value) {
+            $.ajax({
+              type: 'POST',
+              url: '<%= rate_spot_path(destination.spot) %>',
+              data: {
+                _method: 'put',
+                score: value
+              },
+              dataType: 'json',
+              complete: function(msg) {
+              },
+            })
+          }
+        });
+      </script>
+    <%- end -%>
+  </ol>
+</div>
+
 <%- if @plan.owner == current_user -%>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
 <%- end -%>
@@ -58,4 +121,25 @@
     $('form#new_comment #comment_submit').attr('disabled','disabled');
     $('form#new_comment #comment_body').val('');
   });
+  
+  function changeTotalVoteView(point){
+    $('#tolal-point').text(point + 'ポイント');
+  }
+  
+  function onVote(){
+    $('#btn-unvote').show();
+    $('#btn-vote').hide();
+  }
+  
+  function onUnVote(){
+    $('#btn-unvote').hide();
+    $('#btn-vote').show();
+  }
+  
+  <%- if @plan.voted_by? current_user -%>
+  onVote();
+  <%- else -%>
+  onUnVote();
+  <%- end -%>
+  
 </script>

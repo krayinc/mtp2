@@ -1,5 +1,6 @@
 class PlansController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
+  respond_to :js, :html
 
   # GET /plans
   # GET /plans.xml
@@ -93,4 +94,19 @@ class PlansController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # PUT /plans/1/vote
+  def vote
+    @plan = Plan.find(params[:id])
+    @voting = @plan.vote!(current_user)
+    respond_with @voting
+  end
+  
+  # PUT /plans/1/vote
+  def unvote
+    @plan = Plan.find(params[:id])
+    @voting = @plan.unvote!(current_user)
+    respond_with @voting
+  end
+  
 end
