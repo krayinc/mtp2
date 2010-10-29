@@ -62,7 +62,7 @@
         <div class='rating-box'>
           <%= destination.spot.average_rating %>
           <form>
-            <div class='stars-wrapper'>
+            <div class='stars-wrapper' id='star-<%= destination.spot.id %>'>
               <select name='selrate'>
                 <%- (1..5).each do |n| -%>
                   <%- if destination.spot.average_rating.to_i == n -%>
@@ -76,6 +76,29 @@
           </form>
         </div>
       </li>
+      <script type='text/javascript'>
+        /**
+         * Ratings
+         */
+        $('#star-<%= destination.spot.id %>').stars({
+          inputType: 'select',
+          cancelShow: false,
+          oneVoteOnly: true,
+          callback: function(ui, type, value) {
+            $.ajax({
+              type: 'POST',
+              url: '<%= rate_spot_path(destination.spot) %>',
+              data: {
+                _method: 'put',
+                score: value
+              },
+              dataType: 'json',
+              complete: function(msg) {
+              },
+            })
+          }
+        });
+      </script>
     <%- end -%>
   </ol>
 </div>
@@ -118,28 +141,5 @@
   <%- else -%>
   onUnVote();
   <%- end -%>
-  
-  /**
-   * Ratings
-   */
-  var rate_spot_path = '<%= rate_spot_path %>';
-  $('.stars-wrapper').stars({
-    inputType: 'select',
-    cancelShow: false,
-    oneVoteOnly: true,
-    callback: function(ui, type, value) {
-      $.ajax({
-        type: 'POST',
-        url: rate_spot_path,
-        data: {
-          _method: 'put',
-          score: value
-        },
-        dataType: 'json',
-        complete: function(msg) {
-        },
-      })
-    }
-  });
   
 </script>
