@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
+  respond_to :js, :html
   # GET /comments
   # GET /comments.xml
   def index
@@ -44,15 +45,17 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(params[:comment])
     @comment.commenter = current_user
-    respond_to do |format|
-      if @comment.save
-        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
-        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
-      end
-    end
+    @comment.save
+    respond_with @comment
+#    respond_to do |format|
+#      if @comment.save
+#        format.html { redirect_to(@comment, :notice => 'Comment was successfully created.') }
+#        format.xml  { render :xml => @comment, :status => :created, :location => @comment }
+#      else
+#        format.html { render :action => "new" }
+#        format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
+#      end
+#    end
   end
 
   # PUT /comments/1
