@@ -18,7 +18,10 @@ module RatingLogic
         rating.save
       end
       def average_rating
-        self.ratings.average(:score)
+        self.ratings.average(:score) || 0
+      end
+      def ratings_count
+        self.ratings.count
       end
       def rated_by?(user_or_user_id)
         self.ratings.exists?(['user_id = ?', get_user_id(user_or_user_id)])

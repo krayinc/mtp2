@@ -15,3 +15,11 @@ Factory.define :voting do |f|
   f.user {|user| user.association(:user)}
   f.votable {|votable| votable.association(:plan)}
 end
+
+Factory.define :spot do |f|
+  f.name 'Name'
+  f.latitude '123.4567'
+  f.longitude '12.3456'
+  f.address 'Address'
+  f.annotation 'Annotation'
+end
