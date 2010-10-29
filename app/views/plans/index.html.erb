@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>タイトル></th>
     <th></th>
     <th></th>
     <th></th>
@@ -9,6 +10,7 @@
 
 <% @plans.each do |plan| %>
   <tr>
+    <td><%= plan.title %></td>
     <td><%= link_to 'Show', plan %></td>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
     <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
