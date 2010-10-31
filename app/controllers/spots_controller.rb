@@ -1,14 +1,16 @@
 class SpotsController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
-  respond_to :json, :html
+  respond_to :js, :json, :html
   # GET /spots
   # GET /spots.xml
+  # GET /spots.json
   def index
     @spots = Spot.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @spots }
+      format.js
     end
   end
 

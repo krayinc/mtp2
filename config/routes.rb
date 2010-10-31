@@ -3,12 +3,13 @@ Mtp2::Application.routes.draw do
   match "home/dev" => "home#dev"
   resources :comments
   resources :plans do
+    resources :destinations
     member do
       put 'vote'
       put 'unvote'
     end
   end
-  resources :spots, :only => [] do
+  resources :spots do
     member do
       put 'rate'
     end

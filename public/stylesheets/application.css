@@ -1,0 +1,5 @@
+.dialog {
+  border: 1px solid;
+  border-color: white black black white;
+  background-color: lightgrey;
+}

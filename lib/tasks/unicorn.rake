@@ -40,8 +40,7 @@ namespace :unicorn do
     if (pid = check_pid).nil?
       Rake::Task['unicorn:start'].invoke
     else
-      sh "kill -USR2 #{pid}"
-      sh "kill -QUIT #{pid}"
+      sh "kill -USR2 #{pid} && kill -QUIT #{pid}"
     end
   end
 
