@@ -52,6 +52,17 @@ describe Plan do
     end
   end
   
+  describe 'Plan belongs to User' do
+    fixtures :plans, :users
+    subject { plans(:one) }
+    its(:owner) { should == users(:one) }
+  end
+
+  describe 'status check' do
+    subject { Factory(:plan) }
+    its(:status) { should > 0 }
+    its(:status) { should <= 3 }
+  end
 end
 
 # == Schema Information

@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe Comment do
+  context 'an instance' do
+    subject { Comment.new }
+    it { should respond_to(:commentable, :commenter) }
+  end
   
   context 'when save with empty attributes' do
     subject do

@@ -39,7 +39,24 @@ describe Rating do
       end
     end
   end
-  
+
+  context 'when creating a duplicate rating' do
+    it do
+      valid_attributes = {
+        :user_id =>'value for user', 
+        :ratable_id =>'value for ratable_id',
+        :ratable_type => 'value for ratable_type'
+      }
+      Rating.create!(valid_attributes)
+      Rating.new(valid_attributes).should be_invalid
+    end
+  end
+
+  context 'score value check' do
+    subject { Rating.new }
+    its(:score) { should >= 0 }
+    its(:score) { should <= 5 }
+  end
 end
 
 # == Schema Information
