@@ -5,7 +5,7 @@ describe Voting do
     subject do
       @voting = Voting.new
     end
-    it { should respond_to(:user, :votable)}
+    it { should respond_to(:user, :votable) }
   end
   
   context 'when save with empty attributes' do
