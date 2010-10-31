@@ -1,4 +1,9 @@
 class Plan < ActiveRecord::Base
+  
+  logic_for_commentable
+  logic_for_votable
+  logic_for_rankable
+  
   Status = [['計画中', 1], ['旅行中', 2], ['旅行記', 3]]
 
   belongs_to :owner, :class_name => 'User', :foreign_key => 'user_id'
@@ -9,8 +14,14 @@ class Plan < ActiveRecord::Base
   validates :status, :inclusion => { :in => 1..3 }
 
   normalize_attribute :title, :with => :strip
-  logic_for_commentable
-  logic_for_votable
+  
+  scope :popluar, order_by_rank
+  
+  def calculate_point(time_range)
+    return self.comments.where(:created_at => time_range).count + 
+           self.votings.where(:created_at => time_range).count
+  end
+  
 end
 
 # == Schema Information

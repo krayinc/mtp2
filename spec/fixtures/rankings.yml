@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  rankable_type: MyString
+  rankable_id: 1
+  point: 1
+  range: 1
+
+two:
+  rankable_type: MyString
+  rankable_id: 1
+  point: 1
+  range: 1

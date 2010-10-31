@@ -1,5 +1,13 @@
 class Spot < ActiveRecord::Base
   logic_for_ratable
+  logic_for_rankable
+  
+  scope :popluar, order_by_rank
+  
+  def calculate_point(time_range)
+    return self.ratings.where(:updated_at => time_range).average(:score) || 0
+  end
+  
 end
 
 # == Schema Information
