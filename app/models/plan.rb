@@ -17,6 +17,12 @@ class Plan < ActiveRecord::Base
   
   scope :popluar, order_by_rank
   
+  def first_spot
+    self.destinations.first.spot
+  rescue
+    nil
+  end
+  
   def calculate_point(time_range)
     return self.comments.where(:created_at => time_range).count + 
            self.votings.where(:created_at => time_range).count

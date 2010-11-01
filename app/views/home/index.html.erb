@@ -1,2 +1,32 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h3>ピックアップ</h3>
+<div class='pickup_plan'>
+  ここにピックアッププランを表示
+</div>
+
+<h3>今人気のプラン</h3>
+<div class='hot_plan'>
+  <ol>
+    <%- @plans.each do |plan| -%>
+    <li>
+      <h4><%= plan.title %></h4>
+      <p>
+        <%= truncate plan.outline, :length => 20 %>
+      </p>
+      <div>
+        <%- if plan.first_spot -%>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?center=#{plan.first_spot.latitude},#{plan.first_spot.longitude}&zoom=14&size=150x150&sensor=false" %>
+        <%- end -%>
+      </div>
+      <div>
+        <%= image_tag plan.owner.profile_image_url, :size => '20x20' %>
+        by <%= plan.owner.name %> <%= plan.total_votes %>pts <%= plan.updated_at.strftime("%Y.%m.%d") %>
+      </div>
+    </li>
+    <%- end -%>
+  </ol>
+</div>
+
+<h3>注目のユーザー</h3>
+<div>
+  ここに注目のユーザー
+</div>

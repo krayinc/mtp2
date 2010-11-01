@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   
   def index
+    @plans = Plan.order('created_at DESC').limit(4)
   end
   
   def dev
