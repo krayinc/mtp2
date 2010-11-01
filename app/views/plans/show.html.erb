@@ -56,13 +56,13 @@
     行き先(<%= @plan.destinations.count %>)
   </h3>
   <ol>
-    <%- @plan.destinations.each do |destination| -%>
+    <%- @plan.destinations.each_with_index do |destination, index| -%>
       <li>
         <p><%= destination.spot.name %></p>
         <div class='rating-box'>
           <%= destination.spot.average_rating %>
           <form>
-            <div class='stars-wrapper' id='star-<%= destination.spot.id %>'>
+            <div class='stars-wrapper' id='star-<%= index %>'>
               <select name='selrate'>
                 <%- (1..5).each do |n| -%>
                   <%- if destination.spot.average_rating.to_i == n -%>
@@ -80,7 +80,7 @@
         /**
          * Ratings
          */
-        $('#star-<%= destination.spot.id %>').stars({
+        $('#star-<%= index %>').stars({
           inputType: 'select',
           cancelShow: false,
           oneVoteOnly: true,

@@ -41,6 +41,29 @@ describe Spot do
     its(:average_rating) { should == 3 }
   end
   
+  context 'Spot count should change by +1 when rate' do
+    before do
+      @spot = Factory(:spot)
+    end
+    
+    it {
+      lambda {
+        @spot.rate!(1, Factory(:user))
+      }.should change(Spot, count).by(+1)
+    }
+  end
+
+  context 'rated user rate_by? ture' do
+    before do
+      @spot = Factory(:spot)
+      @user = Factory(:user)
+    end
+    
+    it do
+      @spot.rate!(1, @user)
+      @spot.rated_by?(@user).should be_true
+    end
+  end
 end
 
 # == Schema Information

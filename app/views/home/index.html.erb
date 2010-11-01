@@ -14,7 +14,7 @@
       </p>
       <div>
         <%- if plan.first_spot -%>
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?center=#{plan.first_spot.latitude},#{plan.first_spot.longitude}&zoom=14&size=150x150&sensor=false" %>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?center=#{plan.first_spot.longitude},#{plan.first_spot.latitude}&zoom=14&size=150x150&sensor=false" %>
         <%- end -%>
       </div>
       <div>
