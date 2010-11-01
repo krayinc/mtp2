@@ -15,7 +15,7 @@
 
     <!-- begin Header  -->
     <div id='header'>
-      <h1>旅PLUS</h1>
+      <h1><%= link_to '旅PLUS', root_path %></h1>
       <div>
         <%= link_to '旅PLUSとは？', '#' %>
         <%= link_to 'プランを見る', plans_path %>
@@ -29,6 +29,7 @@
       </div>
     </div>
     <!-- end Header  -->
+    <hr />
     
     <!-- begin Content  -->
     <div id='content'>
@@ -38,9 +39,14 @@
       <%= yield %>
     </div>
     <!-- end Content  -->
-    
+    <hr />
     <!-- begin Footer  -->
     <div id='footer'>
+      <%= link_to 'トップ', root_path %>
+      <%= link_to '旅PLUSとは', "#" %>
+      <%= link_to 'お問い合わせ', "#" %>
+      
+      &copy; KRAY Inc. All rights reserved.
     </div>
     <!-- end Footer  -->
     
