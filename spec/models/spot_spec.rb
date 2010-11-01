@@ -64,6 +64,19 @@ describe Spot do
       @spot.rated_by?(@user).should be_true
     end
   end
+
+  context 'latitude and longitude value check' do
+    before do
+      spot  = Factory(:spot)
+      @latitude = spot.latitude.to_f
+      @longitude = spot.longitude.to_f
+    end
+    
+    it { @latitude.should >= -90 }
+    it { @latitude.should <=  90 }
+    it { @longitude.should >= -180 }
+    it { @longitude.should <=  180 }
+  end
 end
 
 # == Schema Information
