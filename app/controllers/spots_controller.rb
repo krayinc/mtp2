@@ -5,7 +5,11 @@ class SpotsController < ApplicationController
   # GET /spots.xml
   # GET /spots.json
   def index
-    @spots = Spot.all
+    if params[:q].blank?
+      @spots = Spot.all
+    else
+      @spots = Spot.where('name LIKE ?', "%#{params[:q]}%")
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -31,6 +35,7 @@ class SpotsController < ApplicationController
     @spot = Spot.new
 
     respond_to do |format|
+      format.js
       format.html # new.html.erb
       format.xml  { render :xml => @spot }
     end
@@ -48,9 +53,11 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       if @spot.save
+        format.js   { render :nothing => true }
         format.html { redirect_to(@spot, :notice => 'Spot was successfully created.') }
         format.xml  { render :xml => @spot, :status => :created, :location => @spot }
       else
+        format.js   { render :text => %Q|$.gritter.add({title: 'スポットを作成できません', text: '#{escape_javascript @spot.errors}'|}
         format.html { render :action => "new" }
         format.xml  { render :xml => @spot.errors, :status => :unprocessable_entity }
       end

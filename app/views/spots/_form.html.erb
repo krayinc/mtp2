@@ -1,17 +1,12 @@
-<%= form_for(@spot) do |f| %>
-  <% if @spot.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@spot.errors.count, "error") %> prohibited this spot from being saved:</h2>
-
-      <ul>
-      <% @spot.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div id="spot_select_map" class="google_map" style="width: 800px; height: 400px;"></div>
+<%= semantic_form_for @spot,
+  :url => @spot.new_record? ? spots_path(:format => :js) : spots_path(:id => @spot.id, :format => :js),
+  :method => @spot.new_record? ? :post : :put,
+  :remote => true do |f| %>
+<%= f.input :latitude, :as => :hidden %>
+<%= f.input :longitude, :as => :hidden %>
+<%= f.input :name %>
+<%= f.input :address %>
+<%= f.input :annotation %>
+<%= f.commit_button %>
+<%- end -%>
