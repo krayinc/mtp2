@@ -8,38 +8,9 @@
   <h2>行き先一覧</h2>
 <%= render 'destinations' %>
   <div id="destination_form_dialog" class="dialog" style="display: none;"></div>
+  <div id="spot_form_dialog" class="dialog" style="display: none;"></div>
 <%= link_to t('Add destination'), new_plan_destination_path(@plan), :remote => true %>
 </div>
 
 <%= link_to 'Show', @plan %> |
 <%= link_to 'Back', plans_path %>
-
-<script type="text/javascript">
-function openDestinationDialog(form) {
-  $('#destination_form_dialog').html(form);
-  $('#destination_form_dialog').dialog({
-    modal: true,
-    width: 800,
-    height: 800,
-    open: function() {
-      <%= gmap :destination_select_map, '35.70325', '139.578187', 14 %>
-    }
-  });
-  $('#spot_search_form').bind('ajax:success', function() {
-    $('#search_results option').each(function(index, spot) {
-      new google.maps.Marker({
-        position: new google.maps.LatLng($(spot).attr('mtp-latitude'), $(spot).attr('mtp-longitude')),
-        map: mtp.maps['destination_select_map']
-      });
-    });
-  });
-  $('#spot_search_form').bind('ajax:before', function() {
-    $('#new_destination input,#new_destination button,#new_destination textarea').attr({disabled: 'disabled'});
-  });
-  $('#new_destination input,#new_destination button,#new_destination textarea').attr({disabled: 'disabled'});
-  $('#search_results').bind('change', function() {
-    $('#new_destination input,#new_destination button,#new_destination textarea').removeAttr('disabled');
-    $('#destination_spot_id').val($(this).val());
-  });
-}
-</script>

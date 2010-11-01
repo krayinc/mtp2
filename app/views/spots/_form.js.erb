@@ -1,0 +1,26 @@
+$('#spot_form_dialog').html('<%= escape_javascript(render 'form.html') %>');
+$('#spot_form_dialog').dialog({
+  modal: true,
+  width: 800,
+  height: 800,
+  open: function() {
+    <%= gmap :spot_select_map, '35.70325', '139.578187', 14 %>
+  }
+});
+google.maps.event.addListener(mtp.maps['spot_select_map'], 'click', $.proxy(function(event) {
+  var latLng = event.latLng;
+  $('#spot_latitude').val(latLng.lat());
+  $('#spot_longitude').val(latLng.lng());
+  var geocoder = new mtp.Geocoder($('#spot_select_map').get(0));
+  geocoder.coordinateToAddress(latLng, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      var title = '';
+      if (results[0]) {
+        $('#spot_address').val(geocoder.addressFilter(results));
+      } else {
+        $.gritter.add({title: '', text: '住所が取得できませんでした'});
+      }
+    }
+  });
+  return false;
+}));

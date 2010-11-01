@@ -13,7 +13,7 @@ class Plan < ActiveRecord::Base
   validates :title, :presence => true
   validates :status, :inclusion => { :in => 1..3 }
 
-  normalize_attribute :title, :with => :strip
+  normalize_attribute :title, :with => [:strip, :blank]
   
   scope :popluar, order_by_rank
   
