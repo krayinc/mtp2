@@ -20,6 +20,6 @@
 
   <div class="actions">
     <%= f.commit_button %>
-    <%= link_to t('Delete'), plan_path(@plan, :_method => 'delete'), :confirm => 'OK?' %>
+    <%- unless @plan.new_record? -%><%= link_to t('Delete'), plan_path(@plan, :_method => 'delete'), :confirm => 'OK?' %><%- end -%>
   </div>
 <% end %>
