@@ -1,2 +1,2 @@
 $('#destination_form_dialog').dialog('close');
-$('<li></li>').appendTo('#destination_list ul').attr({'mtp-destination': <%= @destination.id %>}).html('<%= raw escape_javascript(render 'plans/destination', :destination => @destination) %>');
+$('<li></li>').appendTo('#destination_list ol').attr({'mtp-destination': <%= @destination.id %>}).html('<%= raw escape_javascript(render 'plans/destination', :destination => @destination) %>');
