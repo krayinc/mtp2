@@ -1,5 +1,5 @@
-<ul>
+<ol>
 <%- @plan.destinations.each do |destination| -%>
   <li mtp-destination="<%= destination.id %>"><%= render 'destination', :destination => destination %></li>
 <%- end -%>
-</ul>
+</ol>
