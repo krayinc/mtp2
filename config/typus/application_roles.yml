@@ -1,0 +1,8 @@
+# Typus Roles Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+admin:
+  Spot: create, read, update, delete
+  Plan: create, read, update, delete
+  Destination: create, read, update, delete

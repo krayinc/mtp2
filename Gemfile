@@ -13,6 +13,7 @@ gem 'rails3-generators'
 gem 'annotate'
 gem 'formtastic'
 gem 'attribute_normalizer'
+gem 'typus'
 
 # Use unicorn as the web server
 # gem 'unicorn'

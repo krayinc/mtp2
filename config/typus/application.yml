@@ -1,0 +1,33 @@
+# Typus Models Configuration File
+#
+# Use the README file as a reference to customize settings.
+
+Spot:
+  fields:
+    default: name, latitude, longitude, address
+    form: name, latitude, longitude, address, annotation
+  order_by: 
+  relationships:
+  filters: 
+  search: name
+  application: tabiplus
+
+Plan:
+  fields:
+    default: user_id, title, status, public, owner
+    form: user_id, title, status, outline, public, owner
+  order_by: 
+  relationships: destinations
+  filters: 
+  search: title
+  application: tabiplus
+
+Destination:
+  fields:
+    default: position, plan_id, spot_id, time, spot, plan
+    form: plan_id, spot_id, comment, time, spot, plan
+  order_by: position
+  relationships: plan, spot
+  filters: 
+  search: 
+  application: tabiplus

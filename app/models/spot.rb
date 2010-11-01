@@ -1,5 +1,7 @@
 class Spot < ActiveRecord::Base
   logic_for_ratable
+
+  has_many :destinations, :dependent => :restrict
 end
 
 # == Schema Information

@@ -1,0 +1,17 @@
+<div class="box_relationships" id="<%= model_to_relate_as_resource %>">
+
+  <h2>
+    <%= model_to_relate.model_name.human %>
+    <small><%= add_new %></small>
+  </h2>
+
+  <%= form %>
+
+  <% if @items.any? -%>
+    <%= table %>
+    <%= will_paginate(@items, :renderer => Typus::Pagination, :anchor => model_to_relate.to_resource) %>
+  <% else %>
+    <p><%= _t("There are no %{records}.", :records => model_to_relate.model_name.human) %></p>
+  <% end %>
+
+</div>

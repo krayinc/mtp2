@@ -149,6 +149,8 @@ ja:
 
     models:
       plan: "プラン"
+      spot: "スポット"
+      destination: "行き先"
 
     attributes:
       plan:
@@ -156,3 +158,137 @@ ja:
         status: "ステータス"
         outline: "概要"
         public: "公開"
+
+      spot:
+        name: "名称"
+        latitude: "緯度"
+        longitude: "経度"
+        address: "住所"
+        annotation: "注釈"
+
+      destination:
+        position: "順序"
+        plan: "プラン"
+        spot: "スポット"
+        time: "時間"
+        comment: "コメント"
+
+# messages for Typus
+  "A valid token is required":
+  "Actions":
+  "Active":
+  "Add": "追加"
+  "Add %{resource}":
+  "Add new": "追加"
+  "Are you sure?":
+  "Are you sure you want to leave this page?":
+  "Are you sure you want to sign out and end your session?":
+  "As you're not the admin or the owner of this record you cannot edit it":
+
+  "Cancel and go back": "キャンセル"
+  "Change %{attribute}?":
+  "Change password":
+  "Checked if active":
+  "Click OK to continue, or click Cancel to stay on this page":
+  "Create %{resource}": "%{resource}を作成"
+  "Create one now": "今すぐ作成"
+
+  "Dashboard": "ダッシュボード"
+  "Do you want to cancel it?": "キャンセルはこちら"
+  "Down": "↓"
+
+  "Edit": "編集"
+  "Edit %{resource}": "%{resource}編集"
+  "Enter your email below to create the first user":
+  "Error! Typus User or role doesn't exist":
+
+  "False": "×"
+  "Filter":
+  "Filter by %{attribute}":
+
+  "Go to":
+
+  "I remember my password":
+  "If you didn't request a password update, you can ignore this message":
+  "If you have made any changes to the fields without clicking the Save/Update entry button, your changes will be lost":
+  "Inactive":
+
+  "Last few days":
+  "Last 30 days":
+  "Last 7 days":
+  "List": "一覧"
+  "Logged as":
+  "Login": "ログイン"
+
+  "New":
+  "New %{resource}": "新しい%{resource}"
+  "Next":
+
+  "Options":
+
+  "Password recovery link sent to your email":
+  "Previous":
+
+  "Record moved %{to}":
+  "Recover password":
+  "Remove":
+  "Remove %{attribute}":
+  "Remove %{resource}?":
+  "Remove filter":
+  "Remove search":
+  "Reset password":
+  "Resources":
+
+  "Save %{resource}": "%{resource}を保存"
+  "Search": "検索"
+  "Search by":
+  "Send us feedback":
+  "Setup":
+  "Show": "表示"
+  "Show %{resource}": "%{resource}"
+  "Sign in":
+  "Sign out":
+  "Sign up":
+  "Submit a bug report":
+  "System Users Administration":
+
+  "That doesn't seem like a valid email address":
+  "The email and/or password you entered is invalid":
+  "There are no %{records}": "%{records}がありません"
+  "There are no %{records} under this filter": "条件に該当する%{records}がありません"
+  "Today":
+  "Toggle is disabled":
+  "True": "○"
+
+  "Unrelate %{unrelate_model} from %{unrelate_model_from}?":
+  "Up": "↑"
+
+  "View all %{attribute}":
+  "View site":
+
+  "You're adding a new %{resource_from}":
+  "You're adding a new %{resource_from} to %{resource_to}": "%{resource_from}を%{resource_to}に追加します。"
+  "You're not allowed to toggle status":
+  "You're not allowed to remove Typus Users":
+  "You're updating a %{resource_from}":
+  "You're updating a %{resource_from} for %{resource_to}":
+  "You can update your password at":
+  "You can't change your role":
+  "You can't remove yourself":
+  "You can't toggle your status":
+
+  "%{attachment} can't be removed":
+  "%{attachment} removed":
+  "%{current_user_role} can't delete this item":
+  "%{current_user_role} can't display items":
+  "%{current_user_role} can't perform action. (%{action})":
+  "%{model} filtered by %{filtered_by}":
+  "%{model} successfully created": "%{model}を作成しました"
+  "%{model} successfully removed": "%{model}を削除しました"
+  "%{model} successfully updated": "%{model}を更新しました"
+  "%{model} %{attribute} changed":
+  "%{model_a} cannot be related to %{model_b}":
+  "%{model_a} cannot be unrelated from %{model_b}":
+  "%{model_a} related to %{model_b}":
+  "%{model_a} successfully assigned to %{model_b}":
+  "%{model_a} unrelated from %{model_b}":

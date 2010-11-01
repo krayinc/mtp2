@@ -1,0 +1,10 @@
+<%
+  custom = { :rows => @resource.typus_options_for(:form_rows) }
+  custom[:richeditor] = true if @resource.typus_options_for(:richeditor).to_a.include? attribute
+  options = options.merge!(custom)
+%>
+
+<li>
+  <%= form.label attribute, label_text %>
+  <%= form.text_area attribute, options %>
+</li>
