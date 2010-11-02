@@ -178,12 +178,14 @@ ja:
   "Actions":
   "Active":
   "Add": "追加"
-  "Add %{resource}":
+  "Add %{resource}": "%{resource}を追加"
   "Add new": "追加"
   "Are you sure?":
   "Are you sure you want to leave this page?":
   "Are you sure you want to sign out and end your session?":
   "As you're not the admin or the owner of this record you cannot edit it":
+
+  "Back": "戻る"
 
   "Cancel and go back": "キャンセル"
   "Change %{attribute}?":
@@ -231,7 +233,7 @@ ja:
 
   "Record moved %{to}":
   "Recover password":
-  "Remove":
+  "Remove": "削除"
   "Remove %{attribute}":
   "Remove %{resource}?":
   "Remove filter":

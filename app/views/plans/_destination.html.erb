@@ -4,6 +4,6 @@
   <div class="comment"><%= destination.comment %></div>
   <div>
     <%= link_to t('Edit'), edit_plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :remote => true %>
-    <%= link_to t('Delete'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => 'OK?', :remote => true, :method => :delete %>
+    <%= link_to t('Remove'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => 'OK?', :remote => true, :method => :delete %>
   </div>
 </div>
