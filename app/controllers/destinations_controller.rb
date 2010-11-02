@@ -87,6 +87,7 @@ class DestinationsController < ApplicationController
 
     respond_to do |format|
       if @destination.update_attributes(params[:destination])
+        format.js
         format.html { redirect_to(@destination, :notice => 'Destination was successfully updated.') }
         format.xml  { head :ok }
       else
