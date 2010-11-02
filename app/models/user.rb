@@ -1,8 +1,9 @@
 class User < TwitterAuth::GenericUser
-  # Extend and define your user model as you see fit.
-  # All of the authentication logic is handled by the 
-  # parent TwitterAuth::GenericUser class.
+  logic_for_rankable
   has_many :plans
+  def calculate_point(time_range)
+    return self.plans.joins('CROSS JOIN votings ON plans.id = votings.votable_id AND votings.votable_type = "Plan"').count
+  end
 end
 
 # == Schema Information

@@ -13,7 +13,8 @@ class Ranking < ActiveRecord::Base
       if klass.rankable?
         Ranking.where(:rankable_type => rankable, :range => range).delete_all
         klass.find_each do |instance|
-          ranking = Ranking.create :rankable => instance, 
+          ranking = Ranking.create :rankable_id => instance.id, 
+                         :rankable_type => klass.to_s,
                          :range => range, 
                          :point => instance.calculate_point((range.ago)..(Time.now))
           p ranking
