@@ -49,7 +49,7 @@ describe Spot do
     it {
       lambda {
         @spot.rate!(1, Factory(:user))
-      }.should change(Spot, count).by(+1)
+      }.should change(Spot, :count).by(+1)
     }
   end
 
@@ -63,6 +63,19 @@ describe Spot do
       @spot.rate!(1, @user)
       @spot.rated_by?(@user).should be_true
     end
+  end
+
+  context 'latitude and longitude value check' do
+    before do
+      spot  = Factory(:spot)
+      @latitude = spot.latitude.to_f
+      @longitude = spot.longitude.to_f
+    end
+    
+    it { @latitude.should >= -90 }
+    it { @latitude.should <=  90 }
+    it { @longitude.should >= -180 }
+    it { @longitude.should <=  180 }
   end
 end
 
