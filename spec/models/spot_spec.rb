@@ -76,6 +76,29 @@ describe Spot do
     it { @latitude.should <=  90 }
     it { @longitude.should >= -180 }
     it { @longitude.should <=  180 }
+    
+    %w(90.1 -90.1).each do |value|
+      context "with #latitude = #{value}" do
+        before do 
+          @spot = Factory.build(:spot, :latitude => value.to_f)
+          @spot.valid?
+        end
+        subject { @spot }
+        it { should have(1).errors_on(:latitude) }
+      end
+    end
+    
+    %w(180.1 -180.1).each do |value|
+      context "with #longitude = #{value}" do
+        before do 
+          @spot = Factory.build(:spot, :longitude => value.to_f)
+          @spot.valid?
+        end
+        subject { @spot }
+        it { should have(1).errors_on(:longitude) }
+      end
+    end
+    
   end
 end
 
