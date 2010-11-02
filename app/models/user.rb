@@ -1,6 +1,7 @@
 class User < TwitterAuth::GenericUser
   logic_for_rankable
   has_many :plans
+  scope :popluar, order_by_rank
   def calculate_point(time_range)
     votings_count = self.plans.from('plans, votings').where(%{votings.votable_id = plans.id AND votings.votable_type = 'Plan'}).count
     comments_count = self.plans.from('plans, comments').where(%{comments.commentable_id = plans.id AND comments.commentable_type = 'Plan'}).count
