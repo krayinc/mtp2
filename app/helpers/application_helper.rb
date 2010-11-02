@@ -19,7 +19,7 @@ module ApplicationHelper
       :sensor => false,
     }.merge(options)
     raw %Q|
-      <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:longitude]},#{options[:latitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}' />
+      <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:latitude]},#{options[:longitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}' />
     |
   end
 end
