@@ -23,3 +23,4 @@ Factory.define :spot do |f|
   f.address 'Address'
   f.annotation 'Annotation'
 end
+

@@ -1,8 +1,10 @@
 require 'spec_helper'
 
 describe Destination do
-  context 'an instance' do
-    subject { Destination.new }
+  context 'Destination belongs to Plan' do
+    fixtures :plans, :destinations
+    subject { destinations(:one) }
+    its(:plan) { should == plans(:one) }
   end
 end
 

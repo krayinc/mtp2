@@ -14,7 +14,7 @@ describe Comment do
     end
     it { should have(1).error_on(:commenter_id) }
     it { should have(1).error_on(:commentable_id) }
-    it { should have(1).error_on(:commentable_type) }
+    it { should have(1).error_on(:commentable_type) } 
   end
 
   context 'body size' do
