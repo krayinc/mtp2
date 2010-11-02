@@ -8,13 +8,17 @@
   <ol>
     <%- @plans.each do |plan| -%>
     <li>
-      <h4><%= plan.title %></h4>
+      <h4><%= link_to plan.title, plan_path(plan) %></h4>
       <p>
         <%= truncate plan.outline, :length => 20 %>
       </p>
       <div>
         <%- if plan.first_spot -%>
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?center=#{plan.first_spot.longitude},#{plan.first_spot.latitude}&zoom=14&size=150x150&sensor=false" %>
+        <%= link_to map_image_tag({
+          :longitude => plan.first_spot.longitude, 
+          :latitude => plan.first_spot.latitude, 
+          :zoom => 14, 
+          :size => '150x150'}), plan_path(plan) %>
         <%- end -%>
       </div>
       <div>

@@ -10,4 +10,16 @@ module ApplicationHelper
       );
     |
   end
+  def map_image_tag(options = {})
+    options = {
+      :size => '200x200',
+      :longitude => '0.0',
+      :latitude => '0.0',
+      :zoom => '14',
+      :sensor => false,
+    }.merge(options)
+    raw %Q|
+      <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:longitude]},#{options[:latitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}' />
+    |
+  end
 end
