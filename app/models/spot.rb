@@ -1,4 +1,10 @@
 class Spot < ActiveRecord::Base
+  DEFAULT_POSITION = {
+    :latitude  => '36.77',
+    :longitude => '137.15',
+    :zoom      => 4
+  }
+
   logic_for_ratable
   logic_for_rankable
 

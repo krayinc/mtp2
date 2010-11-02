@@ -2,9 +2,9 @@ $('#spot_form_dialog').html('<%= escape_javascript(render 'form.html') %>');
 $('#spot_form_dialog').dialog({
   modal: true,
   width: 800,
-  height: 800,
+  height: 630,
   open: function() {
-    <%= gmap :spot_select_map, '35.70325', '139.578187', 14 %>
+    <%= gmap :spot_select_map, Spot::DEFAULT_POSITION[:latitude], Spot::DEFAULT_POSITION[:longitude], Spot::DEFAULT_POSITION[:zoom] %>
   }
 });
 google.maps.event.addListener(mtp.maps['spot_select_map'], 'click', $.proxy(function(event) {

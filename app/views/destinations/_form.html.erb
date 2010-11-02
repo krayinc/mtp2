@@ -1,7 +1,7 @@
-<div id="destination_select_map" class="google_map" style="width: 800px; height: 400px;"></div>
+<div id="destination_select_map" class="google_map" style="width: 100%; height: 400px;"></div>
 <div>
 <%= form_for :spot, :url => spots_path(:format => :js), :remote => true, :html => {:id => 'spot_search_form', :method => 'get'} do |f| %>
-  <%= search_field_tag :q, '', :placeholder => 'スポット名' %>
+  <%= search_field_tag :q, @destination.new_record? ? '' : @destination.spot.name, :placeholder => 'スポット名' %>
   <%= f.submit '検索' %>
 <%- end -%>
   <select id='search_results' size="4" style="width: 400px;"></select>
@@ -11,8 +11,8 @@
   :url    => @destination.new_record? ? plan_destinations_path(:plan_id => @plan.id, :format => :js) : plan_destination_path(:plan_id => @plan.id, :id => @destination.id, :format => :js),
   :method => @destination.new_record? ? :post : :put,
   :remote => true do |f| %>
-<%= f.input :spot_id, :as => :hidden %>
-<%= f.input :time %>
-<%= f.input :comment %>
-<%= f.commit_button %>
+  <%= f.input :spot_id, :as => :hidden %>
+  <%= f.input :time %>
+  <%= f.input :comment %>
+  <%= f.commit_button %>
 <%- end -%>

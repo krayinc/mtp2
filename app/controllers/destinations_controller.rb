@@ -26,6 +26,16 @@ class DestinationsController < ApplicationController
   def new
     @plan = Plan.find params[:plan_id]
     @destination = @plan.destinations.new
+    if @plan.destinations.empty?
+      @center_position = Spot::DEFAULT_POSITION
+    else
+      spot = @plan.destinations.last.spot
+      @center_position = {
+        :latitude  => spot.latitude,
+        :longitude => spot.longitude,
+        :zoom      => 14
+      }
+    end
 
     respond_to do |format|
       format.js
@@ -38,6 +48,12 @@ class DestinationsController < ApplicationController
   def edit
     @destination = Destination.find(params[:id])
     @plan        = @destination.plan
+    spot = @destination.spot
+    @center_position = {
+      :latitude  => spot.latitude,
+      :longitude => spot.longitude,
+      :zoom      => 14
+    }
 
     respond_to do |format|
       format.js
