@@ -66,17 +66,13 @@ class PlansController < ApplicationController
       if @plan.update_attributes(params[:plan])
         format.html { redirect_to(@plan, :notice => 'Plan was successfully updated.') }
         format.xml  { head :ok }
-        format.js   {
-          render :update do |page|
-            page << "$.gritter.add({ title: 'Update', text: 'Update successful!'});"
-          end
-        }
+        format.js
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @plan.errors, :status => :unprocessable_entity }
         format.js   {
           render :update do |page|
-            page << "$.gritter.add({ title: 'Update', text: 'Update successful!'});"
+            page << %Q|$.gritter.add({title: 'MTP', text: "プランの更新に失敗しました。<br>#{@plan.errors.to_s}"});|
           end
         }
       end
