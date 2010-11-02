@@ -2,7 +2,7 @@ class User < TwitterAuth::GenericUser
   logic_for_rankable
   has_many :plans
   def calculate_point(time_range)
-    return self.plans.joins('CROSS JOIN votings ON plans.id = votings.votable_id AND votings.votable_type = "Plan"').count
+    return self.plans.joins(%{CROSS JOIN votings ON plans.id = votings.votable_id AND votings.votable_type = 'Plan'}).count
   end
 end
 
