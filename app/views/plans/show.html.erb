@@ -59,6 +59,15 @@
     <%- @plan.destinations.each_with_index do |destination, index| -%>
       <li>
         <p><%= destination.spot.name %></p>
+        <div>
+          <%- if destination.spot -%>
+          <%= map_image_tag({
+            :longitude => destination.spot.longitude, 
+            :latitude => destination.spot.latitude, 
+            :zoom => 14, 
+            :size => '400x150'}) %>
+          <%- end -%>
+        </div>
         <div class='rating-box'>
           <%= destination.spot.average_rating %>
           <form>
