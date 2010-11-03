@@ -26,7 +26,7 @@ describe Spot do
     subject { spot = Factory(:spot) }
     its(:ratings) { should be_empty }
     its(:ratings_count) { should == 0 }
-    its(:average_rating) { should == 0 }
+    its(:average_rating) { should be_nil }
   end
   
   context 'with have 5 ratings (1 to 5 points)' do
