@@ -1,5 +1,24 @@
-<ol>
+<ol id="destinations" class="ui-sortable">
 <%- @plan.destinations.each do |destination| -%>
   <li mtp-destination="<%= destination.id %>"><%= render 'destination', :destination => destination %></li>
 <%- end -%>
 </ol>
+<script type="text/javascript">
+$('#destinations').sortable({
+  axis: 'y',
+  cursor: 'crosshair',
+  update: function(event, ui) {
+    var destId = $(ui.item[0]).attr('mtp-destination');
+    var newPos = $.inArray(ui.item[0], ui.item[0].parentNode.children);
+    $.ajax({
+      url: '/plans/<%= @plan.id %>/destinations/' + destId + '/position',
+      data: {_method: 'put', position: newPos + 1},
+      dataType: 'script',
+      type: 'POST'/*,
+      success: function(data, dataType){
+        eval(data);
+      }*/
+    });
+  }
+});
+</script>

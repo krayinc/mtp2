@@ -1,6 +1,6 @@
 class DestinationsController < ApplicationController
-  # GET /destinations
-  # GET /destinations.xml
+  # GET /plan/1/destinations
+  # GET /plan/1/destinations.xml
   def index
     @destinations = Destination.all
 
@@ -10,8 +10,8 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # GET /destinations/1
-  # GET /destinations/1.xml
+  # GET /plan/1/destinations/1
+  # GET /plan/1/destinations/1.xml
   def show
     @destination = Destination.find(params[:id])
 
@@ -21,8 +21,8 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # GET /destinations/new
-  # GET /destinations/new.xml
+  # GET /plan/1/destinations/new
+  # GET /plan/1/destinations/new.xml
   def new
     @plan = Plan.find params[:plan_id]
     @destination = @plan.destinations.new
@@ -44,7 +44,7 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # GET /destinations/1/edit
+  # GET /plan/1/destinations/1/edit
   def edit
     @destination = Destination.find(params[:id])
     @plan        = @destination.plan
@@ -62,8 +62,8 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # POST /destinations
-  # POST /destinations.xml
+  # POST /plan/1/destinations
+  # POST /plan/1/destinations.xml
   def create
     @destination = Destination.new(params[:destination])
     @destination.plan_id = params[:plan_id]
@@ -80,8 +80,8 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # PUT /destinations/1
-  # PUT /destinations/1.xml
+  # PUT /plan/1/destinations/1
+  # PUT /plan/1/destinations/1.xml
   def update
     @destination = Destination.find(params[:id])
 
@@ -97,8 +97,8 @@ class DestinationsController < ApplicationController
     end
   end
 
-  # DELETE /destinations/1
-  # DELETE /destinations/1.xml
+  # DELETE /plan/1/destinations/1
+  # DELETE /plan/1/destinations/1.xml
   def destroy
     @destination = Destination.find(params[:id])
     @destination.destroy
@@ -107,6 +107,22 @@ class DestinationsController < ApplicationController
       format.js
       format.html { redirect_to(destinations_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  # PUT /plan/1/destinations/1/position
+  def reorder
+    @destination = Destination.find(params[:id])
+
+    respond_to do |format|
+      if @destination.insert_at(params[:position])
+        format.js
+        format.html { redirect_to(@destination, :notice => 'Destination was successfully updated.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @destination.errors, :status => :unprocessable_entity }
+      end
     end
   end
 end
