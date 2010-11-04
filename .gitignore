@@ -6,3 +6,4 @@ db/schema.rb
 db/*.sqlite3
 log/*.log
 tmp/**/*
+public/images/upload

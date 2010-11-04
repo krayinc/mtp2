@@ -11,6 +11,7 @@ class Spot < ActiveRecord::Base
   scope :popluar, order_by_rank
 
   has_many :destinations, :dependent => :restrict
+  has_many :photos,       :dependent => :destroy, :class_name => 'SpotPhoto'
 
   normalize_attribute :name, :with => [:half_width, :strip, :blank]
   normalize_attribute :name, :with => [:half_width, :strip, :blank]

@@ -2,6 +2,8 @@ class Destination < ActiveRecord::Base
   acts_as_list :scope => :plan
   belongs_to :plan
   belongs_to :spot
+  has_many :destination_photos, :dependent => :destroy
+  has_many :photos, :through => :destination_photos
 end
 
 # == Schema Information
