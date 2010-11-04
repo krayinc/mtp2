@@ -56,14 +56,15 @@ class PhotosController < ApplicationController
 
     raise "upload failure" unless content
 
-    tf = StringIO.new(content)
-    tf.original_filename = filename
+    tf = Tempfile.new(filename)
+    tf << content
     begin
       ActiveRecord::Base.transaction do
         @destination = Destination.find params[:destination_id]
         @photo = @destination.spot.photos.new
         @photo.user_id = current_user.id
         @photo.photo = tf
+        @photo.photo_file_name = filename
         @photo.save!
         @destination.photos << @photo
       end
@@ -71,6 +72,8 @@ class PhotosController < ApplicationController
       render :json => {:error => e.message.to_s}
     else
       render :json => {:success => true}
+    ensure
+      tf.close!
     end
   end
 
