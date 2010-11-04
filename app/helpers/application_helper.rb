@@ -12,14 +12,38 @@ module ApplicationHelper
   end
   def map_image_tag(options = {})
     options = {
-      :size => '200x200',
-      :longitude => '0.0',
-      :latitude => '0.0',
-      :zoom => '14',
-      :sensor => false,
+      :size       => '200x200',
+      :longitude  => '0.0',
+      :latitude   => '0.0',
+      :zoom       => '14',
+      :sensor     => false,
+      :path       => '',
+      :markers    => ''
     }.merge(options)
     raw %Q|
-      <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:longitude]},#{options[:latitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}' />
+      <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:longitude]},#{options[:latitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}&path=#{options[:path]}&markers=#{options[:markers]}' />
+    |
+  end
+  def map_tag(options = {}, coordinates = [])
+    options = {
+      :id         => 'map_canvas',
+      :longitude  => '0.0',
+      :latitude   => '0.0',
+      :zoom       => '14',
+      :sensor     => false,
+      :path       => '',
+      :markers    => ''
+    }.merge(options)
+    raw %Q|
+      <div id="#{options[:id]}" style="width: #{options[:width]}px; height: #{options[:height]}px"></div>
+      <script language="javascript">
+        var options = {
+          zoom: #{options[:zoom]},
+          center: new google.maps.LatLng(#{options[:longitude]}, #{options[:latitude]}),
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("#{options[:id]}"), options);
+      </script>
     |
   end
 end

@@ -17,7 +17,12 @@ class PlansController < ApplicationController
   # GET /plans/1.xml
   def show
     @plan = Plan.find(params[:id])
-
+    @parmalink = request.protocol << request.raw_host_with_port << request.request_uri
+    @path = 'color=blue'
+    @plan.destinations.each do |destination|
+      @path << '|' << destination.spot.latitude << ',' << destination.spot.longitude
+    end
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @plan }
