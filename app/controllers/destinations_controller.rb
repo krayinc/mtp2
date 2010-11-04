@@ -1,4 +1,5 @@
 class DestinationsController < ApplicationController
+  before_filter :login_required, :except => [:index, :show]
   # GET /plan/1/destinations
   # GET /plan/1/destinations.xml
   def index
