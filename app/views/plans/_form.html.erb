@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <% f.inputs do %>
+  <%= f.inputs do %>
     <%= f.input :title %>
     <%= f.input :status, :as => :select, :collection => Plan::Status, :value_method => Proc.new{|c| c[1]}, :label_method => Proc.new{|c| c[0]} %>
     <%= f.input :outline %>

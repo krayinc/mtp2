@@ -14,10 +14,7 @@ $('#destinations').sortable({
       url: '/plans/<%= @plan.id %>/destinations/' + destId + '/position',
       data: {_method: 'put', position: newPos + 1},
       dataType: 'script',
-      type: 'POST'/*,
-      success: function(data, dataType){
-        eval(data);
-      }*/
+      type: 'POST'
     });
   }
 });
