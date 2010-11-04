@@ -6,6 +6,8 @@ Mtp2::Application.routes.draw do
     member do
       put 'vote'
       put 'unvote'
+      get 'photos', :to => 'plans#photos'
+      put 'photo',  :to => 'plans#update_photo'
     end
     resources :destinations do
       member do

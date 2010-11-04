@@ -11,12 +11,21 @@
     </div>
   <% end %>
 
+  <div id="plan_photos_dialog" class="dialog" style="display: none;"></div>
+  <div id="plan_photo" style="float: left;" mtp-photo-id="<%= @plan.photo_id %>">
+    <%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no-image.png') %><br>
+    <%- unless @plan.new_record? -%>
+      <%= link_to '写真を選ぶ', photos_plan_path(:id => @plan.id, :format => :js), :remote => true %>
+    <%- end -%>
+  </div>
   <%= f.inputs do %>
     <%= f.input :title %>
     <%= f.input :status, :as => :select, :collection => Plan::Status, :value_method => Proc.new{|c| c[1]}, :label_method => Proc.new{|c| c[0]} %>
     <%= f.input :outline %>
     <%= f.input :public %>
   <% end %>
+
+  <br clear="left">
 
   <div class="actions">
     <%= f.commit_button %>

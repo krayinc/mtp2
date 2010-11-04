@@ -1,0 +1,10 @@
+<ol id="plan_photo_selector" class="photo_selector">
+<%- @plan.photos.each do |photo| %>
+  <li mtp-photo-id="<%= photo.id %>"<%- if @plan.photo === photo %> class="ui-selected"<%- end -%>><%= image_tag photo.photo.url(:plan) %></li>
+<%- end -%>
+</ol>
+<br clear="both">
+<%= semantic_form_for @plan, :url => photo_plan_path(:id => @plan.id, :format => :js), :method => :put, :html => {:id => 'plan_photo_edit'}, :remote => true do |f| %>
+  <%= f.input :photo_id, :as => :hidden %>
+  <%= f.commit_button %>
+<%- end -%>
