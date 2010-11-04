@@ -16,6 +16,7 @@ class SpotPhoto < ActiveRecord::Base
         :list        => '45x45#',
         :plan        => '90x90#',
         :destination => '56x56#',
+        :original    => '100%',
       }
   else
     has_attached_file :photo,
@@ -25,6 +26,7 @@ class SpotPhoto < ActiveRecord::Base
         :list        => '45x45#',
         :plan        => '90x90#',
         :destination => '56x56#',
+        :original    => '100%',
       }
   end
 
