@@ -10,8 +10,8 @@ class SpotPhoto < ActiveRecord::Base
         :secret_access_key => ENV['S3_SECRET'],
       },
       :bucket => ENV['S3_BUCKET'],
-      :path   => "/spot/photos/:hashed_name/:style.:photo_extension",
-      :url    => "/spot/photos/:hashed_name/:style.:photo_extension",
+      :path   => "/spot/photos/:hashed_name/:style:photo_extension",
+      :url    => "/spot/photos/:hashed_name/:style:photo_extension",
       :styles => {
         :list        => '45x45#',
         :plan        => '90x90#',
