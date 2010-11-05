@@ -114,8 +114,38 @@ padding-bottom:6px;
 #tabiplus #mainArea .spotfeed .tweet{background : url(../images/plan/feed_bg_tweet_l_w.gif) no-repeat right 5px;float:left;  padding:5px 10px 0 10px;}
 #tabiplus #mainArea .spotfeed .tweetNum{ float:left;background :#fff url(../images/plan/feed_bg_tweet_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#9ae0f8; border-top-width:1px;  border-right:solid; border-right-color:#9ae0f8; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#9ae0f8; border-bottom-width:1px; margin:5px 0 0;;padding:0 0 0 1px;}
- #tabiplus #mainArea .spotfeed .share{background : url(../images/plan/feed_bg_fb_l_w.gif) no-repeat right 5px;float:left; padding:5px 10px 0 10px;}
+#tabiplus #mainArea .spotfeed .share{background : url(../images/plan/feed_bg_fb_l_w.gif) no-repeat right 5px;float:left; padding:5px 10px 0 10px;}
 #tabiplus #mainArea .spotfeed .shareNum{float:left;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#a6bee3; border-bottom-width:1px; margin:5px 0 0;padding:0 0 0 1px;}
 #tabiplus #mainArea .scheduleDateBtn{background : url(../images/plan/schedule_date_btn_bg.gif) ;padding:7px 0 0; height:27px; width:712px; text-align:center; font-size:14px; font-weight:bold; margin-bottom:6px;} 
 #tabiplus #mainArea .scheduleDateBtn img{ position:absolute;top:;left:705px;} 
+
+
+#tabiplus #mainArea .editPict{ float:left; padding:0 31px 0 0; width:90px;}
+#tabiplus #mainArea .editOutline{ float:left;width:540px;}
+#tabiplus #mainArea .editOutline .planNameBox{width:348px; height:30px;}
+
+#tabiplus #mainArea .editOutline .planNameT{ float:left; padding:10px 6px 0 0;}
+#tabiplus #mainArea .editOutline .planName{ float:left; padding:0 12px 0 0;}
+#tabiplus #mainArea .editOutline .statusT{ float:left; padding:10px 6px 0 0;}
+#tabiplus #mainArea .editOutline .status{ float:left; padding:4px 0 0 0;}
+#tabiplus #mainArea .editComment .outline{ float:left;width:450px; height:65px;}
+#tabiplus #mainArea .editComment .saveBtn{ float:left; padding:41px 0 20px 14px;}
+#tabiplus #mainArea .editOutline .outlineT{padding:10px 0 5px;}
+
+#tabiplus #mainArea .editOutline .planNameBox{ border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+
+#tabiplus #mainArea .editPict .select{padding:10px 0 10px;}
+#tabiplus #mainArea .editPict .pict{padding:2px 0 0 0;}
+
+#tabiplus #mainArea .scheduleInnerEdit{background : url(../images/plan/schedule_bg_bottom.gif) no-repeat left bottom; padding:20px 31px 30px 33px;}
+#tabiplus #mainArea .scheduleInnerEdit .editSet { background : url(../images/plan/edit_bg_h.gif) no-repeat left top;}
+#tabiplus #mainArea .scheduleInnerEdit .editSetInner { background : url(../images/plan/edit_bg_b.gif) no-repeat left bottom;}
+#tabiplus #mainArea .scheduleInnerEdit .editSetInner .pic{ float:left; padding:15px 15px 16px 14px;}
+#tabiplus #mainArea .scheduleInnerEdit .editSetInner .txt{ width:360px; float:left; padding:10px 27px 16px 0;}
+#tabiplus #mainArea .scheduleInnerEdit .editSetInner .btn{ float:left; padding:50px 14px 16px 0;}
+#tabiplus #mainArea .scheduleInnerEdit .editSetInner .btn img{padding-left:6px;}
+#tabiplus #mainArea .scheduleInnerEdit .edtDirect{ text-align:center;}
+#tabiplus #mainArea .scheduleInnerEdit .routeBtnH{ text-align:right;padding-bottom:20px;}
+#tabiplus #mainArea .scheduleInnerEdit .routeBtnB{ text-align:right;padding-top:20px;}
+
