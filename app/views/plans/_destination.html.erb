@@ -1,11 +1,12 @@
-<div class="destination">
-  <div class="time"><%= destination.time %></div>
-  <div class="name" mtp-spot-name><%= destination.spot.name %></div>
-  <div class="comment"><%= destination.comment %></div>
-  <div class="photos"><%= destination_photo_list destination, :upload => true %></div><br clear="left">
-  <div>
-    <%= link_to t('Edit'), edit_plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :remote => true %>
-    <%= link_to t('Remove'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => 'OK?', :remote => true, :method => :delete %>
+<div class="editSet">
+  <div class="editSetInner clearfix">
+    <p class="pic" id="destination_photo_<%= destination.id %>"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.png'), :size => '56x56' %></p>
+    <p class="txt"><%= destination.time %><br><span class="spotName" mtp-spot-name><%= destination.spot.name %></span><br><%= destination.comment %></p>
+    <p class="btn"><%#-
+      -%><%= link_to raw('<img src="/images/plan/edit_btn_off.gif" alt="編集" title="編集">'), edit_plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :remote => true %><%-
+      -%><%= link_to raw('<img src="/images/plan/delete_btn_off.gif" alt="削除" title="削除">'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => 'OK?', :remote => true, :method => :delete %><%-
+    -%></p>
     <%= link_to 'スポットを編集', edit_spot_path(:id => destination.spot_id, :format => :js), :remote => true %>
+    <div class="photos"><%= destination_photo_list destination, :upload => true %></div><br clear="left">
   </div>
 </div>

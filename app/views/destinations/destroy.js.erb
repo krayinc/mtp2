@@ -1,2 +1,2 @@
-$('#destination_list li[mtp-destination="<%= @destination.id %>"]').remove();
+$('#destination_list #destinations > li[mtp-destination="<%= @destination.id %>"]').remove();
 $.gritter.add({title: 'MTP', text: '<%= escape_javascript @destination.spot.name %>を目的地から削除しました！'});

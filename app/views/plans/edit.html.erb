@@ -1,22 +1,22 @@
+<%- content_for :sidebar do -%>
+<%= render 'sidebar' %>
+<%- end -%>
+
 <%= javascript_include_tag 'fileuploader' %>
-<h1>プラン編集</h1>
-<div id="plan_info" style="border: 1px solid black; padding: 5px; margin-bottom: 10px; font-size: small;">
-  <h2>プラン情報</h2>
 <%= render 'form' %>
-</div>
 
-<div id="destination_list" style="border: 1px solid black; padding: 5px; font-size: small;">
-  <h2>行き先一覧</h2>
-  <div style="text-align: right;"><%= link_to_function 'ルートを地図で見る', 'openRouteMap();' %></div>
-<%= render 'destinations' %>
-  <div id="destination_form_dialog" class="dialog" style="display: none;"></div>
-  <div id="spot_form_dialog" class="dialog" style="display: none;"></div>
-<%= link_to '行き先を追加する', new_plan_destination_path(@plan), :remote => true %>
-  <div style="text-align: right;"><%= link_to_function 'ルートを地図で見る', 'openRouteMap();' %></div>
-</div>
+<h4 class="scheduleDate">行き先リスト</h4>
 
-<%= link_to t('Show'), @plan %> |
-<%= link_to t('Back'), plans_path %>
+<div class="schedule" id="destination_list">
+  <div class="scheduleInnerEdit">
+    <div class="routeBtnH"><%= link_to_function raw('<img src="/images/plan/route_btn_off.gif" alt="ルートで地図を見る" title="ルートで地図を見る">'), 'openRouteMap();' %></div>
+    <%= render 'destinations' %>
+    <div id="destination_form_dialog" class="dialog" style="display: none;"></div>
+    <div id="spot_form_dialog" class="dialog" style="display: none;"></div>
+    <div class="edtDirect"><%= link_to raw('<img src="/images/plan/add_spot_off.gif" alt="行き先を追加" title="行き先を追加">'), new_plan_destination_path(@plan), :remote => true %></div>
+    <div class="routeBtnB"><%= link_to_function raw('<img src="/images/plan/route_btn_off.gif" alt="ルートで地図を見る" title="ルートで地図を見る">'), 'openRouteMap();' %></div>
+  </div>
+</div>
 
 <div id="route_map_dialog" class="dialog" style="display: none;"><div id="route_map" class="google_map" style="width: 100%; height: 100%; background-color: red;"></div></div>
 
