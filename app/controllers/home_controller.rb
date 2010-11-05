@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   
   def index
-    @plans = Plan.popular.limit(4)
+    @popular_plans = Plan.popular.limit(4)
     @hot_users = User.popular.limit(10)
   end
   

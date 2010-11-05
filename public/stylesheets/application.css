@@ -9,6 +9,10 @@ a:link    { color : #0099ff; text-decoration:none;}
 a:visited { color : #0099ff; text-decoration:none;}
 a:active  { color : #ff6600;text-decoration:none; }
 a:hover   { color : #ff6600;text-decoration:none; }
+#footer #footLink a:link    { color : #333333; text-decoration:none;}
+#footer #footLink a:visited { color : #333333; text-decoration:none;}
+#footer #footLink a:active  { color : #ff6600;text-decoration:none; }
+#footer #footLink a:hover   { color : #ff6600;text-decoration:none; }
 textarea,select , textbox{ border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
 /* basic */
 /* header */
@@ -18,45 +22,29 @@ textarea,select , textbox{ border:1px;border-collapse:collapse;border-color:#b2b
 body > #tabiplus {height: auto;}
 
 div#main{width:980px;padding:0 25px 37px;height: auto; }
+#header{ width:1030px;padding:0; margin:0;background :#ffffff url(../images/header_bg.gif) no-repeat center top;}
+#header ul#gnavi{padding:0; margin:0; font-size:0;line-height :0;}
+#header #logo{padding:5px 18px 20px 25px; margin:0; float:left;}
+#header #gnaviWrapper{margin :16px 0 0;padding:0 0 0 20px; float:left;background : url(../images/menu_line.gif) no-repeat left top;}
+#header ul#gnavi li{float:left; list-style:none; padding:9px 29px 0 0; margin:0;}
+#header #login {float:right;background : url(../images/login_bg.gif) no-repeat left top; width:223px; padding:0 23px 0 0; height:34px;}
+#header #login .pict {float:left; padding:3px 8px 0 13px;}
+#header #login .name {float:left; padding:6px 0 0; width: 99px;}
+#header #login .logoutBtn {float:right; padding:5px 9px 0 0;}
 #mainArea{float:left; width:712px;padding:0; margin:0;}
-
+#popMain{ width:712px;padding:0; margin:0;position:relative;}
 #rightArea{float:right; width:247px;padding:0; margin:0;}
+#footer{width:980px;padding:15px 25px 0; margin:0;background : url(../images/footer_bg.gif) no-repeat left top;}
+#footer #copy{float:right;padding:0 0 23px; margin:0;}
+#footer #footLink{ float:left;padding:0; margin:0;}
+
+.footContents{padding:30px 200px 30px 200px; margin:0;}
+.footContents .title{padding:0 0 20px;}
 
 .clearfix {overflow:hidden;zoom: 100%;}
 .clearfix:after {content: ".";display: block; visibility: hidden;height: 0.1px; font-size: 0.1em;line-height: 0;clear: both;}
 
-/*
-.ui-dialog div.popH img {
-  position:absolute;left:678px;top: 7px;
-}
 
-.ui-dialog .ui-dialog-titlebar {
-  -moz-border-radius:4px 4px 4px 4px;
-  background: transparent;
-  border: 0;
-  color: inherit;
-  text-align: center;
-}
-.ui-dialog .ui-dialog-titlebar .ui-dialog-title {
-  float: none;
-}
-.ui-dialog .ui-dialog-titlebar-close span {
-  margin: 0;
-}
-.ui-dialog .ui-dialog-titlebar-close {
-  height:23px;
-  margin:-10px 0 0;
-  padding: 0;
-  position: absolute;
-  right: 13px;
-  top: 18px;
-  width: 23px;
-  font-family: Arial,Helvetica,sans-serif;
-}
-.ui-dialog .ui-dialog-content {
-  
-}
-*/
 form > li {
   list-style-type: none;
 }

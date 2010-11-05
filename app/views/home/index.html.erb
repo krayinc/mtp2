@@ -1,42 +1,78 @@
-<h3>ピックアップ</h3>
-<div class='pickup_plan'>
-  ここにピックアッププランを表示
-</div>
+<%- content_for :sidebar do -%>
+<%= render 'sidebar' %>
+<%- end -%>
 
-<h3>今人気のプラン</h3>
-<div class='hot_plan'>
-  <ol>
-    <%- @plans.each do |plan| -%>
-    <li>
-      <h4><%= link_to plan.title, plan_path(plan) %></h4>
-      <p>
-        <%= truncate plan.outline, :length => 20 %>
-      </p>
-      <div>
-        <%- if plan.first_spot -%>
-        <%= link_to map_image_tag({
-          :longitude => plan.first_spot.longitude, 
-          :latitude => plan.first_spot.latitude, 
-          :zoom => 14, 
-          :size => '150x150'}), plan_path(plan) %>
+<h2 class="topH"><img src="/images/top/pic_t.gif" alt="PICK UP ピックアップ" title="PICK UP ピックアップ"></h2>
+<div class="tour">
+  <div class="tourInner">
+    <div class="tourNameWrapper clearfix">
+      <p class="tourName">火曜サスペンスドラマツアー</p>
+      <p class="eval"><img src="/images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+      <p class="evalNum">22pt</p>
+    </div>
+    <div class="pickupTour clearfix">
+      <div class="leftBox">
+        <div class="profile clearfix">
+          <p class="photo"><img src="/images/profile/profile_001.jpg" alt="写真" title="写真"></p>
+          <p class="profileName"><a href="">by morimori</a></p>
+        </div>
+        <p class="photo"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+        <p class="comment">私が、改めて京都に興味を持ちはじめたのは、4年程前・・・。
+          京都の町屋の陰影の美しさや、中庭を使って、室内に自然の風や光を取り入れた生活様式に
+          感動したのが始まりです。我が家に、少しでも、そのエッセンスを取り入れたい！<br>
+          2010/10/11</p>
+      </div>
+      <div class="rightBox"><a href=""><img src="/images/top/photo1.gif" alt="地図" title="地図"></a></div>
+    </div>
+  </div>
+</div>
+<h2 class="topH"><img src="/images/top/popular_t.gif" alt="POPULAR いま人気のプラン" title="POPULAR いま人気のプラン"></h2>
+<%- unless @popular_plans.blank? -%>
+  <%- plan = @popular_plans.first %>
+  <div class="tour popular">
+    <div class="tourInner">
+      <div class="tourNameWrapper clearfix">
+        <p class="tourName"><%= link_to plan.title, plan_path(plan) %></p>
+        <p class="eval"><img src="/images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+        <p class="evalNum"><%= plan.total_votes %>pt</p>
+      </div>
+      <div class="pickupTour clearfix">
+        <div class="leftBoxPopurar"><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '270x160'), plan_path(plan) %></div>
+        <div class="rightBoxPopurar">
+          <div class="profile clearfix">
+            <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
+            <p class="profileName">by <%= plan.owner.name %></p>
+          </div>
+          <p class="photo"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="comment"><%= truncate strip_tags(plan.outline), :length => 20 %><br><%= plan.updated_at.strftime("%Y/%m/%d") %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- if @popular_plans.size > 1 -%>
+    <div class="popularS">
+      <div class="popularSInner clearfix">
+        <%- ['left', 'center', 'right'].each_with_index do |align, index| -%>
+          <%- plan = @popular_plans[index + 1] %>
+          <%- break unless plan -%>
+          <div class="<%= align %>Box">
+            <div class="tourNameWrapperS clearfix">
+              <p class="tourName"><%= link_to plan.title, plan_path(plan) %></p>
+              <div class="evalWrapper clearfix">
+                <p class="eval"><img src="/images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+                <p class="evalNum"><%= plan.total_votes %>pt</p>
+              </div>
+            </div>
+            <p class="mapSmall"><%- if plan.first_spot -%><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '150x150'), plan_path(plan) %><%- end -%></p>
+            <div class="profileS clearfix">
+              <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
+              <p class="profileName"><%= truncate strip_tags(plan.outline), :length => 20 %>
+                <%= plan.updated_at.strftime("%Y/%m/%d") %><br>by <%= plan.owner.name %></p>
+            </div>
+          </div>
         <%- end -%>
       </div>
-      <div>
-        <%= image_tag plan.owner.profile_image_url, :size => '20x20' %>
-        by <%= plan.owner.name %> <%= plan.total_votes %>pts <%= plan.updated_at.strftime("%Y.%m.%d") %>
-      </div>
-    </li>
-    <%- end -%>
-  </ol>
-</div>
-
-<h3>注目のユーザー</h3>
-<div>
-  <ol>
-    <%- @hot_users.each do |user| -%>
-    <li>
-      <%= image_tag user.profile_image_url, :size => '40x40' %> <%= user.name %>
-    </li>
-    <%- end -%>
-  </ol>
-</div>
+    </div>
+  <%- end -%>
+<%- end -%>
+<p class="allPopular"><%= link_to raw('<img src="/images/top/all_plan_btn_off.gif" alt="プラン一覧はこちら" title="プラン一覧はこちら">'), plans_path %></p>
