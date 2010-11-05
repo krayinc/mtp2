@@ -1,55 +1,50 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>MTP2</title>
-    <%= stylesheet_link_tag :all %>
-    <%= stylesheet_link_tag '/javascripts/jquery.ui.stars/jquery.ui.stars.min.css' %>
-    <%= javascript_include_tag :defaults %>
-    <%= javascript_include_tag 'utils' %>
-    <%= javascript_include_tag 'jquery-ui-1.8.5.custom.min' %>
-    <%= javascript_include_tag 'jquery.ui.stars/jquery.ui.stars.min' %>
-    <%=raw include_gritter %>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&language=ja"></script>
-    <%= csrf_meta_tag %>
-  </head>
-  <body>
-
-    <!-- begin Header  -->
-    <div id='header'>
-      <h1><%= link_to '旅PLUS', root_path %></h1>
-      <div>
-        <%= link_to '旅PLUSとは？', '#' %>
-        <%= link_to 'プランを見る', plans_path %>
-        <%- if logged_in? -%>
-          <%= link_to 'プランを作る', new_plan_path %>
-          <%= current_user.name %>
-          <%= link_to 'ログアウト', logout_path %>
-        <%- else -%>
-          <%= link_to 'ログイン', login_path %>
-        <%- end -%>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag '/javascripts/jquery.ui.stars/jquery.ui.stars.min.css' %>
+  <%= javascript_include_tag :defaults %>
+  <%= javascript_include_tag 'utils' %>
+  <%= javascript_include_tag 'jquery-ui-1.8.5.custom.min' %>
+  <%= javascript_include_tag 'jquery.ui.stars/jquery.ui.stars.min' %>
+  <%=raw include_gritter %>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true&language=ja"></script>
+  <%= csrf_meta_tag %>
+  <title>旅PLuS</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="旅PLuS,旅,PLuS">
+</head>
+<body>
+<div id="tabiplus">
+  <div id='header'>
+    <h1><%= link_to '旅PLUS', root_path %></h1>
+    <div>
+      <%= link_to '旅PLUSとは？', '#' %>
+      <%= link_to 'プランを見る', plans_path %>
+      <%- if logged_in? -%>
+        <%= link_to 'プランを作る', new_plan_path %>
+        <%= current_user.name %>
+        <%= link_to 'ログアウト', logout_path %>
+      <%- else -%>
+        <%= link_to 'ログイン', login_path %>
+      <%- end -%>
+    </div>
+  </div>
+  <div id="main">
+    <div id="container" class="clearfix">
+      <div id="mainArea">
+        <%= yield %>
       </div>
     </div>
-    <!-- end Header  -->
-    <hr />
-    
-    <!-- begin Content  -->
-    <div id='content'>
-      <%- flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, :id => "flash-#{name}"%>
-      <%- end -%>
-      <%= yield %>
-    </div>
-    <!-- end Content  -->
-    <hr />
-    <!-- begin Footer  -->
-    <div id='footer'>
-      <%= link_to 'トップ', root_path %>
-      <%= link_to '旅PLUSとは', "#" %>
-      <%= link_to 'お問い合わせ', "#" %>
-      
-      &copy; KRAY Inc. All rights reserved.
-    </div>
-    <!-- end Footer  -->
-    
-  </body>
+  </div>
+  <div id='footer'>
+    <%= link_to 'トップ', root_path %>
+    <%= link_to '旅PLUSとは', "#" %>
+    <%= link_to 'お問い合わせ', "#" %>
+
+    &copy; KRAY Inc. All rights reserved.
+  </div>
+</div>
+</body>
 </html>
