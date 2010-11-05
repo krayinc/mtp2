@@ -20,7 +20,7 @@ class Plan < ActiveRecord::Base
 
   normalize_attribute :title, :with => [:strip, :blank]
   
-  scope :popluar, order_by_rank
+  scope :popular, order_by_rank
   
   def first_spot
     self.destinations.first.spot

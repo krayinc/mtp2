@@ -8,7 +8,7 @@ class Spot < ActiveRecord::Base
   logic_for_ratable
   logic_for_rankable
 
-  scope :popluar, order_by_rank
+  scope :popular, order_by_rank
 
   has_many :destinations, :dependent => :restrict
   has_many :photos,       :dependent => :destroy, :class_name => 'SpotPhoto'
