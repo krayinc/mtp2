@@ -2,11 +2,10 @@
         <%= render 'sidebar' %>
         <%- end -%>
 
-
         <!--plantitle-->
         <div id="plantitle">
           <div id="plantitleWrapper" class="clearfix">
-            <p class="planPic"><img src="../images/plan/plan_pic001.jpg" alt="<%= notice %>" title="<%= notice %>"></p>
+            <p class="planPic"><img src="<%- if @plan.photo_id.nil? %>/images/no_image.png<%- else %><%= @plan.photo_id %><%- end %>" alt="<%= notice %>" title="<%= notice %>"></p>
             <div class="planOutline">
               <!--planName-->
               <div class="planNameWrapper clearfix">
@@ -22,7 +21,7 @@
               <!--planName-->
               <!--icon-->
               <div class="icon clearfix">
-              <div class="profilePic"><%= image_tag @plan.owner.profile_image_url %></div>
+              <div class="profilePic"><%= image_tag @plan.owner.profile_image_url, :width => 26 %></div>
               <div class="profileName"><%= @plan.owner.name %></div>
               <div class="feed clearfix">
               <p class="face"><img src="../images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
@@ -65,42 +64,33 @@
           <div class="photoCtl clearfix">
           <p class="directL"><img src="../images/plan/map_derect_l.gif" alt="前へ" title="前へ"></p>
           <div class="photo">
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
-          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <%- @plan.destinations.each do |destination| -%>
+            <%- destination.photos.each do |photo| %>
+            <p class="pic"><%= image_tag photo.photo_file_name %></p>
+            <%- end %>
+          <%- end %>
           </div>
           <p class="directR"><img src="../images/plan/map_derect_r.gif" alt="次へ" title="次へ"></p>
           </div>
         </div>
         <!--map-->
         <h3 class="scheduleH"><img src="../images/plan/schedule_t.gif" alt="スケジュール" title="スケジュール"></h3>
-        <h4 class="scheduleDate">2010/10/11（月）</h4>
+        <h4 class="scheduleDate">行き先 (<%= @plan.destinations.length %>)</h4>
         <div class="schedule">
           <div class="scheduleInner">
 
             <%- @plan.destinations.each_with_index do |destination, index| -%>
             <!--planset-->
             <div class="planset clearfix">
-              <div class="pop"><%= image_tag '/images/plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br>09:14</div>
+              <div class="pop"><%= image_tag '/images/plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br><%= destination.time %></div>
               <div class="plan">
                 <div class="planWrapper clearfix">
-                <div class="pic"><img src="../images/plan/plan_pic1.jpg" alt="写真" title="写真"></div>
+                <div class="pic"><%- if destination.spot.photos.length > 0 %><%= image_tag destination.spot.photos[0].photo_file_name %><%- else %><%= image_tag '/images/no_image.png' %><%- end %></div>
                 <div class="txt">
                   <p class="star"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_no.gif" alt="★" title="★">
                   </p>
-                  <h5>京都駅</h5>
-                  <p class="detail">あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br></p>
-
+                  <h5><%= destination.spot.name %></h5>
+                  <p class="detail"><%= destination.spot.annotation %></p>
                 </div>
                 <div class="txt">
                   <%- if destination.spot -%>
@@ -120,24 +110,21 @@
                   </table>
                     <div class="spotfeed clearfix">
 
-          <%= destination.spot.average_rating %>
-
-
                       <p class="spotEval"><img src="../images/plan/spot_eval_t.gif" alt="このスポットを評価する" title="このスポットを評価する"></p>
-                      <p class="spotEvalNum" style="display: none;"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_no.gif" alt="★" title="★"></p>
-                      <p class="spotEvalNum"><form>
-                        <div class='stars-wrapper' id='star-<%= index %>'>
-                          <select name='selrate'>
-                            <%- (1..5).each do |n| -%>
-                              <%- if destination.spot.average_rating.to_i == n -%>
-                              <option value='<%= n %>' selected='selected'></option>
-                              <%- else -%>
-                              <option value='<%= n %>'></option>
-                              <%- end -%>
+                      <div class='spotEvalNum' id='star-<%= index %>'>
+                      <form>
+                        <select name='selrate'>
+                          <%- (1..5).each do |n| -%>
+                            <%- if destination.spot.average_rating.to_i == n -%>
+                            <option value='<%= n %>' selected='selected'></option>
+                            <%- else -%>
+                            <option value='<%= n %>'></option>
                             <%- end -%>
-                          </select>
-                        </div>
-                      </form></p>
+                          <%- end -%>
+                        </select>
+                      </form>
+                      </div>
+                    </p>
                       <p class="tweet" style="display: none;"><img src="../images/plan/icon_tweet.gif" alt="Tweet" title="Tweet"></p>
                       <p class="share" style="display: none;"><img src="../images/plan/icon_share.gif" alt="Share" title="Share"></p>
                       <script type='text/javascript'>
@@ -200,10 +187,11 @@
           </div>
         </div>
          <!--planset-->
+         <!--
          <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
          <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
          <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
-
+         -->
 
 
 <%- if @plan.owner == current_user -%>
