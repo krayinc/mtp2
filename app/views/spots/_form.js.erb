@@ -4,10 +4,22 @@ $('#spot_form_dialog').dialog({
   width: 800,
   height: 630,
   open: function() {
-    <%= gmap :spot_select_map, Spot::DEFAULT_POSITION[:latitude], Spot::DEFAULT_POSITION[:longitude], Spot::DEFAULT_POSITION[:zoom] %>
+    <%=
+      if @spot.new_record?
+        gmap :spot_select_map, Spot::DEFAULT_POSITION[:latitude], Spot::DEFAULT_POSITION[:longitude], Spot::DEFAULT_POSITION[:zoom]
+      else
+        gmap :spot_select_map, @spot.latitude, @spot.longitude, 17
+      end
+    %>
   }
 });
-google.maps.event.addListener(mtp.maps['spot_select_map'], 'click', $.proxy(function(event) {
+$.gritter.add({title: 'MTP', text: 'マーカーをドラッグして、正しい位置にドロップしてください'});
+mtp.maps['spot_select_map'].currentMarker = new google.maps.Marker({
+  position: new google.maps.LatLng('<%= escape_javascript @spot.latitude %>', '<%= escape_javascript @spot.longitude %>'),
+  map: mtp.maps['spot_select_map'],
+  draggable: true
+});
+google.maps.event.addListener(mtp.maps['spot_select_map'].currentMarker, 'dragend', function(event) {
   var latLng = event.latLng;
   $('#spot_latitude').val(latLng.lat());
   $('#spot_longitude').val(latLng.lng());
@@ -18,9 +30,8 @@ google.maps.event.addListener(mtp.maps['spot_select_map'], 'click', $.proxy(func
       if (results[0]) {
         $('#spot_address').val(geocoder.addressFilter(results));
       } else {
-        $.gritter.add({title: '', text: '住所が取得できませんでした'});
+        $.gritter.add({title: 'MTP', text: '住所が取得できませんでした'});
       }
     }
   });
-  return false;
-}));
+});

@@ -1,7 +1,7 @@
 class Spot < ActiveRecord::Base
   DEFAULT_POSITION = {
-    :latitude  => '36.77',
-    :longitude => '137.15',
+    :latitude  => '35.563824490610386',
+    :longitude => '137.413671875',
     :zoom      => 4
   }
 

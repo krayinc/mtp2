@@ -1,6 +1,6 @@
 <ol id="destinations" class="ui-sortable">
 <%- @plan.destinations.each do |destination| -%>
-  <li mtp-destination="<%= destination.id %>"><%= render 'destination', :destination => destination %></li>
+  <li mtp-destination="<%= destination.id %>" mtp-spot="<%= destination.spot_id %>"><%= render 'destination', :destination => destination %></li>
 <%- end -%>
 </ol>
 <script type="text/javascript">
