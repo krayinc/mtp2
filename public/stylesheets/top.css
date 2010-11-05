@@ -1,0 +1,43 @@
+#mainArea  h2.topH{padding:0 0 8px ;}
+#mainArea .tour{background : url(../images/top/top_bg_h.gif) no-repeat left top;margin: 0 0 20px;}
+#mainArea .popular{background : url(../images/top/top_bg_h.gif) no-repeat left top;margin: 0 0 4px;}
+#mainArea .tourInner{background : url(../images/top/top_bg_b.gif) no-repeat left bottom; padding:6px 6px 6px ;}
+#mainArea .tourNameWrapper{background : url(../images/top/top_h_bg.gif) repeat-x left bottom; padding:6px 26px 6px 6px;}
+#mainArea .tourNameWrapper .tourName{padding:5px 0 0 12px; font-size:14px; font-weight:bold;float:left;}
+#mainArea .tourNameWrapper .eval{padding:4px 5px 0 10px; float:left;}
+#mainArea .tourNameWrapper .evalNum{padding:5px 0 0; float:left;}
+
+#mainArea .pickupTour{padding:5px 0 10px;}
+
+#mainArea .pickupTour .leftBox{ width:260px;padding:4px 18px 0 13px; float:left;}
+#mainArea .pickupTour .rightBox{width:400px;padding:4px 0 0; float:left;}
+#mainArea .pickupTour .leftBox .profile{padding:0 0 10px;}
+#mainArea .pickupTour .leftBox .profile .photo{padding:0 0 0 0; float:left;}
+#mainArea .pickupTour .leftBox .profile .profileName{padding:0 0 0 6px; float:left;}
+#mainArea .pickupTour .leftBox .photo{padding:0 0 10px;}
+#mainArea .pickupTour .leftBox .photo img{margin:0 4px 4px 0;border:solid; border-color:#d3d3d3; border-width:1px;}
+
+
+#mainArea .pickupTour .leftBoxPopurar{ width:270px;padding:4px 22px 0 13px; float:left;}
+#mainArea .pickupTour .rightBoxPopurar{width:386px;padding:4px 0 0; float:left;}
+#mainArea .pickupTour .rightBoxPopurar .profile{padding:0 0 10px;}
+#mainArea .pickupTour .rightBoxPopurar .profile .photo{padding:0 0 0 0; float:left;}
+#mainArea .pickupTour .rightBoxPopurar .profile .profileName{padding:0 0 0 6px; float:left;}
+#mainArea .pickupTour .rightBoxPopurar .photo{padding:0 0 10px;}
+#mainArea .pickupTour .rightBoxPopurar .photo img{margin:0 4px 4px 0;border:solid; border-color:#d3d3d3; border-width:1px;}
+
+   
+#mainArea .popularS{background : url(../images/top/top_bg_s_h.gif) no-repeat left top;margin: 0 0 20px;}
+#mainArea .popularSInner{background : url(../images/top/top_bg_s_b.gif) no-repeat left bottom; padding:6px 6px 6px ;}
+#mainArea .popularSInner .leftBox{ float:left; width:222px;padding: 0 17px 0 0 ;}
+#mainArea .popularSInner .centerBox{ float:left; width:222px;padding: 0 17px 0 0 ;}
+#mainArea .popularSInner .rightBox{ float:left; width:222px;}
+  
+#mainArea .tourNameWrapperS{background : url(../images/top/top_h_bg.gif) repeat-x left bottom; padding:0 4px 6px 6px;}
+#mainArea .tourNameWrapperS .tourName{padding:4px 0 0 3px; font-size:12px; font-weight:bold;}
+#mainArea .tourNameWrapperS .evalWrapper .eval{padding: 0 0; float:left;}
+#mainArea .tourNameWrapperS .evalWrapper .evalNum{padding:1px 0 0; float:left;}
+#mainArea .mapSmall{padding:4px 5px 8px; }
+#mainArea .profileS .photo{padding: 0 6px 0 6px ; float:left;}
+#mainArea .profileS .profileName{ width:170px;padding: 0 6px 0 6px; float:left;}
+#mainArea .allPopular{ text-align:right;}
