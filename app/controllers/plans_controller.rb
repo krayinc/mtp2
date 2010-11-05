@@ -22,7 +22,11 @@ class PlansController < ApplicationController
     @plan.destinations.each do |destination|
       @path << { :latitude => destination.spot.latitude, :longitude => destination.spot.longitude }
     end
-    
+    @map = {:latitude => '35.685692', :longitude => '139.756694'}
+    if @plan.destinations.length > 0 then
+      @map[:latitude] = @plan.destinations[0].spot.latitude
+      @map[:longitude] = @plan.destinations[0].spot.longitude
+    end
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @plan }

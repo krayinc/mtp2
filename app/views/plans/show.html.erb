@@ -55,8 +55,8 @@
         <div class="planMap">
           <p class="map">
             <%= map_tag({
-              :longitude    => @plan.destinations[0].spot.latitude,
-              :latitude     => @plan.destinations[0].spot.longitude,
+              :longitude    => @map[:latitude],
+              :latitude     => @map[:longitude],
               :zoom         => 14,
               :width        => '640',
               :height       => '320' },{
