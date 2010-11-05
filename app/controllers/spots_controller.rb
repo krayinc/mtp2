@@ -32,7 +32,7 @@ class SpotsController < ApplicationController
   # GET /spots/new
   # GET /spots/new.xml
   def new
-    @spot = Spot.new
+    @spot = Spot.new(:latitude => Spot::DEFAULT_POSITION[:latitude], :longitude => Spot::DEFAULT_POSITION[:longitude])
 
     respond_to do |format|
       format.js
@@ -71,9 +71,11 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       if @spot.update_attributes(params[:spot])
+        format.js
         format.html { redirect_to(@spot, :notice => 'Spot was successfully updated.') }
         format.xml  { head :ok }
       else
+        format.js   { render :text => %Q|$.gritter.add({title: 'スポットを更新できません', text: '#{escape_javascript @spot.errors}'|}
         format.html { render :action => "edit" }
         format.xml  { render :xml => @spot.errors, :status => :unprocessable_entity }
       end

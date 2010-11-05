@@ -9,6 +9,11 @@ class Plan < ActiveRecord::Base
   belongs_to :owner, :class_name => 'User', :foreign_key => 'user_id'
   has_many :destinations, :order => 'position ASC'
   has_many :spots, :through => :destinations
+  belongs_to :photo, :class_name => 'SpotPhoto', :foreign_key => 'photo_id'
+
+  def photos
+    SpotPhoto.where(:id => DestinationPhoto.where(:destination_id => self.destinations.map(&:id)).map(&:photo_id))
+  end
 
   validates :title, :presence => true
   validates :status, :inclusion => { :in => 1..3 }

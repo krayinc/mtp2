@@ -53,7 +53,7 @@ class PlansController < ApplicationController
 
     respond_to do |format|
       if @plan.save
-        format.html { redirect_to(@plan, :notice => 'Plan was successfully created.') }
+        format.html { redirect_to(edit_plan_path(@plan), :notice => 'Plan was successfully created.') }
         format.xml  { render :xml => @plan, :status => :created, :location => @plan }
       else
         format.html { render :action => "new" }
@@ -108,6 +108,33 @@ class PlansController < ApplicationController
     @plan = Plan.find(params[:id])
     @voting = @plan.unvote!(current_user)
     respond_with @voting
+  end
+
+  # GET /plans/1/photos
+  def photos
+    @plan = Plan.find(params[:id])
+    respond_to do |format|
+      format.js
+    end
+  end
+
+  # PUT /plans/1/photo
+  def update_photo
+    @plan = Plan.find(params[:id])
+    if Plan.includes(:destinations => {:destination_photos => :photo}).where('plans.id = ? AND spot_photos.id = ?', params[:id], params[:plan][:photo_id]).exists?
+      @plan.photo_id = params[:plan][:photo_id]
+    end
+    respond_to do |format|
+      if @plan.save
+        format.js
+      else
+        format.js   {
+          render :update do |page|
+            page << %Q|$.gritter.add({title: 'MTP', text: "写真の更新に失敗しました。<br>#{@plan.errors.to_s}"});|
+          end
+        }
+      end
+    end
   end
   
 end

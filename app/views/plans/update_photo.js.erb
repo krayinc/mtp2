@@ -1,0 +1,3 @@
+$.gritter.add({title: 'MTP', text: 'プランの写真を更新しました！'});
+$('#plan_photos_dialog').dialog('close');
+$('#plan_photo > img').attr({src: '<%= escape_javascript @plan.photo.photo.url(:plan) %>'})

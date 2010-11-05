@@ -1,0 +1,13 @@
+$('#plan_photos_dialog').dialog({
+  modal: true,
+  width: 700,
+  height: 600,
+  open: function() {
+    $('#plan_photos_dialog').html('<%= escape_javascript(render 'photos.html') %>');
+    $('#plan_photo_selector').selectable({
+      selected: function(event, ui) {
+        $('#plan_photo_id').val($(ui.selected).attr('mtp-photo-id'));
+      }
+    });
+  }
+});

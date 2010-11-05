@@ -1,0 +1,3 @@
+$.gritter.add({title: 'MTP', text: 'スポットを更新しました！'});
+$('#spot_form_dialog').dialog('close');
+$("[mtp-spot='<%= @spot.id %>'] [mtp-spot-name]").html('<%= escape_javascript @spot.name %>');

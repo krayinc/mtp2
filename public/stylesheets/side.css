@@ -1,0 +1,27 @@
+#tabiplus #rightArea #comment{width:247px;background : url(../images/side/comment_bg.gif) no-repeat left bottom;padding:0 0 10px; margin:0 0 6px;}
+
+
+#tabiplus #rightArea #comment .commentSubmit{padding:10px 17px 10px;}
+#tabiplus #rightArea #comment .commentSubmit .txtErea{padding:10px 0 10px;}
+
+#tabiplus #rightArea #comment .commentSubmit .txtErea .commentbox{ width:213px; height:60px;;border:1px;border-collapse:collapse;	border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+#tabiplus #rightArea #comment .commentSubmit .submitBtn{ text-align:right;}
+
+
+
+#tabiplus #rightArea #comment .set{padding:10px 10px 10px;background : url(../images/side/side_line.gif) no-repeat 2px top;}
+#tabiplus #rightArea #comment .set .icon{ float:left;padding:0 6px 0 0;}
+#tabiplus #rightArea #comment .set .txt{ float:left;padding:0;}
+#tabiplus #rightArea #comment .set .txt{width:193px;padding:0; float:left;background : url(../images/side/comment_pop_h.gif) no-repeat left top;}
+#tabiplus #rightArea #comment .set .txt p{width:163px;padding: 6px 8px 6px 22px;background : url(../images/side/comment_pop_b.gif) no-repeat left bottom;}
+
+#tabiplus #rightArea #tweet{width:247px;background : url(../images/side/tweet_bg.gif) repeat-y left bottom;padding:0 0 10px; margin:0;}
+#tabiplus #rightArea #tweet .set{padding:10px 10px 10px;background : url(../images/side/side_line.gif) no-repeat 2px top;}
+#tabiplus #rightArea #tweet .set .icon{ float:left;padding:0 1px 0 0;}
+#tabiplus #rightArea #tweet .set .txt{ float:left;padding:0;}
+#tabiplus #rightArea #tweet .set .txt{width:198px;padding:0; float:left;background : url(../images/side/tweet_pop_h.gif) no-repeat left top;}
+#tabiplus #rightArea #tweet .set .txt p{width:162px;padding: 6px 8px 6px 28px;background : url(../images/side/tweet_pop_b.gif) no-repeat left bottom; }
+#tabiplus #rightArea .tweetLink{background : url(../images/side/tweet_b_bg.gif) no-repeat left top; height:30px; width:247px;}
+#tabiplus #rightArea .tweetLink .logo{ float:left; padding:4px 0 0 10px;}
+#tabiplus #rightArea .tweetLink .join{ float:right; padding: 4px 10px 0 0 ; letter-spacing:0;}
+
