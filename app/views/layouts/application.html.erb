@@ -2,8 +2,14 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <%= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'jquery-ui-1.8.5.custom' %>
   <%= stylesheet_link_tag '/javascripts/jquery.ui.stars/jquery.ui.stars.min.css' %>
+  <%= stylesheet_link_tag 'fileuploader' %>
+  <%= stylesheet_link_tag 'formtastic' %>
+  <%= stylesheet_link_tag 'formtastic_changes' %>
+  <%= stylesheet_link_tag 'application' %>
+  <%= stylesheet_link_tag 'plan' %>
+  <%= stylesheet_link_tag 'side' %>
   <%= javascript_include_tag :defaults %>
   <%= javascript_include_tag 'utils' %>
   <%= javascript_include_tag 'jquery-ui-1.8.5.custom.min' %>
@@ -18,9 +24,9 @@
 <body>
 <div id="tabiplus">
   <div id='header'>
-    <h1><%= link_to '旅PLUS', root_path %></h1>
+    <h1><%= link_to '旅PLuS', root_path %></h1>
     <div>
-      <%= link_to '旅PLUSとは？', '#' %>
+      <%= link_to '旅PLuSとは？', '#' %>
       <%= link_to 'プランを見る', plans_path %>
       <%- if logged_in? -%>
         <%= link_to 'プランを作る', new_plan_path %>
@@ -41,7 +47,7 @@
   </div>
   <div id='footer'>
     <%= link_to 'トップ', root_path %>
-    <%= link_to '旅PLUSとは', "#" %>
+    <%= link_to '旅PLuSとは', "#" %>
     <%= link_to 'お問い合わせ', "#" %>
 
     &copy; KRAY Inc. All rights reserved.
