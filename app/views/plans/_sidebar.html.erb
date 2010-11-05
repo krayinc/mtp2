@@ -1,21 +1,68 @@
 <div id="rightArea">
   <p><img src="/images/side/comment_h.gif" alt="コメント" title="コメント"></p>
   <div id="comment">
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg" alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ</p></div>
-    </div>
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg" alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ</p></div>
-    </div>
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg" alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ</p></div>
-    </div>
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg" alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ</p></div>
-    </div>
+    <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
+      <%= render :partial => 'comment', :locals => {:comment => comment} %>
+    <%- end -%>
   </div>
+
+  <h3>
+    コメント
+  </h3>
+  <div class='new-comment-box'>
+    <%- unless logged_in? -%>
+      <p><strong><%= link_to 'ログイン', login_path %> してこのプランにコメントしよう！</strong></p>
+    <%- else -%>
+      <%- comment = @plan.comments.build %>
+      <%- form_for comment, :remote => true do |f| -%>
+      <%= f.hidden_field :commentable_id %>
+      <%= f.hidden_field :commentable_type %>
+        <div class="field">
+          <%= f.text_area :body, :size => '30x5' %>
+        </div>
+        <div class="submit">
+          <%= f.submit 'コメントする' %>
+        </div>
+      <%- end -%>
+    <%- end -%>
+  </div>
+
+  <div id="twitter_widget">
+    <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <script>
+    new TWTR.Widget({
+      version: 2,
+      type: 'search',
+      search: '<%= @parmalink %>',
+      interval: 6000,
+      title: '旅PLUS',
+      subject: 'みんなのつぶやき',
+      width: 247,
+      height: 300,
+      theme: {
+        shell: {
+          background: '#8ec1da',
+          color: '#ffffff'
+        },
+        tweets: {
+          background: '#ffffff',
+          color: '#444444',
+          links: '#1985b5'
+        }
+      },
+      features: {
+        scrollbar: false,
+        loop: true,
+        live: true,
+        hashtags: true,
+        timestamp: true,
+        avatars: true,
+        toptweets: true,
+        behavior: 'default'
+      }
+    }).render().start();
+    </script>
+  </div>
+
+
 </div>

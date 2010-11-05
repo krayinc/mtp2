@@ -1,1 +1,4 @@
-<li><%= comment.body %> by <%= comment.commenter.name %> （<%= time_ago_in_words(comment.created_at) %>前）</li>
+    <div class="set clearfix">
+      <p class="icon"><%= image_tag comment.commenter.profile_image_url, :width => '24' %></p>
+      <div class="txt"><p><a href=""><%= comment.commenter.name %></a><br><%= comment.body %></p></div>
+    </div>

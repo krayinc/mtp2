@@ -1,177 +1,210 @@
-<p id="notice"><%= notice %></p>
+        <%- content_for :sidebar do -%>
+        <%= render 'sidebar' %>
+        <%- end -%>
 
-<div>
-  <%= image_tag @plan.owner.profile_image_url %><%= @plan.owner.name %>
-  <h2><%= @plan.title %></h2>
-  <div><%= plan_status_label @plan.status %> </div>
-  <div><%= @plan.outline %></div>
-</div>
 
-<%= map_tag({
-  :longitude    => @plan.destinations[0].spot.latitude,
-  :latitude     => @plan.destinations[0].spot.longitude,
-  :zoom         => 14,
-  :width        => '640',
-  :height       => '320' },{
-  :coordinates  => @path }) %>
-
-<div class='section'>
-  <h3>投票</h3>
-  <div>
-    <span id='tolal-point'><%= @plan.total_votes %>ポイント</span>
-    <span class='voting-box'>
-      <span id='btn-unvote' style='display:none;'><%= link_to '投票済', unvote_plan_path, :remote => true, :method => :put %></span>
-      <span id='btn-vote' style='display:none;'><%= link_to '投票する', vote_plan_path, :remote => true, :method => :put %></span>
-    </span>
-  </div>
-</div>
-<div class="retweet">
-  <a href="http://twitter.com/share" class="twitter-share-button"
-    data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
-    data-counturl="<%= @parmalink %>"
-    data-lang="ja">Tweet</a>
-  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-</div>
-<div class="facebook_nice">
-  <iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:80px;" allowTransparency="true"></iframe>
-</div>
-<div class="facebook_share">
-  <a name="fb_share" type="icon" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
-</div>
-<div class='section'>
-  <h3>
-    コメント
-  </h3>
-  
-  <div class='new-comment-box'>
-    <%- unless logged_in? -%>
-      <p><strong><%= link_to 'ログイン', login_path %> してこのプランにコメントしよう！</strong></p>
-    <%- else -%>
-      <%- comment = @plan.comments.build %>
-      <%- form_for comment, :remote => true do |f| -%>
-      <%= f.hidden_field :commentable_id %>
-      <%= f.hidden_field :commentable_type %>
-        <div class="field">
-          <%= f.text_area :body, :size => '30x5' %>
-        </div>
-        <div class="submit">
-          <%= f.submit 'コメントする' %>
-        </div>
-      <%- end -%>
-    <%- end -%>
-  </div>
-  
-  <div class='comments-box'>
-    <ul>
-      <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
-        <%= render :partial => 'comment', :locals => {:comment => comment} %>
-      <%- end -%>
-    </ul>
-  </div>
-  
-</div>
-
-<div id="twitter_widget">
-  <script src="http://widgets.twimg.com/j/2/widget.js"></script>
-  <script>
-  new TWTR.Widget({
-    version: 2,
-    type: 'search',
-    search: '<%= @parmalink %>',
-    interval: 6000,
-    title: '旅PLUS',
-    subject: 'みんなのつぶやき',
-    width: 250,
-    height: 300,
-    theme: {
-      shell: {
-        background: '#8ec1da',
-        color: '#ffffff'
-      },
-      tweets: {
-        background: '#ffffff',
-        color: '#444444',
-        links: '#1985b5'
-      }
-    },
-    features: {
-      scrollbar: false,
-      loop: true,
-      live: true,
-      hashtags: true,
-      timestamp: true,
-      avatars: true,
-      toptweets: true,
-      behavior: 'default'
-    }
-  }).render().start();
-  </script>
-</div>
-
-<div id='section'>
-  <h3>
-    行き先(<%= @plan.destinations.count %>)
-  </h3>
-  <ol>
-    <%- @plan.destinations.each_with_index do |destination, index| -%>
-      <li>
-        <p><%= destination.spot.name %></p>
-        <div>
-          <%- if destination.spot -%>
-          <%= map_image_tag({
-            :latitude => destination.spot.longitude,
-            :longitude => destination.spot.latitude,
-            :markers => destination.spot.latitude + ',' + destination.spot.longitude,
-            :zoom => 14,
-            :size => '400x150'}) %>
-          <%- end -%>
-        </div>
-        <div>
-          コメント: <%= destination.comment %>
-        </div>
-        <div class='rating-box'>
-          <%= destination.spot.average_rating %>
-          <form>
-            <div class='stars-wrapper' id='star-<%= index %>'>
-              <select name='selrate'>
-                <%- (1..5).each do |n| -%>
-                  <%- if destination.spot.average_rating.to_i == n -%>
-                  <option value='<%= n %>' selected='selected'></option>
-                  <%- else -%>
-                  <option value='<%= n %>'></option>
-                  <%- end -%>
-                <%- end -%>
-              </select>
+        <!--plantitle-->
+        <div id="plantitle">
+          <div id="plantitleWrapper" class="clearfix">
+            <p class="planPic"><img src="../images/plan/plan_pic001.jpg" alt="<%= notice %>" title="<%= notice %>"></p>
+            <div class="planOutline">
+              <!--planName-->
+              <div class="planNameWrapper clearfix">
+                <div class="planName">
+                  <h2 class="planNameH"><%= notice %><img src="../images/plan/icon_under_plan.jpg" alt="<%= plan_status_label @plan.status %>" title="<%= plan_status_label @plan.status %>"></h2>
+                </div>
+                <div class="eval">
+                  <img src="../images/plan/lead_eval.gif" alt="このプランを評価" title="このプランを評価">
+                  <span id='btn-unvote' style='display:none;'><%= link_to image_tag('/images/plan/btn_eval.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span>
+                  <span id='btn-vote' style='display:none;'><%= link_to image_tag('/images/plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
+                </div>
+              </div>
+              <!--planName-->
+              <!--icon-->
+              <div class="icon clearfix">
+              <div class="profilePic"><%= image_tag @plan.owner.profile_image_url %></div>
+              <div class="profileName"><%= @plan.owner.name %></div>
+              <div class="feed clearfix">
+              <p class="face"><img src="../images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+              <p class="faceNum">&nbsp;<%= @plan.total_votes %>pt&nbsp;</p>
+              <p class="tweet">
+                <a href="http://twitter.com/share" class="twitter-share-button"
+                  data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
+                  data-counturl="<%= @parmalink %>"
+                  data-lang="ja">Tweet</a>
+                <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+              </p>
+              <p class="share"><a name="fb_share" type="icon" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
+              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:80px;" allowTransparency="true"></iframe></p>
+              </div>
+              </div>
+              <!--icon-->
+              <!--comment-->
+              <div class="comment">
+              <div class="commentInner">
+              <p><%= @plan.outline %></p>
+              </div>
+              </div>
+              <!--comment-->
             </div>
-          </form>
+          </div>
         </div>
-      </li>
-      <script type='text/javascript'>
-        /**
-         * Ratings
-         */
-        $('#star-<%= index %>').stars({
-          inputType: 'select',
-          cancelShow: false,
-          oneVoteOnly: true,
-          callback: function(ui, type, value) {
-            $.ajax({
-              type: 'POST',
-              url: '<%= rate_spot_path(destination.spot) %>',
-              data: {
-                _method: 'put',
-                score: value
-              },
-              dataType: 'json',
-              complete: function(msg) {
-              }
-            })
-          }
-        });
-      </script>
-    <%- end -%>
-  </ol>
-</div>
+        <!--plantitle-->
+        <!--map-->
+        <h3 class="mapH"><img src="../images/plan/couse_t.gif" alt="コースマップ" title="コースマップ"></h3>
+        <div class="planMap">
+          <p class="map">
+            <%= map_tag({
+              :longitude    => @plan.destinations[0].spot.latitude,
+              :latitude     => @plan.destinations[0].spot.longitude,
+              :zoom         => 14,
+              :width        => '640',
+              :height       => '320' },{
+              :coordinates  => @path }) %>
+          </p>
+          <div class="photoCtl clearfix">
+          <p class="directL"><img src="../images/plan/map_derect_l.gif" alt="前へ" title="前へ"></p>
+          <div class="photo">
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="../images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          </div>
+          <p class="directR"><img src="../images/plan/map_derect_r.gif" alt="次へ" title="次へ"></p>
+          </div>
+        </div>
+        <!--map-->
+        <h3 class="scheduleH"><img src="../images/plan/schedule_t.gif" alt="スケジュール" title="スケジュール"></h3>
+        <h4 class="scheduleDate">2010/10/11（月）</h4>
+        <div class="schedule">
+          <div class="scheduleInner">
+
+            <%- @plan.destinations.each_with_index do |destination, index| -%>
+            <!--planset-->
+            <div class="planset clearfix">
+              <div class="pop"><%= image_tag '/images/plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br>09:14</div>
+              <div class="plan">
+                <div class="planWrapper clearfix">
+                <div class="pic"><img src="../images/plan/plan_pic1.jpg" alt="写真" title="写真"></div>
+                <div class="txt">
+                  <p class="star"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_no.gif" alt="★" title="★">
+                  </p>
+                  <h5>京都駅</h5>
+                  <p class="detail">あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br>あああああああああああああああああああああああああああああ<br></p>
+
+                </div>
+                <div class="txt">
+                  <%- if destination.spot -%>
+                    <p class="mapSmall">
+                    <%= map_image_tag({
+                      :latitude => destination.spot.longitude,
+                      :longitude => destination.spot.latitude,
+                      :markers => destination.spot.latitude + ',' + destination.spot.longitude,
+                      :zoom => 14,
+                      :size => '400x150'}) %>
+                    </p>
+                  <%- end -%>
+                  <table cellspacing="0" cellpadding="0" class="spotDetail">
+                    <tr>
+                      <td><%= destination.comment %></td>
+                    </tr>
+                  </table>
+                    <div class="spotfeed clearfix">
+
+          <%= destination.spot.average_rating %>
+
+
+                      <p class="spotEval"><img src="../images/plan/spot_eval_t.gif" alt="このスポットを評価する" title="このスポットを評価する"></p>
+                      <p class="spotEvalNum" style="display: none;"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_no.gif" alt="★" title="★"></p>
+                      <p class="spotEvalNum"><form>
+                        <div class='stars-wrapper' id='star-<%= index %>'>
+                          <select name='selrate'>
+                            <%- (1..5).each do |n| -%>
+                              <%- if destination.spot.average_rating.to_i == n -%>
+                              <option value='<%= n %>' selected='selected'></option>
+                              <%- else -%>
+                              <option value='<%= n %>'></option>
+                              <%- end -%>
+                            <%- end -%>
+                          </select>
+                        </div>
+                      </form></p>
+                      <p class="tweet" style="display: none;"><img src="../images/plan/icon_tweet.gif" alt="Tweet" title="Tweet"></p>
+                      <p class="share" style="display: none;"><img src="../images/plan/icon_share.gif" alt="Share" title="Share"></p>
+                      <script type='text/javascript'>
+                        /**
+                         * Ratings
+                         */
+                        $('#star-<%= index %>').stars({
+                          inputType: 'select',
+                          cancelShow: false,
+                          oneVoteOnly: true,
+                          callback: function(ui, type, value) {
+                            $.ajax({
+                              type: 'POST',
+                              url: '<%= rate_spot_path(destination.spot) %>',
+                              data: {
+                                _method: 'put',
+                                score: value
+                              },
+                              dataType: 'json',
+                              complete: function(msg) {
+                              }
+                            })
+                          }
+                        });
+                      </script>
+                    </div>
+                    <p class="closeBtn"><img src="../images/plan/close_btn_off.gif" alt="CLOSE" title="CLOSE"></p>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--planset-->
+            <div class="planDirect"><img src="../images/plan/plan_direct.gif" alt="02" title="02"></div>
+            <script type='text/javascript'>
+              /**
+               * Ratings
+               */
+              $('#star-<%= index %>').stars({
+                inputType: 'select',
+                cancelShow: false,
+                oneVoteOnly: true,
+                callback: function(ui, type, value) {
+                  $.ajax({
+                    type: 'POST',
+                    url: '<%= rate_spot_path(destination.spot) %>',
+                    data: {
+                      _method: 'put',
+                      score: value
+                    },
+                    dataType: 'json',
+                    complete: function(msg) {
+                    }
+                  })
+                }
+              });
+            </script>
+          <%- end -%>
+
+          </div>
+        </div>
+         <!--planset-->
+         <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
+         <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
+         <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
+
+
 
 <%- if @plan.owner == current_user -%>
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
