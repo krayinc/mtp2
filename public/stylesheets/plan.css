@@ -1,57 +1,57 @@
-#tabiplus #mainArea #plantitle{width:712px;background : url(../images/plan/title_bg_h.jpg) no-repeat left top;padding:17px 0 0; margin:0 0 25px;}
-#tabiplus #mainArea #plantitleWrapper{ width:689px;background : url(../images/plan/title_bg_b.jpg) no-repeat left bottom; padding:0 0 0 23px; margin:0;}
+#mainArea #plantitle{width:712px;background : url(../images/plan/title_bg_h.jpg) no-repeat left top;padding:17px 0 0; margin:0 0 25px;}
+#mainArea #plantitleWrapper{ width:689px;background : url(../images/plan/title_bg_b.jpg) no-repeat left bottom; padding:0 0 0 23px; margin:0;}
 
 
-#tabiplus #mainArea #plantitle .planPic{float:left; padding:2px 19px 0 0; width:90px;}
-#tabiplus #mainArea #plantitle .planOutline{float:left;padding:0 0 10px; margin:0; width:580px;}
+#mainArea #plantitle .planPic{float:left; padding:2px 19px 0 0; width:90px;}
+#mainArea #plantitle .planOutline{float:left;padding:0 0 10px; margin:0; width:580px;}
 
 
-#tabiplus #mainArea #plantitle .planNameWrapper{ width:580px;float:left;padding:0 0 10px; margin:0;}
-#tabiplus #mainArea #plantitle .planName{float:left;}
+#mainArea #plantitle .planNameWrapper{ width:580px;float:left;padding:0 0 10px; margin:0;}
+#mainArea #plantitle .planName{float:left;}
 
 
-#tabiplus #mainArea #plantitle .planName .planNameH{font-size:20px;}
-#tabiplus #mainArea #plantitle .eval{ width:192px;float:right;padding:0 18px 0 10px; margin:0;}
-#tabiplus #mainArea #plantitle .planName img{padding:0 0 0 10px;}
-#tabiplus #mainArea #plantitle .icon{padding:0 18px 0 0;}
-#tabiplus #mainArea #plantitle .profilePic{width:35px;float:left;}
-#tabiplus #mainArea #plantitle .profileName{padding-top:7px;width:95px;float:left;font-size:11px; line-height:120%;}
+#mainArea #plantitle .planName .planNameH{font-size:20px;}
+#mainArea #plantitle .eval{ width:192px;float:right;padding:0 18px 0 10px; margin:0;}
+#mainArea #plantitle .planName img{padding:0 0 0 10px;}
+#mainArea #plantitle .icon{padding:0 18px 0 0;}
+#mainArea #plantitle .profilePic{width:35px;float:left;}
+#mainArea #plantitle .profileName{padding-top:7px;width:95px;float:left;font-size:11px; line-height:120%;}
 
-#tabiplus #mainArea #plantitle .feed{  text-align:right;float:right;background : url(../images/plan/title_line.gif) no-repeat right top; padding:0 10px 0 0 ;}
-#tabiplus #mainArea #plantitle .feed .face{background : url(../images/plan/title_line.gif) no-repeat left top; padding:0 0 0 10px;float:left;}
-#tabiplus #mainArea #plantitle .feed .faceNum{ float:left}
-#tabiplus #mainArea #plantitle .feed .tweet{background : url(../images/plan/feed_bg_tweet_l.gif) no-repeat right top;float:left;  padding:0 10px 0 10px;}
-#tabiplus #mainArea #plantitle .feed .tweetNum{float:left;background :#fff url(../images/plan/feed_bg_tweet_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#9ae0f8; border-top-width:1px;  border-right:solid; border-right-color:#9ae0f8; border-right-width:1px;
+#mainArea #plantitle .feed{  text-align:right;float:right;background : url(../images/plan/title_line.gif) no-repeat right top; padding:0 10px 0 0 ;}
+#mainArea #plantitle .feed .face{background : url(../images/plan/title_line.gif) no-repeat left top; padding:0 0 0 10px;float:left;}
+#mainArea #plantitle .feed .faceNum{ float:left}
+#mainArea #plantitle .feed .tweet{background : url(../images/plan/feed_bg_tweet_l.gif) no-repeat right top;float:left;  padding:0 10px 0 10px;}
+#mainArea #plantitle .feed .tweetNum{float:left;background :#fff url(../images/plan/feed_bg_tweet_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#9ae0f8; border-top-width:1px;  border-right:solid; border-right-color:#9ae0f8; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#9ae0f8; border-bottom-width:1px; margin:0;padding:0 0 0 1px;}
-#tabiplus #mainArea #plantitle .feed .share{background : url(../images/plan/feed_bg_fb_l.gif) no-repeat right top;float:left; padding:0 10px 0 10px;}
-#tabiplus #mainArea #plantitle .feed .shareNum{float:left;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
+#mainArea #plantitle .feed .share{background : url(../images/plan/feed_bg_fb_l.gif) no-repeat right top;float:left; padding:0 10px 0 10px;}
+#mainArea #plantitle .feed .shareNum{float:left;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#a6bee3; border-bottom-width:1px; margin:0;padding:0 0 0 1px;}
-#tabiplus #mainArea #plantitle .feed .like{background : url(../images/plan/feed_bg_fb_l.gif) no-repeat right top;float:left; padding:0 10px 0 10px;}
-#tabiplus #mainArea #plantitle .feed .likeNum{float:left;background : url(../images/plan/title_line.gif) no-repeat right top;padding:0 0 0 0 ;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
+#mainArea #plantitle .feed .like{background : url(../images/plan/feed_bg_fb_l.gif) no-repeat right top;float:left; padding:0 10px 0 10px;}
+#mainArea #plantitle .feed .likeNum{float:left;background : url(../images/plan/title_line.gif) no-repeat right top;padding:0 0 0 0 ;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#a6bee3; border-bottom-width:1px;}
 
-#tabiplus #mainArea #plantitle .comment{background : url(../images/plan/comment_bg_h.jpg) no-repeat left top; padding:0 0 0 ;}
-#tabiplus #mainArea #plantitle .commentInner{background : url(../images/plan/comment_bg_b.jpg) no-repeat left bottom; padding:0 0 20px ;}
-#tabiplus #mainArea #plantitle .comment p{ padding:20px 40px 0 20px;}
+#mainArea #plantitle .comment{background : url(../images/plan/comment_bg_h.jpg) no-repeat left top; padding:0 0 0 ;}
+#mainArea #plantitle .commentInner{background : url(../images/plan/comment_bg_b.jpg) no-repeat left bottom; padding:0 0 20px ;}
+#mainArea #plantitle .comment p{ padding:20px 40px 0 20px;}
 
-#tabiplus #mainArea  h3.mapH{padding:0 0 8px ;}
-#tabiplus #mainArea .planMap{background : url(../images/plan/plan_map_bg.gif) no-repeat left top; padding:10px 0 25px 11px ;}
-#tabiplus #mainArea .planMap .map{ padding: 0 0 17px ;}
-#tabiplus #mainArea .planMap .photoCtl{ height:42px;padding: 0 0 15px ;}
-#tabiplus #mainArea .planMap .photoCtl .directL{ float:left;padding:10px 0 0 9px;}
-#tabiplus #mainArea .planMap .photoCtl .photo{ float:left;padding:0 0 0 9px;}
-#tabiplus #mainArea .planMap .photoCtl .pic{ float:left; padding-right:6px;}
-#tabiplus #mainArea .planMap .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
-#tabiplus #mainArea .planMap .photoCtl .directR{ float:left;padding:10px 0 0 0;}
+#mainArea  h3.mapH{padding:0 0 8px ;}
+#mainArea .planMap{background : url(../images/plan/plan_map_bg.gif) no-repeat left top; padding:10px 0 25px 11px ;}
+#mainArea .planMap .map{ padding: 0 0 17px ;}
+#mainArea .planMap .photoCtl{ height:42px;padding: 0 0 15px ;}
+#mainArea .planMap .photoCtl .directL{ float:left;padding:10px 0 0 9px;}
+#mainArea .planMap .photoCtl .photo{ float:left;padding:0 0 0 9px;}
+#mainArea .planMap .photoCtl .pic{ float:left; padding-right:6px;}
+#mainArea .planMap .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
+#mainArea .planMap .photoCtl .directR{ float:left;padding:10px 0 0 0;}
 
 
-#tabiplus #mainArea h3.scheduleH{padding:0 0 15px ;}
+#mainArea h3.scheduleH{padding:0 0 15px ;}
 
-#tabiplus #mainArea h4.scheduleDate{ text-align:center;background : url(../images/plan/schedule_date_bg.gif) no-repeat left top; padding:10px 0 0 ; font-size:14px;height:30px;}
-#tabiplus #mainArea .schedule{background : url(../images/plan/schedule_bg.gif) repeat-y left top;margin: 0 0 20px ;}
-#tabiplus #mainArea .scheduleInner{background : url(../images/plan/schedule_bg_bottom.gif) no-repeat left bottom; padding:20px 26px 30px 18px;}
+#mainArea h4.scheduleDate{ text-align:center;background : url(../images/plan/schedule_date_bg.gif) no-repeat left top; padding:10px 0 0 ; font-size:14px;height:30px;}
+#mainArea .schedule{background : url(../images/plan/schedule_bg.gif) repeat-y left top;margin: 0 0 20px;}
+#mainArea .scheduleInner{background : url(../images/plan/schedule_bg_bottom.gif) no-repeat left bottom; padding:20px 26px 30px 18px;}
 
-html>body #tabiplus #mainArea .scheduleInner .pop{/* IE6�ȊO�ɓK�p IE7���܂� */
+html>body #mainArea .scheduleInner .pop{/* IE6以外に適用 IE7も含む */
 background-image:url(../images/plan/schedule_pop.png);
 width:98px;
 height:64px;
@@ -59,7 +59,7 @@ text-align:center;
 padding:20px 10px 0 0;
 float:left;
 }
-*html body #tabiplus #mainArea .scheduleInner .pop{/* IE6�ȉ��ɓK�p */
+*html body #mainArea .scheduleInner .pop{/* IE6以下に適用 */
 filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/plan/schedule_pop.png', sizingMethod='image');
 width:98px;
 height:64px;
@@ -67,85 +67,189 @@ padding:20px 10px 0 0;
 text-align:center;
 float:left;
 }
-*html body #tabiplus #mainArea .scheduleInner .pop {background-image:none;}
+*html body #mainArea .scheduleInner .pop {background-image:none;}
 
 
-html>body #tabiplus #mainArea .scheduleInner .plan{/* IE6�ȊO�ɓK�p IE7���܂� */
+html>body #mainArea .scheduleInner .plan{/* IE6以外に適用 IE7も含む */
 background-image:url(../images/plan/plan_bg.png);
 width:549px;
 padding: 0;
 float:left;
 }
-*html body #tabiplus #mainArea .scheduleInner .plan{/* IE6�ȉ��ɓK�p */
+*html body #mainArea .scheduleInner .plan{/* IE6以下に適用 */
 filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/plan/plan_bg.png', sizingMethod='crop');
 width:549px;
 padding: 0;
 float:left;
 }
-*html body #tabiplus #mainArea .scheduleInner .plan {background-image:none;}
+*html body #mainArea .scheduleInner .plan {background-image:none;}
 
-#tabiplus #mainArea .scheduleInner .planWrapper{
+#mainArea .scheduleInner .planWrapper{
 background:url(../images/plan/plan_bg_b.gif) no-repeat left bottom ;
 width:549px;
 padding-bottom:6px;
 }
 
 
-#tabiplus #mainArea .scheduleInner .plan .pic { float:left; padding:20px 0 0 17px;}
-#tabiplus #mainArea .scheduleInner .plan .txt { float:left; padding:0 0 0 17px;}
-#tabiplus #mainArea .scheduleInner .plan .txt .star { width:445px; text-align:right; padding-top:3px;}
+#mainArea .scheduleInner .plan .pic { float:left; padding:20px 0 0 17px;}
+#mainArea .scheduleInner .plan .txt { float:left; padding:0 0 0 17px;}
+#mainArea .scheduleInner .plan .txt .star { width:445px; text-align:right; padding-top:3px;}
 
-#tabiplus #mainArea .scheduleInner .plan .txt h5 {padding-bottom:3px; font-size:12px;}
-#tabiplus #mainArea .scheduleInner .plan .txt .openBtn { width:435px; text-align:right; padding:10px 10px 6px 5px;}
-#tabiplus #mainArea .scheduleInner .plan .txt .closeBtn { width:506px; text-align:right; padding:10px 10px 6px 5px;}
-#tabiplus #mainArea .scheduleInner .planDirect {padding-left:362px;}
+#mainArea .scheduleInner .plan .txt h5 {padding-bottom:3px; font-size:12px;}
+#mainArea .scheduleInner .plan .txt .openBtn { width:435px; text-align:right; padding:10px 10px 6px 5px;}
+#mainArea .scheduleInner .plan .txt .closeBtn { width:506px; text-align:right; padding:10px 10px 6px 5px;}
+#mainArea .scheduleInner .planDirect {padding-left:362px;}
 
-#tabiplus #mainArea .scheduleInner .plan .txt .mapSmall {padding:20px 0 20px;}
+#mainArea .scheduleInner .plan .txt .mapSmall {padding:20px 0 20px;}
 
 
-#tabiplus #mainArea .scheduleInner .plan .spotDetail { width:512px;}
-#tabiplus #mainArea .scheduleInner .plan .spotDetail tr { background : url(../images/plan/spot_detail_bg.gif) no-repeat left bottom;}
-#tabiplus #mainArea .scheduleInner .plan .spotDetail th { text-align:left; font-weight:normal; width:112px; padding-left:10px;}
-#tabiplus #mainArea .scheduleInner .plan .spotDetail th , #tabiplus #mainArea .scheduleInner .plan .spotDetail td { padding:4px 0 4px; vertical-align:top;}
+#mainArea .scheduleInner .plan .spotDetail { width:512px;}
+#mainArea .scheduleInner .plan .spotDetail tr { background : url(../images/plan/spot_detail_bg.gif) no-repeat left bottom;}
+#mainArea .scheduleInner .plan .spotDetail th { text-align:left; font-weight:normal; width:112px; padding-left:10px;}
+#mainArea .scheduleInner .plan .spotDetail th , #mainArea .scheduleInner .plan .spotDetail td { padding:4px 0 4px; vertical-align:top;}
 
-#tabiplus #mainArea .spotfeed{float:left; padding:20px 0 0 ;}
-#tabiplus #mainArea .spotfeed .spotEval{float:left;  padding:0;}
-#tabiplus #mainArea .spotfeed .spotEvalNum{float:left;background : url(../images/plan/spot_eval_bg.gif) no-repeat left top;padding:6px 0 0 20px; height:28px; width:96px;}
-#tabiplus #mainArea .spotfeed .tweet{background : url(../images/plan/feed_bg_tweet_l_w.gif) no-repeat right 5px;float:left;  padding:5px 10px 0 10px;}
-#tabiplus #mainArea .spotfeed .tweetNum{ float:left;background :#fff url(../images/plan/feed_bg_tweet_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#9ae0f8; border-top-width:1px;  border-right:solid; border-right-color:#9ae0f8; border-right-width:1px;
+#mainArea .spotfeed{float:left; padding:20px 0 0 ;}
+#mainArea .spotfeed .spotEval{float:left;  padding:0;}
+#mainArea .spotfeed .spotEvalNum{float:left;background : url(../images/plan/spot_eval_bg.gif) no-repeat left top;padding:6px 0 0 20px; height:28px; width:96px;}
+#mainArea .spotfeed .tweet{background : url(../images/plan/feed_bg_tweet_l_w.gif) no-repeat right 5px;float:left;  padding:5px 10px 0 10px;}
+#mainArea .spotfeed .tweetNum{ float:left;background :#fff url(../images/plan/feed_bg_tweet_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#9ae0f8; border-top-width:1px;  border-right:solid; border-right-color:#9ae0f8; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#9ae0f8; border-bottom-width:1px; margin:5px 0 0;;padding:0 0 0 1px;}
-#tabiplus #mainArea .spotfeed .share{background : url(../images/plan/feed_bg_fb_l_w.gif) no-repeat right 5px;float:left; padding:5px 10px 0 10px;}
-#tabiplus #mainArea .spotfeed .shareNum{float:left;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
+#mainArea .spotfeed .share{background : url(../images/plan/feed_bg_fb_l_w.gif) no-repeat right 5px;float:left; padding:5px 10px 0 10px;}
+#mainArea .spotfeed .shareNum{float:left;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#a6bee3; border-bottom-width:1px; margin:5px 0 0;padding:0 0 0 1px;}
-#tabiplus #mainArea .scheduleDateBtn{background : url(../images/plan/schedule_date_btn_bg.gif) ;padding:7px 0 0; height:27px; width:712px; text-align:center; font-size:14px; font-weight:bold; margin-bottom:6px;} 
-#tabiplus #mainArea .scheduleDateBtn img{ position:absolute;top:;left:705px;} 
+#mainArea .scheduleDateBtn{background : url(../images/plan/schedule_date_btn_bg.gif) ;padding:7px 0 0; height:27px; width:712px; text-align:center; font-size:14px; font-weight:bold; margin-bottom:6px;} 
+#mainArea .scheduleDateBtn img{ position:absolute;top:;left:705px;} 
+
+/* edit */
+#mainArea .editPict{ float:left; padding:0 31px 0 0; width:90px;}
+#mainArea .editOutline{ float:left;width:540px;}
+#mainArea .editOutline .planNameBox{width:348px; height:30px;}
+
+#mainArea .editOutline .planNameT{ float:left; padding:10px 6px 0 0;}
+#mainArea .editOutline .planName{ float:left; padding:0 12px 0 0;}
+#mainArea .editOutline .statusT{ float:left; padding:10px 6px 0 0;}
+#mainArea .editOutline .status{ float:left; padding:4px 0 0 0;}
+#mainArea .editComment .outline{ float:left;width:450px; height:65px;}
+#mainArea .editComment .saveBtn{ float:left; padding:41px 0 20px 14px;}
+#mainArea .editOutline .outlineT{padding:10px 0 5px;}
+
+#mainArea .editOutline .planNameBox{ border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+
+#mainArea .editPict .select{padding:10px 0 10px;}
+#mainArea .editPict .pict{padding:2px 0 0 0;}
+
+#mainArea .scheduleInnerEdit{background : url(../images/plan/schedule_bg_bottom.gif) no-repeat left bottom; padding:20px 31px 30px 33px;}
+#mainArea .scheduleInnerEdit .editSet { background : url(../images/plan/edit_bg_h.gif) no-repeat left top;}
+#mainArea .scheduleInnerEdit .editSetInner { background : url(../images/plan/edit_bg_b.gif) no-repeat left bottom;}
+#mainArea .scheduleInnerEdit .editSetInner .pic{ float:left; padding:15px 15px 16px 14px;}
+#mainArea .scheduleInnerEdit .editSetInner .txt{ width:360px; float:left; padding:10px 27px 16px 0;}
+#mainArea .scheduleInnerEdit .editSetInner .btn{ float:left; padding:50px 14px 16px 0;}
+#mainArea .scheduleInnerEdit .editSetInner .btn img{padding-left:6px;}
+#mainArea .scheduleInnerEdit .edtDirect{ text-align:center;}
+#mainArea .scheduleInnerEdit .routeBtnH{ text-align:right;padding-bottom:20px;}
+#mainArea .scheduleInnerEdit .routeBtnB{ text-align:right;padding-top:20px;}
+
+/* popup */
+html>body .ui-dialog .ui-dialog-titlebar{/* IE6以外に適用 IE7も含む */
+background-image:url(../images/plan/pop_h.png);
+width:712px;
+height:30px;
+padding:10px 0 0;
+font-size:14px;
+font-weight:bold;
+text-align:center;
+position:relative;
+}
+*html body .ui-dialog .ui-dialog-titlebar{/* IE6以下に適用 */
+filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/plan/pop_h.png', sizingMethod='crop');
+width:712px;
+height:30px;
+padding: 10px 0 0;
+font-size:14px;
+font-weight:bold;
+text-align:center;
+position:relative;
+}
+*html body .ui-dialog .ui-dialog-titlebar {background-image:none;}
+
+.ui-dialog .ui-dialog-title {float: none; margin: 0;}
+
+.ui-widget-header .ui-icon {
+  background-image: url(/images/plan/pop_close.gif);
+  width: 23px;
+  height: 23px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  height:23px;
+  margin:-15px 0 0;
+  right:10px;
+  width:23px;
+}
+
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 0; background: none; }
+.ui-dialog .ui-dialog-titlebar-close:hover, .ui-dialog .ui-dialog-titlebar-close:focus { padding: 1px; }
+
+.ui-icon-closethick {
+  background-position: 0;
+}
+
+.ui-dialog .ui-dialog-content{background : url(../images/plan/pop_bg.gif) repeat-y 2px top;margin: 0;padding:0; overflow: hidden;}
+.ui-dialog .popInner{background : url(../images/plan/pop_bg_bottom.gif) no-repeat 2px bottom; padding:0 2px 0 0;}
+.ui-dialog .map {
+  margin: 0px 7px 4px;
+  border: 4px solid white;
+  background : url(../images/plan/panel_map_bg.gif) no-repeat 6px top;
+}
+.ui-dialog .popInner .panelForm{padding:0 0 0 106px;}
+.ui-dialog .popInner .search{padding:30px 0 20px}
+.ui-dialog .popInner .search .spotName{ float:left;padding:0 10px 0 0 ;}
+.ui-dialog .popInner .search .btn{ float:left;}
+.ui-dialog .popInner .search .spotNameForm{width:200px; height:26px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+
+.ui-dialog .popInner .spotNameSelect{text-align: left;}
+.ui-dialog .popInner .spotNameSelect .spotNameSelectForm{width:500px; height:100px;}
+.ui-dialog .popInner .search .searchBtn{}
+.ui-dialog .popInner .spotBtn{padding:10px 0 10px  346px;background :url(../images/plan/panel_line.gif) no-repeat left bottom; text-align: left; }
 
 
-#tabiplus #mainArea .editPict{ float:left; padding:0 31px 0 0; width:90px;}
-#tabiplus #mainArea .editOutline{ float:left;width:540px;}
-#tabiplus #mainArea .editOutline .planNameBox{width:348px; height:30px;}
+.ui-dialog .popInner .panelComment{ padding:0  0 7px ;}
+.ui-dialog .popInner .stayTime{ padding:20px 0 20px ;}
+.ui-dialog .popInner .stayTimeT{ padding:6px 10px 0 0; float:left;}
+.ui-dialog .popInner .stayTimeFormBox{float:left;}
+.ui-dialog .popInner .stayTimeForm{width:200px; height:26px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
 
-#tabiplus #mainArea .editOutline .planNameT{ float:left; padding:10px 6px 0 0;}
-#tabiplus #mainArea .editOutline .planName{ float:left; padding:0 12px 0 0;}
-#tabiplus #mainArea .editOutline .statusT{ float:left; padding:10px 6px 0 0;}
-#tabiplus #mainArea .editOutline .status{ float:left; padding:4px 0 0 0;}
-#tabiplus #mainArea .editComment .outline{ float:left;width:450px; height:65px;}
-#tabiplus #mainArea .editComment .saveBtn{ float:left; padding:41px 0 20px 14px;}
-#tabiplus #mainArea .editOutline .outlineT{padding:10px 0 5px;}
+.ui-dialog .popInner .panelComment{ padding:7px 0 10px ;}
+.ui-dialog .popInner .panelCommentT{ padding:6px 10px 0 0; float:left;}
+.ui-dialog .popInner .panelCommentFormBox{ float:left;}
+.ui-dialog .popInner .panelCommentForm{width:434px; height:100px;}
 
-#tabiplus #mainArea .editOutline .planNameBox{ border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+.ui-dialog .popInner .destinationSaveButton {padding:10px 0 14px 326px;}
 
-#tabiplus #mainArea .editPict .select{padding:10px 0 10px;}
-#tabiplus #mainArea .editPict .pict{padding:2px 0 0 0;}
+.ui-dialog .popInner .spotForm{padding:20px 0 0 106px;}
+.ui-dialog .popInner .spotT{ padding:6px 10px 0 0; float:left;}
+.ui-dialog .popInner .spotWrapper{ padding:10px 0 10px ;}
+.ui-dialog .popInner .spotFormBox{float:left;}
 
-#tabiplus #mainArea .scheduleInnerEdit{background : url(../images/plan/schedule_bg_bottom.gif) no-repeat left bottom; padding:20px 31px 30px 33px;}
-#tabiplus #mainArea .scheduleInnerEdit .editSet { background : url(../images/plan/edit_bg_h.gif) no-repeat left top;}
-#tabiplus #mainArea .scheduleInnerEdit .editSetInner { background : url(../images/plan/edit_bg_b.gif) no-repeat left bottom;}
-#tabiplus #mainArea .scheduleInnerEdit .editSetInner .pic{ float:left; padding:15px 15px 16px 14px;}
-#tabiplus #mainArea .scheduleInnerEdit .editSetInner .txt{ width:360px; float:left; padding:10px 27px 16px 0;}
-#tabiplus #mainArea .scheduleInnerEdit .editSetInner .btn{ float:left; padding:50px 14px 16px 0;}
-#tabiplus #mainArea .scheduleInnerEdit .editSetInner .btn img{padding-left:6px;}
-#tabiplus #mainArea .scheduleInnerEdit .edtDirect{ text-align:center;}
-#tabiplus #mainArea .scheduleInnerEdit .routeBtnH{ text-align:right;padding-bottom:20px;}
-#tabiplus #mainArea .scheduleInnerEdit .routeBtnB{ text-align:right;padding-top:20px;}
+.ui-dialog .popInner .spotNameForm{width:200px; height:26px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;padding:0 0 10px ;}
+.ui-dialog .popInner .spotAdressForm{width:470px; height:26px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+.ui-dialog .popInner .spotOutlineForm{width:470px; height:100px;}
+  
 
+
+.ui-dialog .popInner .spotPhoto{padding:10px 0 20px ;}
+.ui-dialog .popInner .spotPhotoWrapper{ width:442px; height:42px;padding: 8px 14px 8px ; float:left; background:#fff;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;}
+.ui-dialog .popInner .spotPhotoWrapper .directL{ float:left;padding:10px 10px 0 0;}
+.ui-dialog .popInner .spotPhotoWrapper .pic{ float:left; padding-right:6px;}
+.ui-dialog .popInner .spotPhotoWrapper .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
+.ui-dialog .popInner .spotPhotoWrapper .directR{ float:left;padding:10px 0 0 4px;}
+.ui-dialog .popInner .spotEditBtn{  text-align:right; padding:0 96px 30px 0 ;}
+.ui-dialog .popInner .spotEditBtn img{padding-left:10px;}
+
+
+.ui-dialog .photoCtl{ height:42px;padding: 10px 8px 10px ; background: url(../images/plan/route_photo_bg.gif) no-repeat 2px top;}
+.ui-dialog .photoCtl .directL{ float:left;padding:10px 0 0 9px;}
+.ui-dialog .photoCtl .photo{ float:left;padding:0 0 0 9px;}
+.ui-dialog .photoCtl .pic{ float:left; padding-right:6px;}
+.ui-dialog .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
+.ui-dialog .photoCtl .directR{ float:left;padding:10px 0 0 0;}
