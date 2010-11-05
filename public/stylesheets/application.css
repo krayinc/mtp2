@@ -1,5 +1,10 @@
 .dialog {
   border: 1px solid;
   border-color: white black black white;
+  font-size: small;
   background-color: lightgrey;
+}
+
+form > li {
+  list-style-type: none;
 }

@@ -24,16 +24,29 @@ module ApplicationHelper
       <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:longitude]},#{options[:latitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}&path=#{options[:path]}&markers=#{options[:markers]}' />
     |
   end
-  def map_tag(options = {}, coordinates = [])
+  def map_tag(options = {}, polyline = {})
     options = {
-      :id         => 'map_canvas',
-      :longitude  => '0.0',
-      :latitude   => '0.0',
-      :zoom       => '14',
-      :sensor     => false,
-      :path       => '',
-      :markers    => ''
+      :id           => 'map_canvas',
+      :longitude    => '0.0',
+      :latitude     => '0.0',
+      :zoom         => '14',
+      :sensor       => false,
+      :markers      => ''
     }.merge(options)
+    polyline = {
+      :coordinates    => [],
+      :strokeColor    => '#FF0000',
+      :strokeOpacity  => '1.0',
+      :strokeWeight   =>  '2'
+    }.merge(polyline)
+    latlng = ''
+    if polyline[:coordinates].length > 0 then
+      latlngs = []
+      polyline[:coordinates].each do |coordinate|
+        latlngs << 'new google.maps.LatLng(' + coordinate[:latitude] + ', ' + coordinate[:longitude] + ')'
+      end
+      latlng = 'new google.maps.Polyline({ path: [' + latlngs.join(',') + '], strokeColor: "' + polyline[:strokeColor] + '", strokeOpacity: ' + polyline[:strokeOpacity]+ ', strokeWeight: ' + polyline[:strokeWeight] + '}).setMap(map);'
+    end
     raw %Q|
       <div id="#{options[:id]}" style="width: #{options[:width]}px; height: #{options[:height]}px"></div>
       <script language="javascript">
@@ -43,6 +56,7 @@ module ApplicationHelper
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("#{options[:id]}"), options);
+        #{latlng}
       </script>
     |
   end

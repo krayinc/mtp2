@@ -12,8 +12,13 @@
   <tr>
     <td><%= plan.title %></td>
     <td><%= link_to 'Show', plan %></td>
+    <%- if plan.owner === current_user -%>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
     <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
+    <%- else -%>
+    <td></td>
+    <td></td>
+    <%- end -%>
   </tr>
 <% end %>
 </table>

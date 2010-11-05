@@ -32,5 +32,11 @@
 
 <h3>注目のユーザー</h3>
 <div>
-  ここに注目のユーザー
+  <ol>
+    <%- @hot_users.each do |user| -%>
+    <li>
+      <%= image_tag user.profile_image_url, :size => '40x40' %> <%= user.name %>
+    </li>
+    <%- end -%>
+  </ol>
 </div>

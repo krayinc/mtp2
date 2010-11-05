@@ -7,6 +7,14 @@
   <div><%= @plan.outline %></div>
 </div>
 
+<%= map_tag({
+  :longitude    => @plan.destinations[0].spot.latitude,
+  :latitude     => @plan.destinations[0].spot.longitude,
+  :zoom         => 14,
+  :width        => '640',
+  :height       => '320' },{
+  :coordinates  => @path }) %>
+
 <div class='section'>
   <h3>投票</h3>
   <div>
@@ -17,7 +25,19 @@
     </span>
   </div>
 </div>
-
+<div class="retweet">
+  <a href="http://twitter.com/share" class="twitter-share-button"
+    data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
+    data-counturl="<%= @parmalink %>"
+    data-lang="ja">Tweet</a>
+  <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+</div>
+<div class="facebook_nice">
+  <iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:80px;" allowTransparency="true"></iframe>
+</div>
+<div class="facebook_share">
+  <a name="fb_share" type="icon" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script>
+</div>
 <div class='section'>
   <h3>
     コメント
@@ -51,6 +71,43 @@
   
 </div>
 
+<div id="twitter_widget">
+  <script src="http://widgets.twimg.com/j/2/widget.js"></script>
+  <script>
+  new TWTR.Widget({
+    version: 2,
+    type: 'search',
+    search: '<%= @parmalink %>',
+    interval: 6000,
+    title: '旅PLUS',
+    subject: 'みんなのつぶやき',
+    width: 250,
+    height: 300,
+    theme: {
+      shell: {
+        background: '#8ec1da',
+        color: '#ffffff'
+      },
+      tweets: {
+        background: '#ffffff',
+        color: '#444444',
+        links: '#1985b5'
+      }
+    },
+    features: {
+      scrollbar: false,
+      loop: true,
+      live: true,
+      hashtags: true,
+      timestamp: true,
+      avatars: true,
+      toptweets: true,
+      behavior: 'default'
+    }
+  }).render().start();
+  </script>
+</div>
+
 <div id='section'>
   <h3>
     行き先(<%= @plan.destinations.count %>)
@@ -62,11 +119,15 @@
         <div>
           <%- if destination.spot -%>
           <%= map_image_tag({
-            :longitude => destination.spot.longitude, 
-            :latitude => destination.spot.latitude, 
-            :zoom => 14, 
+            :latitude => destination.spot.longitude,
+            :longitude => destination.spot.latitude,
+            :markers => destination.spot.latitude + ',' + destination.spot.longitude,
+            :zoom => 14,
             :size => '400x150'}) %>
           <%- end -%>
+        </div>
+        <div>
+          コメント: <%= destination.comment %>
         </div>
         <div class='rating-box'>
           <%= destination.spot.average_rating %>

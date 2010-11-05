@@ -14,6 +14,7 @@ gem 'annotate'
 gem 'formtastic'
 gem 'attribute_normalizer'
 gem 'typus'
+gem 'paperclip'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -36,6 +37,10 @@ group :development, :test do
   gem 'webrat'
   gem 'factory_girl_rails'
   gem 'unicorn'
+end
+
+group :production do
+  gem 'aws-s3', :require => 'aws/s3'
 end
 
 # Bundle gems for the local environment. Make sure to

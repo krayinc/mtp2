@@ -26,7 +26,7 @@ describe Spot do
     subject { spot = Factory(:spot) }
     its(:ratings) { should be_empty }
     its(:ratings_count) { should == 0 }
-    its(:average_rating) { should == 0 }
+    its(:average_rating) { should be_nil }
   end
   
   context 'with have 5 ratings (1 to 5 points)' do
@@ -49,7 +49,7 @@ describe Spot do
     it {
       lambda {
         @spot.rate!(1, Factory(:user))
-      }.should change(Spot, count).by(+1)
+      }.should change(Spot, :count).by(+1)
     }
   end
 
@@ -63,6 +63,42 @@ describe Spot do
       @spot.rate!(1, @user)
       @spot.rated_by?(@user).should be_true
     end
+  end
+
+  context 'latitude and longitude value check' do
+    before do
+      spot  = Factory(:spot)
+      @latitude = spot.latitude.to_f
+      @longitude = spot.longitude.to_f
+    end
+    
+    it { @latitude.should >= -90 }
+    it { @latitude.should <=  90 }
+    it { @longitude.should >= -180 }
+    it { @longitude.should <=  180 }
+    
+    %w(90.1 -90.1).each do |value|
+      context "with #latitude = #{value}" do
+        before do 
+          @spot = Factory.build(:spot, :latitude => value.to_f)
+          @spot.valid?
+        end
+        subject { @spot }
+        it { should have(1).errors_on(:latitude) }
+      end
+    end
+    
+    %w(180.1 -180.1).each do |value|
+      context "with #longitude = #{value}" do
+        before do 
+          @spot = Factory.build(:spot, :longitude => value.to_f)
+          @spot.valid?
+        end
+        subject { @spot }
+        it { should have(1).errors_on(:longitude) }
+      end
+    end
+    
   end
 end
 

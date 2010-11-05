@@ -3,16 +3,22 @@ Mtp2::Application.routes.draw do
   match "home/dev" => "home#dev"
   resources :comments
   resources :plans do
-    resources :destinations
     member do
       put 'vote'
       put 'unvote'
+    end
+    resources :destinations do
+      member do
+        put 'position', :action => 'reorder'
+      end
+      resources :photos, :except => :new
     end
   end
   resources :spots do
     member do
       put 'rate'
     end
+    resources :photos, :only => [:index, :show]
   end
 
   # The priority is based upon order of creation:

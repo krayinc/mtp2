@@ -1,4 +1,4 @@
-<div id="spot_select_map" class="google_map" style="width: 800px; height: 400px;"></div>
+<div id="spot_select_map" class="google_map" style="width: 100%; height: 400px;"></div>
 <%= semantic_form_for @spot,
   :url => @spot.new_record? ? spots_path(:format => :js) : spots_path(:id => @spot.id, :format => :js),
   :method => @spot.new_record? ? :post : :put,

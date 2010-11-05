@@ -18,8 +18,9 @@ end
 
 Factory.define :spot do |f|
   f.name 'Name'
-  f.latitude '123.4567'
-  f.longitude '12.3456'
+  f.latitude '12.3456'
+  f.longitude '123.4567'
   f.address 'Address'
   f.annotation 'Annotation'
 end
+

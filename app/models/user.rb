@@ -1,8 +1,12 @@
 class User < TwitterAuth::GenericUser
   logic_for_rankable
   has_many :plans
+  has_many :photos, :class_name => 'SpotPhoto', :dependent => :destroy
+  scope :popluar, order_by_rank
   def calculate_point(time_range)
-    return self.plans.joins('CROSS JOIN votings ON plans.id = votings.votable_id AND votings.votable_type = "Plan"').count
+    votings_count = self.plans.from('plans, votings').where(%{votings.votable_id = plans.id AND votings.votable_type = 'Plan'}).count
+    comments_count = self.plans.from('plans, comments').where(%{comments.commentable_id = plans.id AND comments.commentable_type = 'Plan'}).count
+    return (votings_count * 2) + (comments_count * 1)
   end
 end
 
