@@ -2,7 +2,7 @@
   <div id="plantitleWrapper" class="clearfix">
     <div id="plan_photos_dialog" class="dialog" style="display: none;"></div>
     <div class="editPict" mtp-photo-id="<%= @plan.photo_id %>">
-      <p class="pict" id="plan_photo"><%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no-image.png') %></p>
+      <p class="pict" id="plan_photo"><%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no_image.png') %></p>
       <%- unless @plan.new_record? -%>
         <p class="select"><%= link_to raw('<img src="/images/plan/select_pic_btn.gif" alt="写真を選ぶ" title="写真を選ぶ">'), photos_plan_path(:id => @plan.id, :format => :js), :remote => true %></p>
       <%- end -%>
