@@ -5,6 +5,7 @@ $('#destination_form_dialog').dialog({
   width: 712,
   height: 898,
   resizable: false,
+  closeOnEscape: false,
   open: function() {
     <%= gmap :destination_select_map, @center_position[:latitude], @center_position[:longitude], @center_position[:zoom] %>
   }
