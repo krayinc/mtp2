@@ -37,15 +37,17 @@
         <%- end -%>
       </ul>
     </div>
-    <div id="login" class="clearfix">
-      <%- if logged_in? -%>
+    <%- if logged_in? -%>
+      <div id="login" class="clearfix">
         <p class="pict"><%= image_tag current_user.profile_image_url, :size => '26x26' %></p>
         <p class="name"><%= current_user.name.truncate_by_bytes(12) %></p>
         <p class="logoutBtn"><%= link_to raw('<img src="/images/logout.gif" alt="ログアウト" title="ログアウト">'), logout_path %></p>
-      <%- else -%>
-        <%= link_to 'ログイン', login_path %>
-      <%- end -%>
-    </div>
+      </div>
+    <%- else -%>
+      <div id="loginBefore" class="clearfix">
+        <p class="logoutBtn"><%= link_to raw('<img src="images/login_btn.gif" alt="ログイン" title="ログイン">'), login_path %></p>
+      </div>
+    <%- end -%>
   </div>
   <div id="main">
     <div id="container" class="clearfix">

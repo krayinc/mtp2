@@ -31,6 +31,7 @@ div#main{width:980px;padding:0 25px 37px;height: auto; }
 #header #login .pict {float:left; padding:3px 8px 0 13px;}
 #header #login .name {float:left; padding:6px 0 0; width: 99px;}
 #header #login .logoutBtn {float:right; padding:5px 9px 0 0;}
+#header #loginBefore { text-align:right;float:right;width:223px; padding:10px 26px 0 0; height:34px;}
 #mainArea{float:left; width:712px;padding:0; margin:0;}
 #popMain{ width:712px;padding:0; margin:0;position:relative;}
 #rightArea{float:right; width:247px;padding:0; margin:0;}
