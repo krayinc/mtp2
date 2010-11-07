@@ -1,0 +1,11 @@
+#terms h3 {
+  border-bottom: 1px dotted grey;
+}
+
+#terms .section {
+  margin-bottom: 20px;
+}
+
+#terms li {
+  margin-left: 20px;
+}
