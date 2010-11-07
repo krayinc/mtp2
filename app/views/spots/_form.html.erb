@@ -1,12 +1,42 @@
-<div id="spot_select_map" class="google_map" style="width: 100%; height: 400px;"></div>
-<%= semantic_form_for @spot,
-  :url => @spot.new_record? ? spots_path(:format => :js) : spot_path(:id => @spot.id, :format => :js),
-  :method => @spot.new_record? ? :post : :put,
-  :remote => true do |f| %>
-<%= f.input :latitude, :as => :hidden %>
-<%= f.input :longitude, :as => :hidden %>
-<%= f.input :name %>
-<%= f.input :address %>
-<%= f.input :annotation %>
-<%= f.commit_button %>
-<%- end -%>
+<div class="popInner">
+  <div id="spot_select_map" class="map" style="width: 690px; height: 360px;"></div>
+  <%= form_for @spot,
+    :url => @spot.new_record? ? spots_path(:format => :js) : spot_path(:id => @spot.id, :format => :js),
+    :method => @spot.new_record? ? :post : :put,
+    :remote => true do |f| %>
+    <%= f.hidden_field :latitude %>
+    <%= f.hidden_field :longitude %>
+    <div class="spotForm">
+      <div class="spotWrapper clearfix">
+        <p class="spotT"><img src="/images/plan/edit_spot_name.gif" alt="名前" title="名前"></p>
+        <p class="spotFormBox"><%= f.text_field :name, :class => 'spotNameForm' %></p>
+      </div>
+      <div class="spotWrapper clearfix">
+        <p class="spotT"><img src="/images/plan/edit_spot_adress.gif" alt="住所" title="住所"></p>
+        <p class="stayTimeFormBox"><%= f.text_field :address, :class => 'spotAdressForm' %></p>
+      </div>
+      <div class="spotWrapper clearfix">
+        <p class="spotT"><img src="/images/plan/edit_spot_outline.gif" alt="概要" title="概要"></p>
+        <p class="spotFormBox"><%= f.text_area :annotation, :class => 'spotOutlineForm' %></p>
+      </div>
+      <div class="spotPhoto clearfix">
+        <p class="spotT"><img src="/images/plan/edit_spot_pic.gif" alt="写真" title="写真"></p>
+        <div class="spotPhotoWrapper clearfix">
+          <p class="directL"><img src="/images/plan/map_derect_l.gif" alt="前へ" title="前へ"></p>
+          <div class="photo">
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+          <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+        </div>
+        <p class="directR"><img src="/images/plan/map_derect_r.gif" alt="次へ" title="次へ"></p>
+      </div>
+      </div>
+      <p class="spotEditBtn"><%= image_submit_tag 'plan/edit_save_btn.gif' %></p>
+    <%- end -%>
+  </div>
+</div>
