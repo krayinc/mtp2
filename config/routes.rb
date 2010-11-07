@@ -1,6 +1,8 @@
 Mtp2::Application.routes.draw do
-  root :to => "site#index"
-  match "home/dev" => "site#dev"
+  root  :to => 'site#index'
+  match 'about' => 'site#about'
+  match 'terms' => 'site#terms'
+  match 'home/dev' => 'site#dev'
   resources :comments
   resources :plans do
     member do
