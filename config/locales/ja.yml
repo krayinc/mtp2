@@ -151,6 +151,7 @@ ja:
       plan: "プラン"
       spot: "スポット"
       destination: "行き先"
+      news: "お知らせ"
 
     attributes:
       plan:
@@ -172,6 +173,11 @@ ja:
         spot: "スポット"
         time: "時間"
         comment: "コメント"
+
+      news:
+        title: "タイトル"
+        body: "本文"
+        published_at: "公開日時"
 
 # messages for Typus
   "A valid token is required":

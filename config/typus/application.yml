@@ -31,3 +31,13 @@ Destination:
   filters: 
   search: 
   application: tabiplus
+
+News:
+  fields:
+    default: title, published_at
+    form: title, body, published_at
+  order_by:
+  relationships:
+  filters:
+  search: title
+  application: tabiplus
