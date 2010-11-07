@@ -2,7 +2,6 @@
 <%- @plan.destinations.each do |destination| -%>
   <li mtp-destination="<%= destination.id %>" mtp-spot="<%= destination.spot_id %>">
     <%= render 'destination', :destination => destination %>
-    <div class="edtDirect"><img src="/images/plan/plan_direct.gif" alt="" title=""></div>
   </li>
 <%- end -%>
 </ul>
