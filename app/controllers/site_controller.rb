@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class SiteController < ApplicationController
   
   def index
     @popular_plans = Plan.popular.limit(4)
