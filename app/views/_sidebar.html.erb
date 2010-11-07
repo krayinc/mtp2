@@ -1,5 +1,9 @@
 <div id="rightArea">
-  <%= render 'sidebar/news' %>
-  <%= render 'sidebar/hot_users' %>
-  <%= render 'sidebar/tweets' %>
+  <%- contents.each do |content| -%>
+    <%- if content.respond_to? :key and content.respond_to? :value -%>
+      <%= render "sidebar/#{content.keys[0]}", content.values[0] %>
+    <%- else -%>
+      <%= render "sidebar/#{content}" %>
+    <%- end -%>
+  <%- end -%>
 </div>

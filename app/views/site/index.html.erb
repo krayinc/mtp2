@@ -1,5 +1,5 @@
 <%- content_for :sidebar do -%>
-<%= render 'sidebar' %>
+<%= render '/sidebar', :contents => [:news, :hot_users, :tweets] %>
 <%- end -%>
 
 <div id="mainArea">
