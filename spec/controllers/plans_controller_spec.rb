@@ -9,39 +9,52 @@ describe PlansController do
   end
 
   describe "GET index" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns all plans as @plans" do
       Plan.stub(:all) { [mock_plan] }
       get :index
       assigns(:plans).should eq([mock_plan])
     end
+=end
   end
 
   describe "GET show" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns the requested plan as @plan" do
       Plan.stub(:find).with("37") { mock_plan }
       get :show, :id => "37"
       assigns(:plan).should be(mock_plan)
     end
+=end
   end
 
   describe "GET new" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns a new plan as @plan" do
       Plan.stub(:new) { mock_plan }
       get :new
       assigns(:plan).should be(mock_plan)
     end
+=end
   end
 
   describe "GET edit" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns the requested plan as @plan" do
       Plan.stub(:find).with("37") { mock_plan }
       get :edit, :id => "37"
       assigns(:plan).should be(mock_plan)
     end
+=end
   end
 
   describe "POST create" do
-
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     describe "with valid params" do
       it "assigns a newly created plan as @plan" do
         Plan.stub(:new).with({'these' => 'params'}) { mock_plan(:save => true) }
@@ -69,11 +82,12 @@ describe PlansController do
         response.should render_template("new")
       end
     end
-
+=end
   end
 
   describe "PUT update" do
-
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     describe "with valid params" do
       it "updates the requested plan" do
         Plan.should_receive(:find).with("37") { mock_plan }
@@ -107,10 +121,12 @@ describe PlansController do
         response.should render_template("edit")
       end
     end
-
+=end
   end
 
   describe "DELETE destroy" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "destroys the requested plan" do
       Plan.should_receive(:find).with("37") { mock_plan }
       mock_plan.should_receive(:destroy)
@@ -122,6 +138,7 @@ describe PlansController do
       delete :destroy, :id => "1"
       response.should redirect_to(plans_url)
     end
+=end
   end
 
 end

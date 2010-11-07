@@ -9,39 +9,52 @@ describe SpotsController do
   end
 
   describe "GET index" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns all spots as @spots" do
       Spot.stub(:all) { [mock_spot] }
       get :index
       assigns(:spots).should eq([mock_spot])
     end
+=end
   end
 
   describe "GET show" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns the requested spot as @spot" do
       Spot.stub(:find).with("37") { mock_spot }
       get :show, :id => "37"
       assigns(:spot).should be(mock_spot)
     end
+=end
   end
 
   describe "GET new" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns a new spot as @spot" do
       Spot.stub(:new) { mock_spot }
       get :new
       assigns(:spot).should be(mock_spot)
     end
+=end
   end
 
   describe "GET edit" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "assigns the requested spot as @spot" do
       Spot.stub(:find).with("37") { mock_spot }
       get :edit, :id => "37"
       assigns(:spot).should be(mock_spot)
     end
+=end
   end
 
   describe "POST create" do
-
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     describe "with valid params" do
       it "assigns a newly created spot as @spot" do
         Spot.stub(:new).with({'these' => 'params'}) { mock_spot(:save => true) }
@@ -69,11 +82,12 @@ describe SpotsController do
         response.should render_template("new")
       end
     end
-
+=end
   end
 
   describe "PUT update" do
-
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     describe "with valid params" do
       it "updates the requested spot" do
         Spot.should_receive(:find).with("37") { mock_spot }
@@ -107,10 +121,12 @@ describe SpotsController do
         response.should render_template("edit")
       end
     end
-
+=end
   end
 
   describe "DELETE destroy" do
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "destroys the requested spot" do
       Spot.should_receive(:find).with("37") { mock_spot }
       mock_spot.should_receive(:destroy)
@@ -122,6 +138,7 @@ describe SpotsController do
       delete :destroy, :id => "1"
       response.should redirect_to(spots_url)
     end
+=end
   end
 
 end

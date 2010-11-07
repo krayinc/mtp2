@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "destinations/new.html.erb" do
+  pending "add some examples to (or delete) #{__FILE__}"
+=begin
   before(:each) do
     assign(:destination, stub_model(Destination).as_new_record)
   end
@@ -12,4 +14,5 @@ describe "destinations/new.html.erb" do
     assert_select "form", :action => destinations_path, :method => "post" do
     end
   end
+=end
 end

@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "photos/edit.html.erb" do
+  pending "add some examples to (or delete) #{__FILE__}"
+=begin
   before(:each) do
     @photo = assign(:photo, stub_model(Photo,
       :new_record? => false
@@ -14,4 +16,5 @@ describe "photos/edit.html.erb" do
     assert_select "form", :action => photo_path(@photo), :method => "post" do
     end
   end
+=end
 end
