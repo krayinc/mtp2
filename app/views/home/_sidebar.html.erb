@@ -1,47 +1,5 @@
 <div id="rightArea">
-  <p><img src="/images/side/info_h.gif" alt="旅PLuSからのお知らせ" title="旅PLuSからのお知らせ"></p>
-  <div id="info">
-    <div class="set clearfix">
-      <div class="txt"><p>2010/11/1<br><a href="">ああああああああああああ</a></p></div>
-    </div>
-    <div class="set clearfix">
-      <div class="txt"><p>2010/11/1<br><a href="">ああああああああああああ</a></p></div>
-    </div>
-
-  </div>
-  <p><img src="/images/side/user_h.gif" alt="いま注目のユーザー" title="ま注目のユーザー"></p>
-  <div id="user">
-    <%- @hot_users.each do |user| -%>
-    <div class="set clearfix">
-      <p class="icon"><%= image_tag user.profile_image_url, :size => '26x26' %></p>
-      <div class="txt"><p><%= user.name %></p></div>
-    </div>
-    <%- end -%>
-  </div>
-  <div class="userLink">
-    <%# p class="lineup"><%%= link_to raw('<img src="/images/side/user_btn_off.gif" alt="ユーザー一覧はこちら" title="ユーザー一覧はこちら">'), users_path %%></p %>
-  </div>
-  <p><img src="/images/side/tweet_h.gif" alt="01" title="01"></p>
-  <div id="tweet">
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg"  alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ<br><a href="">http://xxx.com/p/5308916 2010/10/27 10:20</a></p></div>
-    </div>
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg"  alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ<br><a href="">http://xxx.com/p/5308916 2010/10/27 10:20</a></p></div>
-    </div>
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg"  alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ<br><a href="">http://xxx.com/p/5308916 2010/10/27 10:20</a></p></div>
-    </div>
-    <div class="set clearfix">
-      <p class="icon"><img src="/images/profile/profile_001.jpg"  alt="写真" title="写真"></p>
-      <div class="txt"><p><a href="">morimori</a><br>ああああああああああああああああああああああああああああああああああああああああああああああ<br><a href="">http://xxx.com/p/5308916 2010/10/27 10:20</a></p></div>
-    </div>
-  </div>
-  <div class="tweetLink">
-    <p class="logo"><img src="/images/side/tweet_logo.gif" alt="twitter" title="twitter"></p>
-    <p class="join"> Join the conversation</p>
-  </div>
+  <%= render 'sidebar/news' %>
+  <%= render 'sidebar/hot_users' %>
+  <%= render 'sidebar/tweets' %>
 </div>
