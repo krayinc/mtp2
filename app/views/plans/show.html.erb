@@ -87,8 +87,7 @@
                 <div class="planWrapper clearfix">
                 <div class="pic"><%- if destination.spot.photos.length > 0 %><%= image_tag destination.spot.photos[0].photo_file_name %><%- else %><%= image_tag '/images/no_image.png' %><%- end %></div>
                 <div class="txt">
-                  <p class="star"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_on.gif" alt="★" title="★"><img src="../images/plan/star_no.gif" alt="★" title="★">
-                  </p>
+                  <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><img src="../images/plan/star_on.gif" alt="★" title="★"><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><img src="../images/plan/star_no.gif" alt="★" title="★"><%- end -%></p>
                   <h5><%= destination.spot.name %></h5>
                   <p class="detail"><%= destination.spot.annotation %></p>
                 </div>
