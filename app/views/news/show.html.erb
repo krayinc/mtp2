@@ -1,0 +1,8 @@
+<div class="footContents">
+  <h2 class="title"><img src="/images/news/title.gif" alt="NEWS お知らせ" title="NEWS お知らせ"></h2>
+  <div id="news">
+    <div class="title"><span class="pubdate"><%= @news.published_at.strftime('%Y/%m/%d') %></span> <%= @news.title %></div>
+    <div class="body"><%= @news.body %></div>
+  </div>
+  <div style="text-align: right;"><%= link_to 'お知らせ一覧へ戻る', news_index_path %></div>
+</div>

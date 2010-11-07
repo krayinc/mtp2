@@ -5,4 +5,6 @@ class News < ActiveRecord::Base
   validates :title,        :presence => true
   validates :body,         :presence => true
   validates :published_at, :presence => true
+
+  scope :published, lambda{ where('published_at <= ?', Time.now) }
 end

@@ -24,6 +24,7 @@ Mtp2::Application.routes.draw do
     end
     resources :photos, :only => [:index, :show]
   end
+  resources :news, :only => [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
