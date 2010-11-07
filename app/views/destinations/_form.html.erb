@@ -3,11 +3,14 @@
   <div class="panelForm">
     <%= form_for :spot, :url => spots_path(:format => :js), :remote => true, :html => {:id => 'spot_search_form', :method => 'get', :class => 'search clearfix'} do |f| %>
       <p class="spotName"><%= search_field_tag :q, @destination.new_record? ? '' : @destination.spot.name, :placeholder => 'スポット名', :class => 'spotNameForm' %></p>
-      <p class="btn"><%= image_submit_tag 'plan/search_btn_off.gif', :class => 'searchBtn' %></p>
+      <p class="btn">
+        <%= image_submit_tag 'plan/search_place.gif', :class => 'searchBtn' %>
+        <%= link_to raw('<img src="/images/plan/entry_place.gif" class="searchBtn">'), new_spot_path(:format => :js), :remote => true %>
+      </p>
     <%- end -%>
     <div class="spotName clearfix">
       <p class="spotNameSelect"><select id="search_results" size="4" class="spotNameSelectForm"></select></p>
-      <p class="spotBtn"><%= link_to raw('<img src="/images/plan/add_spot_s_off.gif" class="searchBtn">'), new_spot_path(:format => :js), :remote => true %></p>
+      <p class="spotBtn"></p>
     </div>
     <%= form_for @destination,
       :url    => @destination.new_record? ? plan_destinations_path(:plan_id => @plan.id, :format => :js) : plan_destination_path(:plan_id => @plan.id, :id => @destination.id, :format => :js),
