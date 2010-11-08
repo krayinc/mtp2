@@ -64,7 +64,7 @@
                   <p class="evalNum"><%= plan.total_votes %>pt</p>
                 </div>
               </div>
-              <p class="mapSmall"><%- if plan.first_spot -%><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '150x150'), plan_path(plan) %><%- end -%></p>
+              <p class="mapSmall"><%- if plan.first_spot -%><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '212x127'), plan_path(plan) %><%- end -%></p>
               <div class="profileS clearfix">
                 <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
                 <p class="profileName"><%= truncate strip_tags(plan.outline), :length => 20 %>
