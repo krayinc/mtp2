@@ -14,6 +14,7 @@ a:hover   { color : #ff6600;text-decoration:none; }
 #footer #footLink a:active  { color : #ff6600;text-decoration:none; }
 #footer #footLink a:hover   { color : #ff6600;text-decoration:none; }
 textarea,select , textbox{ border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+input[disabled], textarea[disabled] { background-image: url(../images/form_gray_bg.png) !important; }
 /* basic */
 /* header */
 #tabiplus {margin: 0px auto;text-align : left;width:1030px;margin:auto;background :#ffffff url(../images/main_bg.gif) repeat-y center top;position:relative;height: 100%;min-height: 100%;}

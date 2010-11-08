@@ -226,7 +226,7 @@ position:relative;
 .ui-dialog .popInner .stayTime{ padding:20px 0 20px ;}
 .ui-dialog .popInner .stayTimeT{ padding:6px 10px 0 0; float:left;}
 .ui-dialog .popInner .stayTimeFormBox{float:left;}
-.ui-dialog .popInner .stayTimeForm{width:200px; height:26px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
+.ui-dialog .popInner .stayTimeForm{width:200px; height:26px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;}
 
 .ui-dialog .popInner .panelComment{ padding:7px 0 10px ;}
 .ui-dialog .popInner .panelCommentT{ padding:6px 10px 0 0; float:left;}
