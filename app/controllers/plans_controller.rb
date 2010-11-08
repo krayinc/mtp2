@@ -16,13 +16,13 @@ class PlansController < ApplicationController
   # GET /plans/1
   # GET /plans/1.xml
   def show
+    @map = {}
     @plan = Plan.find(params[:id])
     @parmalink = request.protocol << request.raw_host_with_port << request.request_uri
     @path = []
     @plan.destinations.each do |destination|
       @path << { :latitude => destination.spot.latitude, :longitude => destination.spot.longitude }
     end
-    @map = {:latitude => '35.685692', :longitude => '139.756694'}
     if @plan.destinations.length > 0 then
       @map[:latitude] = @plan.destinations[0].spot.latitude
       @map[:longitude] = @plan.destinations[0].spot.longitude

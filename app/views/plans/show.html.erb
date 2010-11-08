@@ -54,6 +54,7 @@
         <h3 class="mapH"><%= image_tag 'plan/couse_t.gif', :alt => 'コースマップ', :title => 'コースマップ' %></h3>
         <div class="planMap">
           <p class="map">
+            <%- @map = {:latitude => '35.676995', :longitude => '139.744849'} if @map.empty? %>
             <%= map_tag({
               :longitude    => @map[:latitude],
               :latitude     => @map[:longitude],
