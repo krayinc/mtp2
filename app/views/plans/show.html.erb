@@ -11,12 +11,12 @@
               <!--planName-->
               <div class="planNameWrapper clearfix">
                 <div class="planName">
-                  <h2 class="planNameH"><%= notice %><img src="../images/plan/icon_under_plan.jpg" alt="<%= plan_status_label @plan.status %>" title="<%= plan_status_label @plan.status %>"></h2>
+                  <h2 class="planNameH"><%= notice %><%- if @plan.status == 1 %><%= image_tag 'plan/icon_under_plan.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 2 %><%= image_tag 'plan/icon_under_travel.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 3 %><%= image_tag 'plan/icon_memory.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- end %></h2>
                 </div>
                 <div class="eval">
-                  <img src="../images/plan/lead_eval.gif" alt="このプランを評価" title="このプランを評価">
-                  <span id='btn-unvote' style='display:none;'><%= link_to image_tag('/images/plan/btn_eval.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span>
-                  <span id='btn-vote' style='display:none;'><%= link_to image_tag('/images/plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
+                  <%= image_tag 'plan/lead_eval.gif', :alt => 'このプランを評価', :title=>'このプランを評価' %>
+                  <span id='btn-unvote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span>
+                  <span id='btn-vote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
                 </div>
               </div>
               <!--planName-->
@@ -25,17 +25,17 @@
               <div class="profilePic"><%= image_tag @plan.owner.profile_image_url, :width => 26 %></div>
               <div class="profileName"><%= @plan.owner.name %></div>
               <div class="feed clearfix">
-              <p class="face"><img src="../images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+              <p class="face"><%= image_tag 'plan/face_icon.gif', :alt => 'みんなの評価', :title => 'みんなの評価' %></p>
               <p class="faceNum">&nbsp;<%= @plan.total_votes %>pt&nbsp;</p>
               <p class="tweet">
                 <a href="http://twitter.com/share" class="twitter-share-button"
                   data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
                   data-counturl="<%= @parmalink %>"
                   data-lang="ja">Tweet</a>
-                <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+              <%= javascript_include_tag 'http://platform.twitter.com/widgets.js' %></script>
               </p>
-              <p class="share"><a name="fb_share" type="icon" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
-              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:80px;" allowTransparency="true"></iframe></p>
+              <p class="share"><a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
+              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=18" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:23px;" allowTransparency="true"></iframe></p>
               </div>
               </div>
               <!--icon-->
@@ -51,7 +51,7 @@
         </div>
         <!--plantitle-->
         <!--map-->
-        <h3 class="mapH"><img src="../images/plan/couse_t.gif" alt="コースマップ" title="コースマップ"></h3>
+        <h3 class="mapH"><%= image_tag 'plan/couse_t.gif', :alt => 'コースマップ', :title => 'コースマップ' %></h3>
         <div class="planMap">
           <p class="map">
             <%= map_tag({
@@ -63,19 +63,19 @@
               :coordinates  => @path }) %>
           </p>
           <div class="photoCtl clearfix">
-          <p class="directL"><img src="../images/plan/map_derect_l.gif" alt="前へ" title="前へ"></p>
+          <p class="directL"><%= image_tag 'plan/map_derect_l.gif', :alt => '前へ', :title => '前へ' %></p>
           <div class="photo">
           <%- @plan.destinations.each do |destination| -%>
             <%- destination.photos.each do |photo| %>
-            <p class="pic"><%= image_tag photo.photo_file_name %></p>
+            <p class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.png'), :size => '56x56' %></p>
             <%- end %>
           <%- end %>
           </div>
-          <p class="directR"><img src="../images/plan/map_derect_r.gif" alt="次へ" title="次へ"></p>
+          <p class="directR"><%= image_tag 'plan/map_derect_r.gif', :alt => '次へ', :title => '次へ' %></p>
           </div>
         </div>
         <!--map-->
-        <h3 class="scheduleH"><img src="../images/plan/schedule_t.gif" alt="スケジュール" title="スケジュール"></h3>
+        <h3 class="scheduleH"><%= image_tag 'plan/schedule_t.gif', :alt => 'スケジュール', :title => 'スケジュール' %></h3>
         <h4 class="scheduleDate">行き先 (<%= @plan.destinations.length %>)</h4>
         <div class="schedule">
           <div class="scheduleInner">
@@ -83,12 +83,12 @@
             <%- @plan.destinations.each_with_index do |destination, index| -%>
             <!--planset-->
             <div class="planset clearfix">
-              <div class="pop"><%= image_tag '/images/plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br><%= destination.time %></div>
+              <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br><%= destination.time %></div>
               <div class="plan">
                 <div class="planWrapper clearfix">
-                <div class="pic"><%- if destination.spot.photos.length > 0 %><%= image_tag destination.spot.photos[0].photo_file_name %><%- else %><%= image_tag '/images/no_image.png' %><%- end %></div>
+                <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.png'), :size => '56x56' %></div>
                 <div class="txt">
-                  <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><img src="../images/plan/star_on.gif" alt="★" title="★"><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><img src="../images/plan/star_no.gif" alt="★" title="★"><%- end -%></p>
+                  <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
                   <h5><%= destination.spot.name %></h5>
                   <p class="detail"><%= destination.spot.annotation %></p>
                 </div>
@@ -110,7 +110,7 @@
                   </table>
                     <div class="spotfeed clearfix">
 
-                      <p class="spotEval"><img src="../images/plan/spot_eval_t.gif" alt="このスポットを評価する" title="このスポットを評価する"></p>
+                      <p class="spotEval"><%= image_tag 'plan/spot_eval_t.gif', :alt => 'このスポットを評価する', :title => 'このスポットを評価する' %></p>
                       <div class='spotEvalNum' id='star-<%= index %>'>
                       <form>
                         <select name='selrate'>
@@ -125,8 +125,6 @@
                       </form>
                       </div>
                     </p>
-                      <p class="tweet" style="display: none;"><img src="../images/plan/icon_tweet.gif" alt="Tweet" title="Tweet"></p>
-                      <p class="share" style="display: none;"><img src="../images/plan/icon_share.gif" alt="Share" title="Share"></p>
                       <script type='text/javascript'>
                         /**
                          * Ratings
@@ -151,14 +149,14 @@
                         });
                       </script>
                     </div>
-                    <p class="closeBtn"><img src="../images/plan/close_btn_off.gif" alt="CLOSE" title="CLOSE"></p>
+                    <p class="closeBtn"><%= image_tag 'plan/close_btn_off.gif', :alt => 'CLOSE', :title => 'CLOSE' %></p>
 
                   </div>
                 </div>
               </div>
             </div>
             <!--planset-->
-            <div class="planDirect"><img src="../images/plan/plan_direct.gif" alt="02" title="02"></div>
+            <div class="planDirect"><%= image_tag 'plan/plan_direct.gif', :alt => '02', :title => '02' %></div>
             <script type='text/javascript'>
               /**
                * Ratings
