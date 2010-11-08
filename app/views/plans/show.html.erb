@@ -11,7 +11,7 @@
               <!--planName-->
               <div class="planNameWrapper clearfix">
                 <div class="planName">
-                  <h2 class="planNameH"><%= notice %><%= image_tag 'plan/icon_under_plan.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %></h2>
+                  <h2 class="planNameH"><%= notice %><%- if @plan.status == 1 %><%= image_tag 'plan/icon_under_plan.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 2 %><%= image_tag 'plan/icon_under_travel.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 3 %><%= image_tag 'plan/icon_memory.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- end %></h2>
                 </div>
                 <div class="eval">
                   <%= image_tag 'plan/lead_eval.gif', :alt => 'このプランを評価', :title=>'このプランを評価' %>
@@ -34,8 +34,8 @@
                   data-lang="ja">Tweet</a>
               <%= javascript_include_tag 'http://platform.twitter.com/widgets.js' %></script>
               </p>
-              <p class="share"><a name="fb_share" type="icon" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
-              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=80" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:80px;" allowTransparency="true"></iframe></p>
+              <p class="share"><a name="fb_share" type="button_count" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
+              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=standard&show_faces=true&width=450&action=like&colorscheme=light&height=18" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:335px; height:23px;" allowTransparency="true"></iframe></p>
               </div>
               </div>
               <!--icon-->
