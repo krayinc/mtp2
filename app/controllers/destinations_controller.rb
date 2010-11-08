@@ -15,6 +15,7 @@ class DestinationsController < ApplicationController
         :longitude => spot.longitude,
         :zoom      => 14
       }
+      @destination.spot = @plan.destinations.last.spot
     end
   end
 

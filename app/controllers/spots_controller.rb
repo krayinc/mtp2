@@ -32,7 +32,13 @@ class SpotsController < ApplicationController
   # GET /spots/new
   # GET /spots/new.xml
   def new
-    @spot = Spot.new(:latitude => Spot::DEFAULT_POSITION[:latitude], :longitude => Spot::DEFAULT_POSITION[:longitude])
+    if params[:latitude] and params[:longitude]
+      @spot = Spot.new(:latitude => params[:latitude], :longitude => params[:longitude])
+      @zoom = 14
+    else
+      @spot = Spot.new(:latitude => Spot::DEFAULT_POSITION[:latitude], :longitude => Spot::DEFAULT_POSITION[:longitude])
+      @zoom = Spot::DEFAULT_POSITION[:zoom]
+    end
 
     respond_to do |format|
       format.js
@@ -44,6 +50,7 @@ class SpotsController < ApplicationController
   # GET /spots/1/edit
   def edit
     @spot = Spot.find(params[:id])
+    @zoom = 17
   end
 
   # POST /spots

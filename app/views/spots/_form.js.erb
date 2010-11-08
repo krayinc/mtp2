@@ -7,13 +7,7 @@ $('#spot_form_dialog').dialog({
   resizable: false,
   closeOnEscape: false,
   open: function() {
-    <%=
-      if @spot.new_record?
-        gmap :spot_select_map, Spot::DEFAULT_POSITION[:latitude], Spot::DEFAULT_POSITION[:longitude], Spot::DEFAULT_POSITION[:zoom]
-      else
-        gmap :spot_select_map, @spot.latitude, @spot.longitude, 17
-      end
-    %>
+    <%= gmap :spot_select_map, @spot.latitude, @spot.longitude, @zoom %>
   }
 });
 $.gritter.add({title: 'MTP', text: 'マーカーをドラッグして、正しい位置にドロップしてください'});
