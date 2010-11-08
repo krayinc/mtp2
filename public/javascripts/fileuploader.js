@@ -566,7 +566,6 @@ qq.extend(qq.FileUploader.prototype, {
                 e.stopPropagation();
             },
             onLeaveNotDescendants: function(e){
-                dropArea = uploader._find(uploader._element, 'drop');
                 qq.removeClass(dropArea, self._classes.dropActive);
             },
             onDrop: function(e){
