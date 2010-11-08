@@ -4,16 +4,8 @@ describe DestinationsController do
   describe "routing" do
     pending "add some examples to (or delete) #{__FILE__}"
 =begin
-    it "recognizes and generates #index" do
-      { :get => "/destinations" }.should route_to(:controller => "destinations", :action => "index")
-    end
-
     it "recognizes and generates #new" do
       { :get => "/destinations/new" }.should route_to(:controller => "destinations", :action => "new")
-    end
-
-    it "recognizes and generates #show" do
-      { :get => "/destinations/1" }.should route_to(:controller => "destinations", :action => "show", :id => "1")
     end
 
     it "recognizes and generates #edit" do
