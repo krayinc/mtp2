@@ -60,6 +60,14 @@
     <p id="copy"><img src="/images/copyright.gif" alt="&copy; KRAY Inc. All rights reserved." title="&copy; KRAY Inc. All rights reserved."></p>
   </div>
 </div>
+<script type='text/javascript'>
+  $(function(){
+    $("img").lazyload({
+      placeholder : "/images/gray.png",
+      effect : "fadeIn"
+    });
+  });
+</script>
 <%= yield :javascripts %>
 </body>
 </html>
