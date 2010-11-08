@@ -9,7 +9,14 @@
   font-size: 0;
   background-image: url(/images/add_photo.png);
 }
-.qq-upload-button-hover {}
+
+.qq-upload-button input {
+  width: 45px;
+  height: 45px;
+  font-size: 0;
+}
+
+.qq-upload-button-hover { background-color: orange;}
 .qq-upload-button-focus {outline:1px dotted black;}
 
 .qq-upload-drop-area {

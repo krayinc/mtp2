@@ -24,7 +24,7 @@ body > #tabiplus {height: auto;}
 div#main{width:980px;padding:0 25px 37px;height: auto; }
 #header{ width:1030px;padding:0; margin:0;background :#ffffff url(../images/header_bg.gif) no-repeat center top;}
 #header ul#gnavi{padding:0; margin:0; font-size:0;line-height :0;}
-#header #logo{padding:5px 18px 20px 25px; margin:0; float:left;}
+#header #logo{padding:5px 18px 18px 25px; margin:0; float:left;}
 #header #gnaviWrapper{margin :16px 0 0;padding:0 0 0 20px; float:left;background : url(../images/menu_line.gif) no-repeat left top;}
 #header ul#gnavi li{float:left; list-style:none; padding:4px 29px 0 0; margin:0;}
 #header #login {float:right;background : url(../images/login_bg.gif) no-repeat left top; width:223px; padding:0 23px 0 0; height:34px;}
@@ -45,9 +45,9 @@ div#main{width:980px;padding:0 25px 37px;height: auto; }
 .clearfix {overflow:hidden;zoom: 100%;}
 .clearfix:after {content: ".";display: block; visibility: hidden;height: 0.1px; font-size: 0.1em;line-height: 0;clear: both;}
 
-
-form > li {
-  list-style-type: none;
+#mainArea .photo img {
+  border:1px solid #D3D3D3;
+  margin:0 4px 4px 0;
 }
 
 .photo_selector .ui-selecting { background: #FECA40; }

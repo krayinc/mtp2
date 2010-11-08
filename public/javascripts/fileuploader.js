@@ -244,7 +244,9 @@ qq.obj2url = function(obj, temp, prefixDone){
 //
 
 var qq = qq || {};
-    
+
+qq.uploaders = new Array();
+
 /**
  * Creates upload button, validates upload, but doesn't create file list or dd. 
  */
@@ -475,6 +477,8 @@ qq.FileUploaderBasic.prototype = {
  * @inherits qq.FileUploaderBasic
  */
 qq.FileUploader = function(o){
+    qq.uploaders.push(this);
+
     // call parent constructor
     qq.FileUploaderBasic.apply(this, arguments);
     
@@ -554,19 +558,31 @@ qq.extend(qq.FileUploader.prototype, {
         var dz = new qq.UploadDropZone({
             element: dropArea,
             onEnter: function(e){
-                qq.addClass(dropArea, self._classes.dropActive);
-                e.stopPropagation();
+                var dropArea;
+                for (var uploader in qq.uploaders) {
+                  dropArea = uploader._find(uploader._element, 'drop');
+                  qq.addClass(dropArea, self._classes.dropActive);
+                  e.stopPropagation();
+                }
             },
             onLeave: function(e){
                 e.stopPropagation();
             },
             onLeaveNotDescendants: function(e){
-                qq.removeClass(dropArea, self._classes.dropActive);  
+                var dropArea;
+                for (var uploader in qq.uploaders) {
+                  dropArea = uploader._find(uploader._element, 'drop');
+                  qq.removeClass(dropArea, self._classes.dropActive);
+                }
             },
             onDrop: function(e){
-                dropArea.style.display = 'none';
-                qq.removeClass(dropArea, self._classes.dropActive);
-                self._uploadFileList(e.dataTransfer.files);    
+                var dropArea;
+                for (var uploader in qq.uploaders) {
+                  dropArea = uploader._find(uploader._element, 'drop');
+                  dropArea.style.display = 'none';
+                  qq.removeClass(dropArea, self._classes.dropActive);
+                  self._uploadFileList(e.dataTransfer.files);
+                }
             }
         });
                 

@@ -8,28 +8,6 @@ describe DestinationsController do
     end
   end
 
-  describe "GET index" do
-    pending "add some examples to (or delete) #{__FILE__}"
-=begin
-    it "assigns all destinations as @destinations" do
-      Destination.stub(:all) { [mock_destination] }
-      get :index
-      assigns(:destinations).should eq([mock_destination])
-    end
-=end
-  end
-
-  describe "GET show" do
-    pending "add some examples to (or delete) #{__FILE__}"
-=begin
-    it "assigns the requested destination as @destination" do
-      Destination.stub(:find).with("37") { mock_destination }
-      get :show, :id => "37"
-      assigns(:destination).should be(mock_destination)
-    end
-=end
-  end
-
   describe "GET new" do
     pending "add some examples to (or delete) #{__FILE__}"
 =begin

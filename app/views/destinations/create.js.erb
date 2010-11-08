@@ -1,3 +1,9 @@
 $('#destination_form_dialog').dialog('close');
-$('<li></li>').appendTo('#destination_list #destinations').attr({'mtp-destination': <%= @destination.id %>}).html('<%= raw escape_javascript(render 'plans/destination', :destination => @destination) %>');
+$('<li></li>').appendTo('#destination_list #destinations')
+              .attr({
+                'mtp-destination': <%= @destination.id %>,
+                'mtp-spot': <%= @destination.spot_id %>,
+                'mtp-spot-latitude': '<%= @destination.spot.latitude %>',
+                'mtp-spot-longitude': <%= @destination.spot.longitude %>})
+              .html('<%= raw escape_javascript(render 'plans/destination', :destination => @destination) %>');
 $.gritter.add({title: 'MTP', text: '<%= escape_javascript @destination.spot.name %>を目的地に追加しました！'});

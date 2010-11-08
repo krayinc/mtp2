@@ -11,7 +11,7 @@ Mtp2::Application.routes.draw do
       get 'photos', :to => 'plans#photos'
       put 'photo',  :to => 'plans#update_photo'
     end
-    resources :destinations do
+    resources :destinations, :only => [:new, :create, :edit, :update, :destroy] do
       member do
         put 'position', :action => 'reorder'
       end

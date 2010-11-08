@@ -1,0 +1,11 @@
+#about h3 {
+  border-bottom: 1px dotted grey;
+}
+
+#about .section {
+  margin-bottom: 20px;
+}
+
+#about li {
+  margin-left: 20px;
+}

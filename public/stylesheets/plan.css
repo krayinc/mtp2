@@ -94,13 +94,22 @@ padding-bottom:6px;
 #mainArea .scheduleInner .plan .pic { float:left; padding:20px 0 0 17px;}
 #mainArea .scheduleInner .plan .txt { float:left; padding:0 0 0 17px;}
 #mainArea .scheduleInner .plan .txt .star { width:445px; text-align:right; padding-top:3px;}
+.nowOpen { visibility:visible;}
+.allOpenBtn,
+.closeBtnHat span,
+.switchHat { visibility:visible;
+}
 
 #mainArea .scheduleInner .plan .txt h5 {padding-bottom:3px; font-size:12px;}
-#mainArea .scheduleInner .plan .txt .openBtn { width:435px; text-align:right; padding:10px 10px 6px 5px;}
-#mainArea .scheduleInner .plan .txt .closeBtn { width:506px; text-align:right; padding:10px 10px 6px 5px;}
+#mainArea .scheduleInner .plan .txt .detail { width:425px;}
+
+#mainArea .scheduleInner .plan .openBtn { width:513px; height:28px; text-align:right; padding:10px 10px 8px 5px; font-size:0px;}
+.allOpenBtn,.switchHat {background : url(../images/plan/open_btn_off.gif) no-repeat 14px 14px;}
+.nowOpen {background : url(../images/plan/close_btn_off.gif) no-repeat 14px 14px;}
+
 #mainArea .scheduleInner .planDirect {padding-left:362px;}
 
-#mainArea .scheduleInner .plan .txt .mapSmall {padding:20px 0 20px;}
+#mainArea .scheduleInner .plan .txt .mapSmall {padding:10px 0 20px;}
 
 
 #mainArea .scheduleInner .plan .spotDetail { width:512px;}
@@ -108,7 +117,7 @@ padding-bottom:6px;
 #mainArea .scheduleInner .plan .spotDetail th { text-align:left; font-weight:normal; width:112px; padding-left:10px;}
 #mainArea .scheduleInner .plan .spotDetail th , #mainArea .scheduleInner .plan .spotDetail td { padding:4px 0 4px; vertical-align:top;}
 
-#mainArea .spotfeed{float:left; padding:20px 0 0 ;}
+#mainArea .spotfeed{float:left; padding:20px 0 20px ;}
 #mainArea .spotfeed .spotEval{float:left;  padding:0;}
 #mainArea .spotfeed .spotEvalNum{float:left;background : url(../images/plan/spot_eval_bg.gif) no-repeat left top;padding:6px 0 0 20px; height:28px; width:96px;}
 #mainArea .spotfeed .tweet{background : url(../images/plan/feed_bg_tweet_l_w.gif) no-repeat right 5px;float:left;  padding:5px 10px 0 10px;}
@@ -253,3 +262,22 @@ position:relative;
 .ui-dialog .photoCtl .pic{ float:left; padding-right:6px;}
 .ui-dialog .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
 .ui-dialog .photoCtl .directR{ float:left;padding:10px 0 0 0;}
+
+.photoDropArea {
+  float: left;
+  display: inline;
+  width: 45px;
+  height: 45px;
+  margin: 0 4px 4px 0;
+  border: 1px solid #D3D3D3;
+}
+
+#mainArea .photoCtl .directL {
+  float: left;
+  padding: 10px 0 0 9px;
+}
+
+#mainArea .photoCtl .directR {
+  float:left;
+  padding:10px 0 0;
+}
