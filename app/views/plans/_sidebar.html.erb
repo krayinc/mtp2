@@ -1,5 +1,5 @@
 <div id="rightArea">
-  <p><img src="/images/side/comment_h.gif" alt="コメント" title="コメント"></p>
+  <p class="blockHeader"><img src="/images/side/comment_h.gif" alt="コメント" title="コメント"></p>
   <div id="comment">
     <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
       <%= render :partial => 'comment', :locals => {:comment => comment} %>
