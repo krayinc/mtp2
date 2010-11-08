@@ -19,7 +19,7 @@
       <%= f.hidden_field :spot_id %>
       <div class="stayTime clearfix">
         <p class="stayTimeT"><img src="/images/plan/panel_stay_time.gif" alt="滞在時間" title="滞在時間"></p>
-        <p class="stayTimeFormBox"><%= f.text_field :time, :class => 'stayTimeForm' %></p>
+        <p class="stayTimeFormBox"><%= f.text_field :time, :class => 'stayTimeForm', :placeholder => '例）10:30' %></p>
       </div>
       <div class="panelComment clearfix">
         <p class="panelCommentT"><img src="/images/plan/panel_comment.gif" alt="コメント" title="コメント"></p>
@@ -29,3 +29,6 @@
     <%- end -%>
   </div>
 </div>
+<script type='text/javascript'>
+  $('input[placeholder], textarea[placeholder]').placeholder();
+</script>

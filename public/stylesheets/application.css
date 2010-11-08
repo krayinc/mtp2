@@ -58,3 +58,5 @@ div#main{width:980px;padding:0 25px 37px;height: auto; }
 .gritter-item-wrapper {
   text-align: left;
 }
+
+.placeholder { color: #aaa; }
