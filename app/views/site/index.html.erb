@@ -38,7 +38,7 @@
           <p class="evalNum"><%= plan.total_votes %>pt</p>
         </div>
         <div class="pickupTour clearfix">
-          <div class="leftBoxPopurar"><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '270x160'), plan_path(plan) %></div>
+          <div class="leftBoxPopurar"><%- if plan.first_spot -%><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '270x160'), plan_path(plan) %><%- end -%></div>
           <div class="rightBoxPopurar">
             <div class="profile clearfix">
               <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
