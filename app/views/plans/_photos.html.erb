@@ -4,7 +4,7 @@
 <%- end -%>
 </ol>
 <br clear="both">
-<%= semantic_form_for @plan, :url => photo_plan_path(:id => @plan.id, :format => :js), :method => :put, :html => {:id => 'plan_photo_edit'}, :remote => true do |f| %>
-  <%= f.input :photo_id, :as => :hidden %>
-  <%= f.commit_button %>
+<%= form_for @plan, :url => photo_plan_path(:id => @plan.id, :format => :js), :method => :put, :html => {:id => 'plan_photo_edit'}, :remote => true do |f| %>
+  <%= f.hidden_field :photo_id %>
+  <%= f.submit %>
 <%- end -%>

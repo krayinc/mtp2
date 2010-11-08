@@ -1,6 +1,12 @@
-        <%- content_for :sidebar do -%>
-        <%= render 'sidebar' %>
-        <%- end -%>
+<%- content_for :sidebar do -%>
+<%= render 'sidebar' %>
+<%- end -%>
+
+<%- content_for :image_src do -%>
+  <%- if @plan.photo_id %>
+    <link rel="image_src" href="<%= @plan.photo.photo.url(:plan) %>">
+  <%- end -%>
+<%- end -%>
 
 <div id="mainArea">
         <!--plantitle-->
