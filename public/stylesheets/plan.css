@@ -253,3 +253,22 @@ position:relative;
 .ui-dialog .photoCtl .pic{ float:left; padding-right:6px;}
 .ui-dialog .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
 .ui-dialog .photoCtl .directR{ float:left;padding:10px 0 0 0;}
+
+.photoDropArea {
+  float: left;
+  display: inline;
+  width: 45px;
+  height: 45px;
+  margin: 0 4px 4px 0;
+  border: 1px solid #D3D3D3;
+}
+
+#mainArea .photoCtl .directL {
+  float: left;
+  padding: 10px 0 0 9px;
+}
+
+#mainArea .photoCtl .directR {
+  float:left;
+  padding:10px 0 0;
+}

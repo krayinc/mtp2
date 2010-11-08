@@ -7,7 +7,11 @@
       -%><%= link_to raw('<img src="/images/plan/delete_btn_off.gif" alt="削除" title="削除">'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => 'OK?', :remote => true, :method => :delete %><%-
     -%></p>
     <%= link_to 'スポットを編集', edit_spot_path(:id => destination.spot_id, :format => :js), :remote => true %>
-    <div class="photos"><%= destination_photo_list destination, :upload => true %></div><br clear="left">
+    <div class="photoCtl clearfix">
+      <p class="directL"><img src="/images/plan/map_derect_l.gif" alt="前へ" title="前へ"></p>
+      <div class="photo"><%= destination_photo_list destination, :upload => true %></div>
+      <p class="directR"><img src="/images/plan/map_derect_r.gif" alt="次へ" title="次へ"></p>
+    </div>
   </div>
 </div>
 <div class="edtDirect"><img src="/images/plan/plan_direct.gif" alt="" title=""></div>
