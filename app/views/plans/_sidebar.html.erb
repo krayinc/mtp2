@@ -1,29 +1,22 @@
 <div id="rightArea">
   <p class="blockHeader"><img src="/images/side/comment_h.gif" alt="コメント" title="コメント"></p>
   <div id="comment">
+    <div class="commentSubmit">
+    <%- unless logged_in? -%>
+      <p class="txtErea"><strong><%= link_to 'ログイン', login_path %> してこのプランにコメントしよう！</strong></p>
+    <%- else -%>
+      <p class="lead"><%= image_tag '/images/side/comment_txt.gif', :alt=>'コメントを入力して送信！', :title=>'コメントを入力して送信！' %></p> 
+      <%- comment = @plan.comments.build %>
+      <%- form_for comment, :remote => true, :html => {:style => 'margin:0px'} do |f| -%>
+        <%= f.hidden_field :commentable_id %>
+        <%= f.hidden_field :commentable_type %>
+        <p class="txtErea"><%= f.text_area :body, :size => '30x5', :class => 'commentbox' %></p>
+        <p class="submitBtn"><%= image_submit_tag '/images/side/comment_sub_btn.gif', :class => 'submit' %></p>
+      <%- end -%>
+    <%- end -%>
+    </div> 
     <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
       <%= render :partial => 'comment', :locals => {:comment => comment} %>
-    <%- end -%>
-  </div>
-
-  <h3>
-    コメント
-  </h3>
-  <div class='new-comment-box'>
-    <%- unless logged_in? -%>
-      <p><strong><%= link_to 'ログイン', login_path %> してこのプランにコメントしよう！</strong></p>
-    <%- else -%>
-      <%- comment = @plan.comments.build %>
-      <%- form_for comment, :remote => true do |f| -%>
-      <%= f.hidden_field :commentable_id %>
-      <%= f.hidden_field :commentable_type %>
-        <div class="field">
-          <%= f.text_area :body, :size => '30x5' %>
-        </div>
-        <div class="submit">
-          <%= f.submit 'コメントする' %>
-        </div>
-      <%- end -%>
     <%- end -%>
   </div>
 
