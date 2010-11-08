@@ -100,3 +100,132 @@ mtp.Geocoder.prototype = {
     return result;
   }
 }
+
+mtp.Router = function() {};
+
+mtp.Router.prototype = {
+  query: function(map, spots) {
+    this.map = map;
+    this.map.steps = new Array();
+    this.map.spots = spots;
+
+    if (spots.length <= 1) {
+      $.gritter.add({title: 'MTP', text: 'ルートを確認するには行き先を 2 ヶ所以上設定する必要があります'});
+      return;
+    }
+    this.clearAll();
+    var i;
+    var ds = new google.maps.DirectionsService();
+    var travelMode;
+//    if ($('input[name="travel_mode"]:checked').val() == 'walk') {
+      travelMode = google.maps.DirectionsTravelMode.WALKING;
+//    } else {
+//      travelMode = google.maps.DirectionsTravelMode.DRIVING;
+//    }
+    $.gritter.add({title: 'MTP', text: 'ルート取得中...'});
+    this.completedCount = 0;
+    var context;
+    for (i = 0; i < spots.length - 1; i++) {
+      context = {
+        map: this.map,
+        origin: spots[i],
+        destination: spots[i + 1],
+        currentRouter: this
+      }
+      ds.route({
+        avoidHighways:            false,
+        avoidTolls:               false,
+        destination:              new google.maps.LatLng(spots[i + 1].latitude, spots[i + 1].longitude),
+        optimizeWaypoints:        true,
+        origin:                   new google.maps.LatLng(spots[i].latitude, spots[i].longitude),
+        provideRouteAlternatives: true,
+        region:                   'jp',
+        travelMode:               travelMode,
+        unitSystem:               google.maps.DirectionsUnitSystem.METRIC,
+        waypoints:                []
+      }, $.proxy(this.queryCallback, context));
+    }
+  },
+
+  queryCallback: function(result, status) {
+    this.currentRouter.completedCount++;
+    switch (status) {
+      case google.maps.DirectionsStatus.OK:
+        router.draw(result, this);
+        var duration = 0;
+        jQuery.each(this.map.steps, function(index, step) {
+          duration += step.duration;
+        })
+        $('#required_time').text(duration.humanizedDuration());
+        break;
+      case google.maps.DirectionsStatus.INVALID_REQUEST:
+//        $.gritter.add('リクエストが無効です。');
+//        break;
+      case google.maps.DirectionsStatus.MAX_WAYPOINTS_EXCEEDED:
+//        $.gritter.add('経由地が多すぎます。経由地は最大 8 ヶ所です。');
+//        break;
+      case google.maps.DirectionsStatus.NOT_FOUND:
+//        $.gritter.add('出発地・目的地・経由地のいずれかが見つかりません。');
+//        break;
+      case google.maps.DirectionsStatus.OVER_QUERY_LIMIT:
+//        $.gritter.add('短期間にリクエストの制限回数を超えました。');
+//        break;
+      case google.maps.DirectionsStatus.REQUEST_DENIED:
+//        $.gritter.add('ルートサービスを使用できません。');
+//        break;
+      case google.maps.DirectionsStatus.ZERO_RESULTS:
+//        $.gritter.add('出発地・目的地間のルートが見つかりません。');
+//        break;
+      case google.maps.DirectionsStatus.UNKNOWN_ERROR:
+      default:
+        $.gritter.add('ルートの一部、または全部が取得できませんでした');
+        break;
+    }
+    if (this.currentRouter.completedCount == this.map.spots.length - 2) {
+      $.gritter.add({title: 'MTP', text: 'ルートの取得が完了しました。<br>ルートをクリックすると所要時間が表示されます。<br>（ルート・所要時間は徒歩によるものです）'})
+    }
+  },
+
+  clearAll: function() {
+    while (this.map.steps.length > 0) {
+      var step = this.map.steps.pop();
+      step.polyline.setMap(null);
+    }
+  },
+
+  draw: function(routes, context) {
+    var path = new Array();
+    var duration = 0;
+    jQuery.each(routes.routes[0].legs[0].steps, function(index, step) {
+      duration += step.duration.value;
+      jQuery.each(step.path, function(index, latlng) {
+        path.push(latlng);
+      })
+    });
+    var polyline = new google.maps.Polyline({
+      clickable: true,
+      geodesic: true,
+      map: this.map,
+      path: path,
+      strokeColor: '#0000FF',
+      strokeOpacity: 0.5,
+      strokeWeight: 5
+    });
+    polyline.duration     = duration;
+    polyline.startAddress = routes.routes[0].legs[0].start_address;
+    polyline.endAddress   = routes.routes[0].legs[0].end_address;
+    google.maps.event.addListener(polyline, 'mouseover', function(event) {
+      this.setOptions({strokeColor: '#FF0000'});
+    });
+    google.maps.event.addListener(polyline, 'mouseout', function(event) {
+      this.setOptions({strokeColor: '#0000FF'});
+    });
+    google.maps.event.addListener(polyline, 'click', function(event) {
+      $.gritter.add({title: 'MTP', text: context.origin.name + 'から' + context.destination.name + 'まで。<br>所要時間' + this.duration.humanizedDuration()});
+    });
+    this.map.steps.push({
+      polyline: polyline,
+      duration: duration
+    });
+  }
+}
