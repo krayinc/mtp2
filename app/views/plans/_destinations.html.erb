@@ -1,6 +1,6 @@
 <ul id="destinations" class="ui-sortable" style="list-style-type: none;">
 <%- @plan.destinations.each do |destination| -%>
-  <li mtp-destination="<%= destination.id %>" mtp-spot="<%= destination.spot_id %>">
+  <li mtp-destination="<%= destination.id %>" mtp-spot="<%= destination.spot_id %>" mtp-spot-latitude="<%= destination.spot.latitude %>" mtp-spot-longitude="<%= destination.spot.longitude %>">
     <%= render 'destination', :destination => destination %>
   </li>
 <%- end -%>
