@@ -246,6 +246,7 @@ qq.obj2url = function(obj, temp, prefixDone){
 var qq = qq || {};
 
 qq.uploaders = new Array();
+qq.uploadingCount = 0;
 
 /**
  * Creates upload button, validates upload, but doesn't create file list or dd. 
@@ -558,30 +559,27 @@ qq.extend(qq.FileUploader.prototype, {
         var dz = new qq.UploadDropZone({
             element: dropArea,
             onEnter: function(e){
-                var dropArea;
-                for (var uploader in qq.uploaders) {
-                  dropArea = uploader._find(uploader._element, 'drop');
-                  qq.addClass(dropArea, self._classes.dropActive);
-                  e.stopPropagation();
-                }
+                qq.addClass(dropArea, self._classes.dropActive);
+                e.stopPropagation();
             },
             onLeave: function(e){
                 e.stopPropagation();
             },
             onLeaveNotDescendants: function(e){
-                var dropArea;
-                for (var uploader in qq.uploaders) {
-                  dropArea = uploader._find(uploader._element, 'drop');
-                  qq.removeClass(dropArea, self._classes.dropActive);
-                }
+                dropArea = uploader._find(uploader._element, 'drop');
+                qq.removeClass(dropArea, self._classes.dropActive);
             },
             onDrop: function(e){
-                var dropArea;
-                for (var uploader in qq.uploaders) {
+                var dropArea, uploader;
+                for (var i = 0; i < qq.uploaders.length; i++) {
+                  uploader = qq.uploaders[i];
                   dropArea = uploader._find(uploader._element, 'drop');
                   dropArea.style.display = 'none';
                   qq.removeClass(dropArea, self._classes.dropActive);
-                  self._uploadFileList(e.dataTransfer.files);
+                  if (e.target == dropArea) {
+                    qq.uploadingRequest++;
+                    self._uploadFileList(e.dataTransfer.files);
+                  }
                 }
             }
         });
