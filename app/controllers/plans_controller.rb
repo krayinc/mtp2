@@ -46,7 +46,7 @@ class PlansController < ApplicationController
 
   # GET /plans/1/edit
   def edit
-    @plan = Plan.find(params[:id])
+    @plan = current_user.plans.find(params[:id])
   end
 
   # POST /plans
