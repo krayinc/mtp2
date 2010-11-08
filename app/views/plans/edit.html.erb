@@ -19,13 +19,62 @@
     </div>
   </div>
 
-  <div id="route_map_dialog" class="dialog" style="display: none;"><div id="route_map" class="google_map" style="width: 100%; height: 100%; background-color: red;"></div></div>
+  <div id="route_map_dialog" class="dialog" style="display: none;">
+    <div class="popInner">
+      <div id="routeMap" class="map" style="width: 690px; height: 360px;"></div>
+      <div class="photoCtl clearfix">
+      <p class="directL"><img src="/images/plan/map_derect_l.gif" alt="前へ" title="前へ"></p>
+      <div class="photo">
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      <p class="pic"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+      </div>
+      <p class="directR"><img src="/images/plan/map_derect_r.gif" alt="次へ" title="次へ"></p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script type="text/javascript">
+var router = new mtp.Router();
 function openRouteMap() {
+  var destinations = $('#destinations > [mtp-spot]');
+  if (destinations.length < 2) {
+    $.gritter.add({title: 'MTP', text: 'ルートを確認するには行き先を 2 ヶ所以上設定する必要があります'});
+    return false;
+  }
+  var spots = new Array();
+  $(destinations).each(function(index, destination) {
+    var $destination = $(destination);
+    spots.push({
+      id:        $destination.attr('mtp-spot'),
+      latitude:  $destination.attr('mtp-spot-latitude'),
+      longitude: $destination.attr('mtp-spot-longitude'),
+      name:      $("#destinations > [mtp-spot='" + $destination.attr('mtp-spot') + "'] [mtp-spot-name]").html()
+    });
+  });
+  console.info(spots);
   $('#route_map_dialog').dialog({
-    modal: true
+    title: 'ルート確認',
+    modal: true,
+    width: 712,
+    height: 474,
+    resizable: false,
+    closeOnEscape: false,
+    open: function() {
+      var map = <%= gmap :routeMap, Spot::DEFAULT_POSITION[:latitude], Spot::DEFAULT_POSITION[:longitude], Spot::DEFAULT_POSITION[:zoom] %>
+      router.query(map, spots);
+    }
   });
 }
 </script>
