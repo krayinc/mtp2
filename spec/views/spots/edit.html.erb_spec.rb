@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe "spots/edit.html.erb" do
+  pending "add some examples to (or delete) #{__FILE__}"
+=begin
   before(:each) do
     @spot = assign(:spot, stub_model(Spot,
       :new_record? => false
@@ -14,4 +16,5 @@ describe "spots/edit.html.erb" do
     assert_select "form", :action => spot_path(@spot), :method => "post" do
     end
   end
+=end
 end

@@ -1,0 +1,8 @@
+<div class="footContents">
+  <h2 class="title"><img src="/images/news/title.gif" alt="NEWS お知らせ" title="NEWS お知らせ"></h2>
+  <ul>
+    <% @news.each do |news| %>
+      <li><%= news.published_at.strftime('%Y/%m/%d') %> <%= link_to news.title, news_path(news) %></li>
+    <% end %>
+  </ul>
+</div>

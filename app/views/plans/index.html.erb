@@ -1,28 +1,35 @@
-<h1>Listing plans</h1>
+<%- content_for :sidebar do -%>
+<%#= render '/sidebar' %>
+<%- end -%>
 
-<table>
-  <tr>
-    <th>タイトル></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @plans.each do |plan| %>
-  <tr>
-    <td><%= plan.title %></td>
-    <td><%= link_to 'Show', plan %></td>
-    <%- if plan.owner === current_user -%>
-    <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-    <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
-    <%- else -%>
-    <td></td>
-    <td></td>
-    <%- end -%>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Plan', new_plan_path %>
+<div id="mainArea">
+  <h2 class="title"><img src="/images/plans/title.gif" alt="PLAN プラン" title="PLAN プラン"></h2>
+  <%- @plans.each do |plan| -%>
+    <div class="tour popular">
+      <div class="tourInner">
+        <div class="tourNameWrapper clearfix">
+          <p class="tourName"><%= link_to plan.title, plan_path(plan) %></p>
+          <p class="eval"><img src="/images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+          <p class="evalNum"><%= plan.total_votes %>pt</p>
+          <%- if plan.owner === current_user -%>
+            <div style="float: right; padding-top: 2px;">
+              <%= link_to raw('<img src="/images/plan/edit_btn_off.gif" alt="編集" title="編集">'), edit_plan_path(plan) %>
+              <%= link_to raw('<img src="/images/plan/delete_btn_off.gif" alt="削除" title="削除">'), plan, :confirm => 'Are you sure?', :method => :delete %>
+            </div>
+          <%- end -%>
+        </div>
+        <div class="pickupTour clearfix">
+          <div class="leftBoxPopurar"><%- if plan.first_spot -%><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '270x160'), plan_path(plan) %><%- end -%></div>
+          <div class="rightBoxPopurar">
+            <div class="profile clearfix">
+              <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
+              <p class="profileName">by <%= plan.owner.name %></p>
+            </div>
+            <p class="photo"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+            <p class="comment"><%= truncate strip_tags(plan.outline), :length => 20 %><br><%= plan.updated_at.strftime("%Y/%m/%d") %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%- end -%>
+</div>

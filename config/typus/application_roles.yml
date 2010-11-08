@@ -6,3 +6,4 @@ admin:
   Spot: create, read, update, delete
   Plan: create, read, update, delete
   Destination: create, read, update, delete
+  News: create, read, update, delete

@@ -3,7 +3,7 @@ $('#destination_form_dialog').dialog({
   title: '行き先設定',
   modal: true,
   width: 712,
-  height: 898,
+  height: 863,
   resizable: false,
   closeOnEscape: false,
   open: function() {
@@ -41,6 +41,7 @@ $('#search_results').bind('change', function() {
   $('#new_destination input,#new_destination button,#new_destination textarea').removeAttr('disabled');
   $('#destination_spot_id').val($(this).val());
   mtp.maps['destination_select_map'].setCenter(new google.maps.LatLng($(spot).attr('mtp-latitude'), $(spot).attr('mtp-longitude')));
+  mtp.maps['destination_select_map'].setZoom(16);
 });
 <%- unless @destination.new_record? -%>
 mtp.maps['destination_select_map'].currentMarker = new google.maps.Marker({

@@ -1,6 +1,16 @@
 class SpotPhoto < ActiveRecord::Base
+  STYLES = {
+    :list        => '45x45',
+    :plan        => '90x90',
+    :destination => '56x56',
+  }
+
   belongs_to :user
   belongs_to :spot
+
+  validates :user, :presence => true
+  validates :spot, :presence => true
+  validates_attachment_presence :photo
 
   if Rails.env.production?
     has_attached_file :photo,
@@ -13,9 +23,9 @@ class SpotPhoto < ActiveRecord::Base
       :path   => "/spot/photos/:hashed_name/:style:photo_extension",
       :url    => "/spot/photos/:hashed_name/:style:photo_extension",
       :styles => {
-        :list        => '45x45#',
-        :plan        => '90x90#',
-        :destination => '56x56#',
+        :list        => "#{STYLES[:list]}#",
+        :plan        => "#{STYLES[:plan]}#",
+        :destination => "#{STYLES[:destination]}#",
         :original    => '100%',
       }
   else
@@ -23,9 +33,9 @@ class SpotPhoto < ActiveRecord::Base
       :path => ":rails_root/public/images/upload/spot_photos/:hashed_name/:style:photo_extension",
       :url => "/images/upload/spot_photos/:hashed_name/:style:photo_extension",
       :styles => {
-        :list        => '45x45#',
-        :plan        => '90x90#',
-        :destination => '56x56#',
+        :list        => "#{STYLES[:list]}#",
+        :plan        => "#{STYLES[:plan]}#",
+        :destination => "#{STYLES[:destination]}#",
         :original    => '100%',
       }
   end

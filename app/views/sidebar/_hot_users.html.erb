@@ -1,0 +1,12 @@
+<p><img src="/images/side/user_h.gif" alt="いま注目のユーザー" title="ま注目のユーザー"></p>
+<div id="user">
+  <%- @hot_users.each do |user| -%>
+  <div class="set clearfix">
+    <p class="icon"><%= image_tag user.profile_image_url, :size => '26x26' %></p>
+    <div class="txt"><p><%= user.name %></p></div>
+  </div>
+  <%- end -%>
+</div>
+<div class="userLink">
+  <%# p class="lineup"><%%= link_to raw('<img src="/images/side/user_btn_off.gif" alt="ユーザー一覧はこちら" title="ユーザー一覧はこちら">'), users_path %%></p %>
+</div>

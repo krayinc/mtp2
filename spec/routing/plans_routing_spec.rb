@@ -2,7 +2,8 @@ require "spec_helper"
 
 describe PlansController do
   describe "routing" do
-
+    pending "add some examples to (or delete) #{__FILE__}"
+=begin
     it "recognizes and generates #index" do
       { :get => "/plans" }.should route_to(:controller => "plans", :action => "index")
     end
@@ -30,6 +31,6 @@ describe PlansController do
     it "recognizes and generates #destroy" do
       { :delete => "/plans/1" }.should route_to(:controller => "plans", :action => "destroy", :id => "1")
     end
-
+=end
   end
 end

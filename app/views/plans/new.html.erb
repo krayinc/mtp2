@@ -1,1 +1,7 @@
-<%= render 'form' %>
+<%- content_for :sidebar do -%>
+<%= render '/sidebar', :contents => [:help_new_plan] %>
+<%- end -%>
+
+<div id="mainArea">
+  <%= render 'form' %>
+</div>

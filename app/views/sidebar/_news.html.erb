@@ -1,0 +1,8 @@
+<p><img src="/images/side/info_h.gif" alt="旅PLuSからのお知らせ" title="旅PLuSからのお知らせ"></p>
+<div id="info">
+  <%- @news.each do |news| -%>
+    <div class="set clearfix">
+      <div class="txt"><p><%= news.published_at.strftime('%Y/%m/%d') %><br><%= link_to news.title, news_path(news) %></p></div>
+    </div>
+  <%- end -%>
+</div>

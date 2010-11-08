@@ -1,6 +1,8 @@
 Mtp2::Application.routes.draw do
-  root :to => "home#index"
-  match "home/dev" => "home#dev"
+  root  :to => 'site#index'
+  match 'about' => 'site#about'
+  match 'terms' => 'site#terms'
+  match 'home/dev' => 'site#dev'
   resources :comments
   resources :plans do
     member do
@@ -22,6 +24,7 @@ Mtp2::Application.routes.draw do
     end
     resources :photos, :only => [:index, :show]
   end
+  resources :news, :only => [:index, :show]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
