@@ -14,7 +14,7 @@
                   <h2 class="planNameH"><%= @plan.title %><%- if @plan.status == 1 %><%= image_tag 'plan/icon_under_plan.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 2 %><%= image_tag 'plan/icon_under_travel.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 3 %><%= image_tag 'plan/icon_memory.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- end %></h2>
                 </div>
                 <div class="eval">
-                  <%= image_tag 'plan/lead_eval.gif', :alt => 'このプランを評価', :title=>'このプランを評価' %><span id='btn-unvote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span><span id='btn-vote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
+                  <%= image_tag 'plan/lead_eval.gif', :alt => 'このプランを評価', :title=>'このプランを評価' %><span id='btn-unvote' style='display:none;'><%= link_to image_tag('plan/btn_eval_done.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span><span id='btn-vote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
                 </div>
               </div>
               <!--planName-->
