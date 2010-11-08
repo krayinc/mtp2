@@ -46,24 +46,12 @@
 </div>
 
 <script type="text/javascript">
-var router = new mtp.Router();
 function openRouteMap() {
   var destinations = $('#destinations > [mtp-spot]');
   if (destinations.length < 2) {
     $.gritter.add({title: 'MTP', text: 'ルートを確認するには行き先を 2 ヶ所以上設定する必要があります'});
     return false;
   }
-  var spots = new Array();
-  $(destinations).each(function(index, destination) {
-    var $destination = $(destination);
-    spots.push({
-      id:        $destination.attr('mtp-spot'),
-      latitude:  $destination.attr('mtp-spot-latitude'),
-      longitude: $destination.attr('mtp-spot-longitude'),
-      name:      $("#destinations > [mtp-spot='" + $destination.attr('mtp-spot') + "'] [mtp-spot-name]").html()
-    });
-  });
-  console.info(spots);
   $('#route_map_dialog').dialog({
     title: 'ルート確認',
     modal: true,
@@ -72,8 +60,7 @@ function openRouteMap() {
     resizable: false,
     closeOnEscape: false,
     open: function() {
-      var map = <%= gmap :routeMap, Spot::DEFAULT_POSITION[:latitude], Spot::DEFAULT_POSITION[:longitude], Spot::DEFAULT_POSITION[:zoom] %>
-      router.query(map, spots);
+      mtp.loadMapWithRoutes('routeMap');
     }
   });
 }

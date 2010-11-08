@@ -54,6 +54,30 @@ function MM_preloadImages() { //v3.0
 var mtp = {};
 mtp.maps = {};
 
+mtp.loadMapWithRoutes = function(elemId) {
+  var destinations = $('#destinations [mtp-spot]');
+  if (destinations.length < 2) {
+    return false;
+  }
+  var spots = new Array();
+  $(destinations).each(function(index, destination) {
+    var $destination = $(destination);
+    spots.push({
+      id:        $destination.attr('mtp-spot'),
+      latitude:  $destination.attr('mtp-spot-latitude'),
+      longitude: $destination.attr('mtp-spot-longitude'),
+      name:      $("#destinations [mtp-spot='" + $destination.attr('mtp-spot') + "'] [mtp-spot-name]").html()
+    });
+  });
+  var router = new mtp.Router();
+  var map = new google.maps.Map($('#' + elemId)[0], {
+    zoom: 14,
+    center: new google.maps.LatLng(spots[0].latitude, spots[0].longitude),
+    mapTypeId: google.maps.MapTypeId.ROADMAP
+  });
+  router.query(map, spots);
+}
+
 mtp.Geocoder = function() {
   this.geocoder = new google.maps.Geocoder();
 }
@@ -151,7 +175,7 @@ mtp.Router.prototype = {
     this.currentRouter.completedCount++;
     switch (status) {
       case google.maps.DirectionsStatus.OK:
-        router.draw(result, this);
+        this.currentRouter.draw(result, this);
         var duration = 0;
         jQuery.each(this.map.steps, function(index, step) {
           duration += step.duration;

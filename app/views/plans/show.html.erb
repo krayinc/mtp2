@@ -51,16 +51,7 @@
         <!--map-->
         <h3 class="mapH"><%= image_tag 'plan/couse_t.gif', :alt => 'コースマップ', :title => 'コースマップ' %></h3>
         <div class="planMap">
-          <p class="map">
-            <%- @map = {:latitude => '35.676995', :longitude => '139.744849'} if @map.empty? %>
-            <%= map_tag({
-              :longitude    => @map[:latitude],
-              :latitude     => @map[:longitude],
-              :zoom         => 14,
-              :width        => '640',
-              :height       => '320' },{
-              :coordinates  => @path }) %>
-          </p>
+          <div id="routeMap" class="map" style="width: 690px; height: 345px;"></div>
           <div class="photoCtl clearfix">
           <p class="directL"><%= image_tag 'plan/map_derect_l.gif', :alt => '前へ', :title => '前へ' %></p>
           <div class="photo">
@@ -76,19 +67,19 @@
         <!--map-->
         <h3 class="scheduleH"><%= image_tag 'plan/schedule_t.gif', :alt => 'スケジュール', :title => 'スケジュール' %></h3>
         <h4 class="scheduleDate">行き先 (<%= @plan.destinations.length %>)</h4>
-        <div class="schedule">
+        <div class="schedule" id="destinations">
           <div class="scheduleInner">
 
             <%- @plan.destinations.each_with_index do |destination, index| -%>
             <!--planset-->
-            <div class="planset clearfix">
+            <div class="planset clearfix" mtp-spot="<%= destination.spot_id %>" mtp-spot-latitude="<%= destination.spot.latitude %>" mtp-spot-longitude="<%= destination.spot.longitude %>">
               <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br><%= destination.time %></div>
               <div class="plan">
                 <div class="planWrapper clearfix">
                 <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.png'), :size => '56x56' %></div>
                 <div class="txt">
                   <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
-                  <h5><%= destination.spot.name %></h5>
+                  <h5 mtp-spot-name><%= destination.spot.name %></h5>
                   <p class="detail"><%= destination.spot.annotation %></p>
                 </div>
                 <div class="txt">
@@ -233,3 +224,7 @@
 </script>
 
 </div>
+
+<script type="text/javascript">
+mtp.loadMapWithRoutes('routeMap');
+</script>
