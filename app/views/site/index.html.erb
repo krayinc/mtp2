@@ -44,7 +44,7 @@
               <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
               <p class="profileName">by <%= plan.owner.name %></p>
             </div>
-            <p class="photo"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"><img src="/images/plan/map_pic.jpg" alt="写真" title="写真"></p>
+            <p class="photo"><img src="http://tabiplus.s3.amazonaws.com/demo/nanzenji.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/kamogawa.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/simogamo.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/stage1.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/stage2.jpg" alt="写真" title="写真"></p>
             <p class="comment"><%= truncate strip_tags(plan.outline), :length => 20 %><br><%= plan.updated_at.strftime("%Y/%m/%d") %></p>
           </div>
         </div>
