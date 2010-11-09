@@ -60,4 +60,8 @@ div#main{width:980px;padding:0 25px 55px;height: auto; }
   text-align: left;
 }
 
+.gritter-title, .gritter-item p {
+  color: white;
+}
+
 .placeholder { color: #aaa; }
