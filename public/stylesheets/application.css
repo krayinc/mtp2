@@ -36,7 +36,7 @@ div#main{width:980px;padding:0 25px 37px;height: auto; }
 #mainArea{float:left; width:712px;padding:0; margin:0;}
 #popMain{ width:712px;padding:0; margin:0;position:relative;}
 #rightArea{float:right; width:247px;padding:0; margin:0;}
-#footer{width:980px;padding:15px 25px 0; margin:0;background : url(../images/footer_bg.gif) no-repeat left top;}
+#footer{width:980px;padding:15px 25px 0; margin:0;background : url(../images/footer_bg.gif) no-repeat left top;position:absolute;bottom:0px;height:37px;}
 #footer #copy{float:right;padding:0 0 23px; margin:0;}
 #footer #footLink{ float:left;padding:0; margin:0;}
 
