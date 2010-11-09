@@ -124,7 +124,7 @@ padding-bottom:6px;
 #mainArea .scheduleDateBtn img{ position:absolute;top:;left:705px;} 
 
 /* edit */
-#mainArea .editPict{ float:left; padding:0 31px 0 0; width:90px;}
+#mainArea .editPict{ float:left; padding:0 31px 0 23px; width:90px;}
 #mainArea .editOutline{ float:left;width:540px;}
 #mainArea .editOutline .planNameBox{width:328px; height:14px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top; padding: 8px 10px 6px 10px;}
 #mainArea .editOutline .planNameT{ float:left; padding:10px 6px 0 0;}
