@@ -1,7 +1,7 @@
 Typus.setup do |config|
 
   # Application name.
-  config.admin_title = "tabiplus"
+  config.admin_title = '旅PLuS'
   # config.admin_sub_title = ""
 
   # When mailer_sender is set, password recover is enabled. This email
@@ -21,6 +21,6 @@ Typus.setup do |config|
   # config.password = "columbia"
 
   # Define available languages on the admin interface.
-  # config.available_locales = [:en]
+  config.available_locales = [:ja]
 
 end

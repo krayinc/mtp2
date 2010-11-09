@@ -7,3 +7,11 @@ admin:
   Plan: create, read, update, delete
   Destination: create, read, update, delete
   News: create, read, update, delete
+  Comment: create, read, update, delete
+  DestinationPhoto: create, read, update, delete
+  Ranking: create, read, update, delete
+  Rating: create, read, update, delete
+  SiteConfig: create, read, update, delete
+  SpotPhoto: create, read, update, delete
+  User: create, read, update, delete
+  Voting: create, read, update, delete

@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+SiteConfig.create(
+  :name    => 'pickup_plan_id',
+  :value   => '1',
+  :comment => 'トップページのPICKUPに表示されるプランのID'
+) unless SiteConfig['novelty_spec_note']

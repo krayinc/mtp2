@@ -41,3 +41,83 @@ News:
   filters:
   search: title
   application: tabiplus
+
+Comment:
+  fields:
+    default: commenter_id, commentable_id, body, commenter
+    form: commenter_id, commentable_id, body, commenter
+  order_by:
+  relationships: commenter
+  filters:
+  search:
+  application: tabiplus
+
+DestinationPhoto:
+  fields:
+    default: destination_id, photo_id, destination, photo
+    form: destination_id, photo_id, destination, photo
+  order_by:
+  relationships: destination, photo
+  filters:
+  search:
+  application: tabiplus
+
+Ranking:
+  fields:
+    default: rankable_id, point, range
+    form: rankable_id, point, range
+  order_by:
+  relationships:
+  filters:
+  search:
+  application: tabiplus
+
+Rating:
+  fields:
+    default: user_id, ratable_id, score, dimension, user
+    form: user_id, ratable_id, score, dimension, user
+  order_by:
+  relationships: user
+  filters:
+  search:
+  application: tabiplus
+
+SiteConfig:
+  fields:
+    default: name
+    form: name, value, comment
+  order_by:
+  relationships:
+  filters:
+  search: name
+  application: tabiplus
+
+SpotPhoto:
+  fields:
+    default: user_id, spot_id, photo_file_name, spot, user
+    form: user_id, spot_id, photo_file_name, spot, user
+  order_by:
+  relationships: spot, user
+  filters:
+  search:
+  application: tabiplus
+
+User:
+  fields:
+    default: twitter_id, login, access_token, access_secret, remember_token, remember_token_expires_at, name, location, description, profile_image_url, url, protected, profile_background_color, profile_sidebar_fill_color, profile_link_color, profile_sidebar_border_color, profile_text_color, profile_background_image_url, profile_background_tile, friends_count, statuses_count, followers_count, favourites_count, utc_offset, time_zone
+    form: twitter_id, login, access_token, access_secret, remember_token, remember_token_expires_at, name, location, description, profile_image_url, url, protected, profile_background_color, profile_sidebar_fill_color, profile_link_color, profile_sidebar_border_color, profile_text_color, profile_background_image_url, profile_background_tile, friends_count, statuses_count, followers_count, favourites_count, utc_offset, time_zone
+  order_by:
+  relationships: photos, plans, rankings
+  filters:
+  search: name
+  application: tabiplus
+
+Voting:
+  fields:
+    default: user_id, votable_id, dimension, user
+    form: user_id, votable_id, dimension, user
+  order_by:
+  relationships: user
+  filters:
+  search:
+  application: tabiplus

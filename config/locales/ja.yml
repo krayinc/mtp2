@@ -152,6 +152,8 @@ ja:
       spot: "スポット"
       destination: "行き先"
       news: "お知らせ"
+      admin_user: "管理ユーザ"
+      site_config: "サイト設定"
 
     attributes:
       plan:
@@ -178,6 +180,21 @@ ja:
         title: "タイトル"
         body: "本文"
         published_at: "公開日時"
+
+      admin_user:
+        first_name: "名"
+        last_name: "姓"
+        role: "役割"
+        email: "メールアドレス"
+        password: "パスワード"
+        password_confirmation: "パスワード（確認）"
+        language: "言語"
+
+      site_config:
+        name: "変数名"
+        value: "値"
+        comment: "説明"
+
 
 # messages for Typus
   "A valid token is required":
