@@ -1,6 +1,6 @@
 <div class="editSet">
   <div class="editSetInner clearfix">
-    <p class="pic" id="destination_photo_<%= destination.id %>"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => '56x56' %></p>
+    <p class="pic" id="destination_photo_<%= destination.id %>"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></p>
     <p class="txt"><%= destination.time %><br><span class="spotName"><%= destination.spot.name %></span><br><%= destination.comment %></p>
     <p class="btn"><%#-
       -%><%= link_to raw('<img src="/images/plan/edit_btn_off.gif" alt="編集" title="編集">'), edit_plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :remote => true %><%-
