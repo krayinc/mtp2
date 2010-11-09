@@ -19,7 +19,7 @@ $('#spot_search_form').bind('ajax:success', function() {
   mtp.maps['destination_select_map'].markers = new Array();
   $('#search_results option').each(function(index, spot) {
     var marker = new google.maps.Marker({
-      position: new google.maps.LatLng($(spot).attr('mtp-latitude'), $(spot).attr('mtp-longitude')),
+      position: new google.maps.LatLng($(spot).attr('data-mtp-latitude'), $(spot).attr('data-mtp-longitude')),
       map: mtp.maps['destination_select_map']
     });
     marker.selectOption = spot;
@@ -40,7 +40,7 @@ $('#search_results').bind('change', function() {
   if (spot.length == 0) { return; }
   $('#new_destination input,#new_destination button,#new_destination textarea').removeAttr('disabled');
   $('#destination_spot_id').val($(this).val());
-  mtp.maps['destination_select_map'].setCenter(new google.maps.LatLng($(spot).attr('mtp-latitude'), $(spot).attr('mtp-longitude')));
+  mtp.maps['destination_select_map'].setCenter(new google.maps.LatLng($(spot).attr('data-mtp-latitude'), $(spot).attr('data-mtp-longitude')));
   mtp.maps['destination_select_map'].setZoom(16);
 });
 <%- unless @destination.new_record? -%>

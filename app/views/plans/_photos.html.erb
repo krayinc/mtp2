@@ -1,6 +1,6 @@
 <ol id="plan_photo_selector" class="photo_selector">
 <%- @plan.photos.each do |photo| %>
-  <li mtp-photo-id="<%= photo.id %>"<%- if @plan.photo === photo %> class="ui-selected"<%- end -%>><%= image_tag photo.photo.url(:plan) %></li>
+  <li data-mtp-photo-id="<%= photo.id %>"<%- if @plan.photo === photo %> class="ui-selected"<%- end -%>><%= image_tag photo.photo.url(:plan) %></li>
 <%- end -%>
 </ol>
 <br clear="both">

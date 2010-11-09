@@ -47,7 +47,7 @@
 
 <script type="text/javascript">
 function openRouteMap() {
-  var destinations = $('#destinations > [mtp-spot]');
+  var destinations = $('#destinations > [data-mtp-spot]');
   if (destinations.length < 2) {
     $.gritter.add({title: 'MTP', text: 'ルートを確認するには行き先を 2 ヶ所以上設定する必要があります'});
     return false;

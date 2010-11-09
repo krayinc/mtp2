@@ -1,4 +1,4 @@
 $('#search_results option').remove();
 <%- @spots.each do |spot| -%>
-$('#search_results').append($('<option>').attr({value: <%= spot.id %>, 'mtp-latitude': <%= spot.latitude %>, 'mtp-longitude': <%= spot.longitude %>}).text("<%= escape_javascript spot.name %>"));
+$('#search_results').append($('<option></option>').attr({value: <%= spot.id %>, 'data-mtp-latitude': <%= spot.latitude %>, 'data-mtp-longitude': <%= spot.longitude %>}).text("<%= escape_javascript spot.name %>"));
 <%- end -%>

@@ -6,7 +6,7 @@ $('#plan_photos_dialog').dialog({
     $('#plan_photos_dialog').html('<%= escape_javascript(render 'photos.html') %>');
     $('#plan_photo_selector').selectable({
       selected: function(event, ui) {
-        $('#plan_photo_id').val($(ui.selected).attr('mtp-photo-id'));
+        $('#plan_photo_id').val($(ui.selected).attr('data-mtp-photo-id'));
       }
     });
   }

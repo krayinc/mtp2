@@ -1,6 +1,6 @@
 <ul id="destinations" class="ui-sortable" style="list-style-type: none;">
 <%- @plan.destinations.each do |destination| -%>
-  <li mtp-destination="<%= destination.id %>" mtp-spot="<%= destination.spot_id %>" mtp-spot-latitude="<%= destination.spot.latitude %>" mtp-spot-longitude="<%= destination.spot.longitude %>">
+  <li data-mtp-destination="<%= destination.id %>" data-mtp-spot="<%= destination.spot_id %>" data-mtp-spot-latitude="<%= destination.spot.latitude %>" data-mtp-spot-longitude="<%= destination.spot.longitude %>">
     <%= render 'destination', :destination => destination %>
   </li>
 <%- end -%>
@@ -10,7 +10,7 @@ $('#destinations').sortable({
   axis: 'y',
   cursor: 'crosshair',
   update: function(event, ui) {
-    var destId = $(ui.item[0]).attr('mtp-destination');
+    var destId = $(ui.item[0]).attr('data-mtp-destination');
     var newPos = $.inArray(ui.item[0], ui.item[0].parentNode.children);
     $.ajax({
       url: '/plans/<%= @plan.id %>/destinations/' + destId + '/position',

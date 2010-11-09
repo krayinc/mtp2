@@ -55,7 +55,7 @@ var mtp = {};
 mtp.maps = {};
 
 mtp.loadMapWithRoutes = function(elemId) {
-  var destinations = $('#destinations [mtp-spot]');
+  var destinations = $('#destinations [data-mtp-spot]');
   if (destinations.length < 2) {
     return false;
   }
@@ -63,10 +63,10 @@ mtp.loadMapWithRoutes = function(elemId) {
   $(destinations).each(function(index, destination) {
     var $destination = $(destination);
     spots.push({
-      id:        $destination.attr('mtp-spot'),
-      latitude:  $destination.attr('mtp-spot-latitude'),
-      longitude: $destination.attr('mtp-spot-longitude'),
-      name:      $("#destinations [mtp-spot='" + $destination.attr('mtp-spot') + "'] [mtp-spot-name]").html()
+      id:        $destination.attr('data-mtp-spot'),
+      latitude:  $destination.attr('data-mtp-spot-latitude'),
+      longitude: $destination.attr('data-mtp-spot-longitude'),
+      name:      $("#destinations [data-mtp-spot='" + $destination.attr('data-mtp-spot') + "'] .spotName").html()
     });
   });
   var router = new mtp.Router();

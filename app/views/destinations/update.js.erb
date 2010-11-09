@@ -1,3 +1,3 @@
 $('#destination_form_dialog').dialog('close');
-$("#destination_list #destinations > li[mtp-destination='<%= @destination.id %>']").html('<%= raw escape_javascript(render 'plans/destination', :destination => @destination) %>');
+$("#destination_list #destinations > li[data-mtp-destination='<%= @destination.id %>']").html('<%= raw escape_javascript(render 'plans/destination', :destination => @destination) %>');
 $.gritter.add({title: 'MTP', text: '行き先を更新しました！'});
