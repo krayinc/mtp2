@@ -10,7 +10,8 @@ $('#destination_form_dialog').dialog({
     <%= gmap :destination_select_map, @center_position[:latitude], @center_position[:longitude], @center_position[:zoom] %>
   }
 });
-$('#spot_search_form').bind('ajax:success', function() {
+
+function refreshSpotMarkers() {
   if (mtp.maps['destination_select_map'].markers) {
     $.each(mtp.maps['destination_select_map'].markers, function(index, marker) {
       marker.setMap(null);
@@ -30,19 +31,23 @@ $('#spot_search_form').bind('ajax:success', function() {
     });
     mtp.maps['destination_select_map'].markers.push(marker);
   });
-});
+}
+$('#spot_search_form').bind('ajax:success', function() { refreshSpotMarkers(); });
 $('#spot_search_form').bind('ajax:before', function() {
   $('#new_destination input,#new_destination button,#new_destination textarea').attr({disabled: 'disabled'});
 });
 $('#new_destination input,#new_destination button,#new_destination textarea').attr({disabled: 'disabled'});
-$('#search_results').bind('change', function() {
+
+function mapSyncToSelectedSpot() {
   var spot = $('#search_results option:selected');
   if (spot.length == 0) { return; }
   $('#new_destination input,#new_destination button,#new_destination textarea').removeAttr('disabled');
-  $('#destination_spot_id').val($(this).val());
+  $('#destination_spot_id').val($('#search_results').val());
   mtp.maps['destination_select_map'].setCenter(new google.maps.LatLng($(spot).attr('data-mtp-latitude'), $(spot).attr('data-mtp-longitude')));
   mtp.maps['destination_select_map'].setZoom(16);
-});
+}
+$('#search_results').bind('change', function() { mapSyncToSelectedSpot(); });
+
 <%- unless @destination.new_record? -%>
 mtp.maps['destination_select_map'].currentMarker = new google.maps.Marker({
   position: new google.maps.LatLng('<%= escape_javascript @destination.spot.latitude %>', '<%= escape_javascript @destination.spot.longitude %>'),

@@ -60,7 +60,7 @@ class SpotsController < ApplicationController
 
     respond_to do |format|
       if @spot.save
-        format.js   { render :nothing => true }
+        format.js
         format.html { redirect_to(@spot, :notice => 'Spot was successfully created.') }
         format.xml  { render :xml => @spot, :status => :created, :location => @spot }
       else

@@ -1,0 +1,12 @@
+$.gritter.add({title: 'MTP', text: '<%= escape_javascript @spot.name %>を登録しました！'});
+
+$('#q').val('<%= escape_javascript @spot.name %>');
+$('#q').removeClass('placeholder');
+$('#search_results option').remove();
+$('#search_results').append($('<option></option>').attr({value: <%= @spot.id %>, 'data-mtp-latitude': <%= @spot.latitude %>, 'data-mtp-longitude': <%= @spot.longitude %>}).text("<%= escape_javascript @spot.name %>"));
+$('#search_results').val(<%= @spot.id %>);
+
+refreshSpotMarkers();
+mapSyncToSelectedSpot();
+
+$('#spot_form_dialog').dialog('close');
