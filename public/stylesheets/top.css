@@ -16,7 +16,7 @@
 #mainArea .pickupTour .leftBox .profile .profileName{padding:0 0 0 6px; float:left;}
 #mainArea .pickupTour .leftBox .photo{padding:0 0 10px;}
 #mainArea .pickupTour .leftBox .photo img{margin:0 4px 4px 0;border:solid; border-color:#d3d3d3; border-width:1px;}
-
+#mainArea .date{ color:#fea803}
 
 #mainArea .pickupTour .leftBoxPopurar{ width:270px;padding:4px 22px 0 13px; float:left;}
 #mainArea .pickupTour .rightBoxPopurar{width:386px;padding:4px 0 0; float:left;}

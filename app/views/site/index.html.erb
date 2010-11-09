@@ -21,7 +21,7 @@
           <p class="comment">私が、改めて京都に興味を持ちはじめたのは、4年程前・・・。
             京都の町屋の陰影の美しさや、中庭を使って、室内に自然の風や光を取り入れた生活様式に
             感動したのが始まりです。我が家に、少しでも、そのエッセンスを取り入れたい！<br>
-            2010/10/11</p>
+            <span class="date">2010/10/11</span></p>
         </div>
         <div class="rightBox"><%= map_image_tag(:longitude => '135.75859870910645', :latitude => '34.98524748805968', :zoom => 14, :size => '400x240') %></div>
       </div>
@@ -45,7 +45,7 @@
               <p class="profileName">by <%= plan.owner.name %></p>
             </div>
             <p class="photo"><img src="http://tabiplus.s3.amazonaws.com/demo/nanzenji.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/kamogawa.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/simogamo.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/stage1.jpg" alt="写真" title="写真"><img src="http://tabiplus.s3.amazonaws.com/demo/stage2.jpg" alt="写真" title="写真"></p>
-            <p class="comment"><%= truncate strip_tags(plan.outline), :length => 20 %><br><%= plan.updated_at.strftime("%Y/%m/%d") %></p>
+            <p class="comment"><%= truncate strip_tags(plan.outline), :length => 20 %><br><span class="date"><%= plan.updated_at.strftime("%Y/%m/%d") %></span></p>
           </div>
         </div>
       </div>
@@ -68,7 +68,7 @@
               <div class="profileS clearfix">
                 <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
                 <p class="profileName"><%= truncate strip_tags(plan.outline), :length => 20 %>
-                  <%= plan.updated_at.strftime("%Y/%m/%d") %><br>by <%= plan.owner.name %></p>
+                  <span class="date"><%= plan.updated_at.strftime("%Y/%m/%d") %></span><br>by <%= plan.owner.name %></p>
               </div>
             </div>
           <%- end -%>
