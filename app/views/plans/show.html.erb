@@ -12,7 +12,7 @@
         <!--plantitle-->
         <div id="plantitle">
           <div id="plantitleWrapper" class="clearfix">
-            <p class="planPic"><img src="<%- if @plan.photo_id.nil? %>/images/no_image.png<%- else %><%= @plan.photo_id %><%- end %>" alt="<%= notice %>" title="<%= notice %>"></p>
+            <p class="planPic"><img src="<%- if @plan.photo_id.nil? %>/images/no_image.gif<%- else %><%= @plan.photo_id %><%- end %>" alt="<%= notice %>" title="<%= notice %>"></p>
             <div class="planOutline">
               <!--planName-->
               <div class="planNameWrapper clearfix">
@@ -63,7 +63,7 @@
           <div class="photo">
           <%- @plan.destinations.each do |destination| -%>
             <%- destination.photos.each do |photo| %>
-            <p class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.png'), :size => '56x56' %></p>
+            <p class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => '56x56' %></p>
             <%- end %>
           <%- end %>
           </div>
@@ -82,7 +82,7 @@
               <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %><br><%= destination.time %></div>
               <div class="plan">
                 <div class="planWrapper clearfix">
-                <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.png'), :size => '56x56' %></div>
+                <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => '56x56' %></div>
                 <div class="txt">
                   <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
                   <h5 mtp-spot-name><%= destination.spot.name %></h5>
