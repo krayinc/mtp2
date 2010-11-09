@@ -22,7 +22,7 @@ input[type="text"][disabled], textarea[disabled] { background-image: url(../imag
 
 body > #tabiplus {height: auto;}
 
-div#main{width:980px;padding:0 25px 37px;height: auto; }
+div#main{width:980px;padding:0 25px 55px;height: auto; }
 #header{ width:1030px;padding:0; margin:0;background :#ffffff url(../images/header_bg.gif) no-repeat center top;}
 #header ul#gnavi{padding:0; margin:0; font-size:0;line-height :0;}
 #header #logo{padding:5px 18px 18px 25px; margin:0; float:left;}
