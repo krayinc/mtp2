@@ -1,6 +1,7 @@
 class SiteController < ApplicationController
   
   def index
+    @pickup = Plan.pickup
     @news = News.published.limit(3)
     @popular_plans = Plan.popular.limit(4)
     @hot_users = User.popular.limit(10)

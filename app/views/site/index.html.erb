@@ -7,21 +7,18 @@
   <div class="tour">
     <div class="tourInner">
       <div class="tourNameWrapper clearfix">
-        <p class="tourName"><a href="">2010 夏休み in 京都</a></p>
+        <p class="tourName"><%= link_to @pickup.title, plan_path(@pickup) %></p>
         <p class="eval"><img src="/images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
-        <p class="evalNum">22pt</p>
+        <p class="evalNum"><%= @pickup.total_votes %>pt</p>
       </div>
       <div class="pickupTour clearfix">
         <div class="leftBox">
           <div class="profile clearfix">
-            <p class="photo"><img src="/images/profile/profile_001.jpg" alt="写真" title="写真"></p>
-            <p class="profileName">by morimori</p>
+            <p class="photo"><%= image_tag @pickup.owner.profile_image_url, :size => '26x26' %></p>
+            <p class="profileName">by <%= @pickup.owner.name %></p>
           </div>
           <p class="photo"><img src="http://tabiplus.s3.amazonaws.com/demo/nijo.jpg" alt="写真" title="写真" width="45" height="45"><img src="http://tabiplus.s3.amazonaws.com/demo/seimei.jpg" alt="写真" title="写真" width="45" height="45"><img src="http://tabiplus.s3.amazonaws.com/demo/kinkaku.jpg" alt="写真" title="写真" width="45" height="45"><img src="http://tabiplus.s3.amazonaws.com/demo/cloud.jpg" alt="写真" title="写真" width="45" height="45"><img src="http://tabiplus.s3.amazonaws.com/demo/river.jpg" alt="写真" title="写真" width="45" height="45"></p>
-          <p class="comment">私が、改めて京都に興味を持ちはじめたのは、4年程前・・・。
-            京都の町屋の陰影の美しさや、中庭を使って、室内に自然の風や光を取り入れた生活様式に
-            感動したのが始まりです。我が家に、少しでも、そのエッセンスを取り入れたい！<br>
-            <span class="date">2010/10/11</span></p>
+          <p class="comment"><%= truncate strip_tags(@pickup.outline), :length => 20 %><br><span class="date"><%= @pickup.updated_at.strftime("%Y/%m/%d") %></span></p>
         </div>
         <div class="rightBox"><%= map_image_tag(:longitude => '135.75859870910645', :latitude => '34.98524748805968', :zoom => 14, :size => '400x240') %></div>
       </div>
