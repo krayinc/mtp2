@@ -14,20 +14,22 @@ Spot:
 
 Plan:
   fields:
-    default: user_id, title, status, public, owner
-    form: user_id, title, status, outline, public, owner
+    default: id, owner, title, status
+    form: owner, title, status, outline,
+    options:
+      read_only: owner
   order_by: 
   relationships: destinations
-  filters: 
+  filters:
   search: title
   application: tabiplus
 
 Destination:
   fields:
-    default: position, plan_id, spot_id, time, spot, plan
-    form: plan_id, spot_id, comment, time, spot, plan
+    default: position, plan, spot, time
+    form: plan, spot, time, comment, time
   order_by: position
-  relationships: plan, spot
+  relationships: plan, spot, destination_photos
   filters: 
   search: 
   application: tabiplus
@@ -54,8 +56,8 @@ Comment:
 
 DestinationPhoto:
   fields:
-    default: destination_id, photo_id, destination, photo
-    form: destination_id, photo_id, destination, photo
+    default: destination, photo
+    form: destination, photo
   order_by:
   relationships: destination, photo
   filters:
@@ -84,12 +86,12 @@ Rating:
 
 SiteConfig:
   fields:
-    default: name
+    default: name, value, comment
     form: name, value, comment
-  order_by:
+  order_by: name
   relationships:
   filters:
-  search: name
+  search: name, value, comment
   application: tabiplus
 
 SpotPhoto:
@@ -104,8 +106,8 @@ SpotPhoto:
 
 User:
   fields:
-    default: twitter_id, login, access_token, access_secret, remember_token, remember_token_expires_at, name, location, description, profile_image_url, url, protected, profile_background_color, profile_sidebar_fill_color, profile_link_color, profile_sidebar_border_color, profile_text_color, profile_background_image_url, profile_background_tile, friends_count, statuses_count, followers_count, favourites_count, utc_offset, time_zone
-    form: twitter_id, login, access_token, access_secret, remember_token, remember_token_expires_at, name, location, description, profile_image_url, url, protected, profile_background_color, profile_sidebar_fill_color, profile_link_color, profile_sidebar_border_color, profile_text_color, profile_background_image_url, profile_background_tile, friends_count, statuses_count, followers_count, favourites_count, utc_offset, time_zone
+    default: twitter_id, login, name, profile_image_url
+    form: twitter_id, login, name, profile_image_url
   order_by:
   relationships: photos, plans, rankings
   filters:

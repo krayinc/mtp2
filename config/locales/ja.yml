@@ -154,9 +154,13 @@ ja:
       news: "お知らせ"
       admin_user: "管理ユーザ"
       site_config: "サイト設定"
+      user: "ユーザ"
+      destination_photo: "行き先の写真"
 
     attributes:
       plan:
+        id: "ID"
+        owner: "作成者"
         title: "タイトル"
         status: "ステータス"
         outline: "概要"
@@ -195,6 +199,15 @@ ja:
         value: "値"
         comment: "説明"
 
+      user:
+        twitter_id: "Twitter ID"
+        login: "スクリーンネーム"
+        name: "名前"
+        profile_image_url: "プロフィール画像"
+
+      destination_photo:
+        destination: "行き先"
+        photo: "写真"
 
 # messages for Typus
   "A valid token is required":
