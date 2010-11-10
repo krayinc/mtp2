@@ -21,6 +21,12 @@ class Plan < ActiveRecord::Base
   normalize_attribute :title, :with => [:strip, :blank]
   
   scope :popular, order_by_rank
+
+  def self.pickup
+    self.find(SiteConfig[:pickup_plan_id].to_i)
+  rescue
+    self.find(:first, :offset => (self.count * rand).to_i)
+  end
   
   def first_spot
     self.destinations.first.spot
