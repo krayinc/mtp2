@@ -277,3 +277,11 @@ position:relative;
   float:left;
   padding:10px 0 0;
 }
+
+#plan_photos_dialog .photo_selector img {border:2px solid grey;}
+#plan_photos_dialog .photo_selector .ui-selecting img { border: 2px solid red; }
+#plan_photos_dialog .photo_selector .ui-selected img { border: 2px solid red; }
+#plan_photos_dialog .photo_selector #plan_photos { list-style-type: none; overflow: auto; margin: 4px 10px 1px; height: 388px; padding-left: 10px; background-color: #EEE; border: 1px solid lightgrey;}
+#plan_photos_dialog .photo_selector { margin: 0; padding: 0;}
+#plan_photos_dialog .photo_selector #plan_photos > li { margin: 10px; padding: 0; float: left; width: 100px; height: 90px; width: 90px; text-align: center; }
+#plan_photos_dialog form { background-color: white; text-align: center; margin: 0 10px; padding: 10px 0;}

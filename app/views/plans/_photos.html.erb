@@ -1,10 +1,11 @@
-<ol id="plan_photo_selector" class="photo_selector">
-<%- @plan.photos.each do |photo| %>
-  <li data-mtp-photo-id="<%= photo.id %>"<%- if @plan.photo === photo %> class="ui-selected"<%- end -%>><%= image_tag photo.photo.url(:plan), :size => SpotPhoto::STYLES[:plan], :class => 'spotPhoto' %></li>
-<%- end -%>
-</ol>
-<br clear="both">
+<div class="photo_selector clearfix">
+  <ul id="plan_photos">
+    <%- @plan.photos.each do |photo| %>
+      <li data-mtp-photo-id="<%= photo.id %>"<%- if @plan.photo === photo %> class="ui-selected"<%- end -%>><%= image_tag photo.photo.url(:plan), :size => SpotPhoto::STYLES[:plan], :class => 'spotPhoto' %></li>
+    <%- end -%>
+  </ul>
+</div>
 <%= form_for @plan, :url => photo_plan_path(:id => @plan.id, :format => :js), :method => :put, :html => {:id => 'plan_photo_edit'}, :remote => true do |f| %>
   <%= f.hidden_field :photo_id %>
-  <%= f.submit %>
+  <%= image_submit_tag 'plan/edit_save_btn.gif' %>
 <%- end -%>
