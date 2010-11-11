@@ -50,7 +50,7 @@ background-image:url(../images/plan/schedule_pop.png);
 width:98px;
 height:64px;
 text-align:center;
-padding:20px 10px 0 0;
+padding:30px 10px 0 0;
 float:left;
 }
 *html body #mainArea .scheduleInner .pop{/* IE6以下に適用 */

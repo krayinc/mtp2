@@ -1,6 +1,5 @@
-<%- content_for :sidebar do -%>
-<%= render 'sidebar' %>
-<%- end -%>
+<%- content_for :sidebar do -%><%= render 'sidebar' %><%- end -%>
+<%- content_for :preload_javascripts do -%><%= render 'preload_javascripts' %><%- end -%>
 
 <%- content_for :image_src do -%>
   <%- if @plan.photo_id %>
@@ -82,13 +81,19 @@
               <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %></div>
               <div class="plan">
                 <div class="planWrapper clearfix">
-                <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
+                  <div class="clearfix"> 
+                    <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
+                    <div class="txt">
+                      <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
+                      <h5 class="spotName"><%= destination.spot.name %></h5>
+                      <p class="detail"><%= destination.time %></p>
+                    </div>
+                  </div>
+
+                <p class="switchHat openBtn"><a href="#"></a></p>
+                <div class="switchDetail">
                 <div class="txt">
-                  <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
-                  <h5 class="spotName"><%= destination.spot.name %></h5>
-                  <p class="detail"><%= destination.time %></p>
-                </div>
-                <div class="txt">
+AAAA
                   <%- if destination.spot -%>
                     <p class="mapSmall">
                     <%= map_image_tag({
@@ -148,9 +153,9 @@
                         });
                       </script>
                     </div>
-                    <p class="closeBtn"><%= image_tag 'plan/close_btn_off.gif', :alt => 'CLOSE', :title => 'CLOSE' %></p>
 
                   </div>
+                </div>
                 </div>
               </div>
             </div>
