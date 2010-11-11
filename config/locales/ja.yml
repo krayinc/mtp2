@@ -167,11 +167,11 @@ ja:
         public: "公開"
 
       spot:
-        name: "名称"
+        name: "名前"
         latitude: "緯度"
         longitude: "経度"
         address: "住所"
-        annotation: "注釈"
+        annotation: "概要"
 
       destination:
         position: "順序"

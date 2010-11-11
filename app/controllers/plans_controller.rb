@@ -79,11 +79,7 @@ class PlansController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @plan.errors, :status => :unprocessable_entity }
-        format.js   {
-          render :update do |page|
-            page << %Q|$.gritter.add({title: 'MTP', text: "プランの更新に失敗しました。<br>#{@plan.errors.to_s}"});|
-          end
-        }
+        format.js   { render :template => '/error.js', :locals => {:title => '更新できませんでした', :message => @plan.errors.full_messages.join("\n")} }
       end
     end
   end
@@ -132,11 +128,7 @@ class PlansController < ApplicationController
       if @plan.save
         format.js
       else
-        format.js   {
-          render :update do |page|
-            page << %Q|$.gritter.add({title: 'MTP', text: "写真の更新に失敗しました。<br>#{@plan.errors.to_s}"});|
-          end
-        }
+        format.js { render :template => '/error.js', :locals => {:title => '写真を更新できませんでした', :message => @plan.errors.full_messages.join("\n")} }
       end
     end
   end

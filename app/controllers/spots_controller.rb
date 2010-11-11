@@ -64,7 +64,7 @@ class SpotsController < ApplicationController
         format.html { redirect_to(@spot, :notice => 'Spot was successfully created.') }
         format.xml  { render :xml => @spot, :status => :created, :location => @spot }
       else
-        format.js   { render :text => %Q|$.gritter.add({title: 'スポットを作成できません', text: '#{escape_javascript @spot.errors}'|}
+        format.js   { render '/error.js', {:title => '登録できませんでした', :message => @spot.errors.full_messages.join("\n")} }
         format.html { render :action => "new" }
         format.xml  { render :xml => @spot.errors, :status => :unprocessable_entity }
       end
@@ -82,7 +82,7 @@ class SpotsController < ApplicationController
         format.html { redirect_to(@spot, :notice => 'Spot was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.js   { render :text => %Q|$.gritter.add({title: 'スポットを更新できません', text: '#{escape_javascript @spot.errors}'|}
+        format.js   { render :template => '/error.js', :locals => {:title => '更新できませんでした', :message => @spot.errors.full_messages.join("\n")} }
         format.html { render :action => "edit" }
         format.xml  { render :xml => @spot.errors, :status => :unprocessable_entity }
       end
