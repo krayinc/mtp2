@@ -1,5 +1,5 @@
 <div id="rightArea">
-  <%- if @plan.owner == current_user -%><%= link_to image_tag('plan/edit_btn_off.gif'), edit_plan_path(@plan) %><%- end -%>
+  <%- if @plan.owner == current_user -%><%= link_to image_tag('plan/edit_btn_off.gif'), edit_plan_path(@plan) %> <%= link_to image_tag('plan/delete_btn_off.gif'), @plan, :confirm => 'Are you sure?', :method => :delete %><%- end -%>
   <p class="blockHeader"><img src="/images/side/comment_h.gif" alt="コメント" title="コメント"></p>
   <div id="comment">
     <div class="commentSubmit">

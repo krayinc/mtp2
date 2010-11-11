@@ -11,7 +11,7 @@
         <!--plantitle-->
         <div id="plantitle">
           <div id="plantitleWrapper" class="clearfix">
-            <p class="planPic"><img src="<%- if @plan.photo_id.nil? %>/images/no_image.gif<%- else %><%= @plan.photo_id %><%- end %>" alt="<%= notice %>" title="<%= notice %>"></p>
+            <p class="planPic"><%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:plan], :class => 'spotPhoto' %></p>
             <div class="planOutline">
               <!--planName-->
               <div class="planNameWrapper clearfix">
@@ -83,15 +83,14 @@
                     <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
                     <div class="txt">
                       <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
-                      <h5 class="spotName"><%= destination.spot.name %></h5>
                       <p class="detail"><%= destination.time %></p>
+                      <h5 class="spotName"><%= destination.spot.name %></h5>
                     </div>
                   </div>
 
                 <p class="switchHat openBtn"><a href="#"></a></p>
                 <div class="switchDetail">
                 <div class="txt">
-AAAA
                   <%- if destination.spot -%>
                     <p class="mapSmall">
                     <%= map_image_tag({
@@ -104,10 +103,10 @@ AAAA
                   <%- end -%>
                   <table cellspacing="0" cellpadding="0" class="spotDetail">
                     <tr>
-                      <td><%= destination.comment %></td>
+                      <td><%= destination.spot.annotation %></td>
                     </tr>
                     <tr>
-                      <td><%= destination.spot.annotation %></td>
+                      <td><%= destination.comment %></td>
                     </tr>
                   </table>
                     <div class="spotfeed clearfix">
