@@ -1,0 +1,8 @@
+{
+  message: <%=raw @message.to_json %>,
+  status: <%=raw @status.to_json %>,
+<%- if @status == 'success' -%>
+  tag: <%=raw photo_tag(@photo.photo, :list, :link_to_original => true).to_json %>,
+<%- end -%>
+  success: true
+}

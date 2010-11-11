@@ -3,7 +3,7 @@ module DestinationsHelper
     result = ''
     result << render('photos/form', :form_id => "destinations_new_photo_#{destination.id}", :form_action => plan_destination_photos_path(:plan_id => destination.plan_id, :destination_id => destination.id)) if opts[:edit]
     destination.photos.each do |photo|
-      result << link_to(image_tag(photo.photo.url(:list), :class => 'spotPhoto'), photo.photo.url, :target => 'original')
+      result << photo_tag(photo.photo, :list, :link_to_original => true)
     end
     raw result
   end

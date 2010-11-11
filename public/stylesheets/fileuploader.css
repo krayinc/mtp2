@@ -8,6 +8,7 @@
   height: 47px;
   font-size: 0;
   background-image: url(/images/plan/add_photo.gif);
+  cursor: pointer;
 }
 
 .qq-upload-button input {
@@ -33,7 +34,7 @@
 }
 .qq-upload-drop-area-active { background-image: url(/images/drop_here.png); }
 
-.qq-upload-list {margin:15px 35px; padding:0; list-style:disc;}
+.qq-upload-list {margin:15px 35px; padding:0; list-style:disc; display: none;}
 .qq-upload-list li { margin:0; padding:0; line-height:15px; font-size:12px;}
 .qq-upload-file, .qq-upload-spinner, .qq-upload-size, .qq-upload-cancel, .qq-upload-failed-text {
     margin-right: 7px;

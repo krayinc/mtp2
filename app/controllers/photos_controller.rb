@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   before_filter :login_required, :except => [:index, :show]
+  respond_to :js, :json, :html
 
   # GET /photos
   # GET /photos.xml
@@ -18,6 +19,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
 
     respond_to do |format|
+      format.js
       format.html # show.html.erb
       format.xml  { render :xml => @photo }
     end
@@ -69,9 +71,11 @@ class PhotosController < ApplicationController
         @destination.photos << @photo
       end
     rescue => e
-      render :json => {:error => e.message.to_s}
+      @status  = 'error'
+      @message = {:title => '写真を追加できませんでした', :text => e.message.to_s}
     else
-      render :json => {:success => true}
+      @status  = 'success'
+      @message = {:title => 'MTP', :text => '写真を追加しました'}
     ensure
       tf.close!
     end
