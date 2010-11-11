@@ -3,7 +3,7 @@ $('#spot_form_dialog').dialog({
   title: '場所設定',
   modal: true,
   width: 712,
-  height: 810,
+  height: 800,
   resizable: false,
   closeOnEscape: false,
   open: function() {
@@ -31,4 +31,10 @@ google.maps.event.addListener(mtp.maps['spot_select_map'].currentMarker, 'dragen
       }
     }
   });
+});
+$('#spot_form_dialog form').bind('ajax:before', function(event) {
+  $("#spot_form_dialog form input[type='submit'], #spot_form_dialog form input[type='image']").attr({disabled: 'disabled'});
+});
+$('#spot_form_dialog form').bind('ajax:complete', function(event) {
+  $("#spot_form_dialog form input[type='submit'], #spot_form_dialog form input[type='image']").removeAttr('disabled');
 });
