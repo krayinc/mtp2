@@ -11,7 +11,7 @@
         <!--plantitle-->
         <div id="plantitle">
           <div id="plantitleWrapper" class="clearfix">
-            <p class="planPic"><img src="<%- if @plan.photo_id.nil? %>/images/no_image.gif<%- else %><%= @plan.photo_id %><%- end %>" alt="<%= notice %>" title="<%= notice %>"></p>
+            <p class="planPic"><%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:plan], :class => 'spotPhoto' %></p>
             <div class="planOutline">
               <!--planName-->
               <div class="planNameWrapper clearfix">
