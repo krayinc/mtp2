@@ -4,15 +4,15 @@
 
 .qq-upload-button {
   display: block; /* or inline-block */
-  width: 45px;
-  height: 45px;
+  width: 47px;
+  height: 47px;
   font-size: 0;
-  background-image: url(/images/add_photo.png);
+  background-image: url(/images/plan/add_photo.gif);
 }
 
 .qq-upload-button input {
-  width: 45px;
-  height: 45px;
+  width: 47px;
+  height: 47px;
   font-size: 0;
 }
 
@@ -23,8 +23,8 @@
   position:absolute;
   top:0; left:0;
   z-index:2;
-  width: 45px;
-  height: 45px;
+  width: 47px;
+  height: 47px;
   background-image: url(/images/drop_here.png);
   font-size: 0;
 }
