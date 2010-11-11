@@ -14,13 +14,13 @@
 #mainArea #plantitle .feed{  text-align:right;float:right;background : url(../images/plan/title_line.gif) no-repeat right top; padding:0 10px 0 0 ;}
 #mainArea #plantitle .feed .face{background : url(../images/plan/title_line.gif) no-repeat left top; padding:0 0 0 10px;float:left;}
 #mainArea #plantitle .feed .faceNum{ float:left;}
-#mainArea #plantitle .feed .tweet{background : url(../images/plan/feed_bg_tweet_l.gif) no-repeat right top;float:left;  padding:0 10px 0 10px;}
+#mainArea #plantitle .feed .tweet{float:left;  padding:0 0px 0 10px;}
 #mainArea #plantitle .feed .tweetNum{float:left;background :#fff url(../images/plan/feed_bg_tweet_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#9ae0f8; border-top-width:1px;  border-right:solid; border-right-color:#9ae0f8; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#9ae0f8; border-bottom-width:1px; margin:0;padding:0 0 0 1px;}
-#mainArea #plantitle .feed .share{background : url(../images/plan/feed_bg_fb_l.gif) no-repeat right top;float:left; padding:0 10px 0 10px;}
+#mainArea #plantitle .feed .share{float:left; padding:0 10px 0 0px;}
 #mainArea #plantitle .feed .shareNum{float:left;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#a6bee3; border-bottom-width:1px; margin:0;padding:0 0 0 1px;}
-#mainArea #plantitle .feed .like{background : url(../images/plan/feed_bg_fb_l.gif) no-repeat right top;float:left; padding:0 10px 0 10px;}
+#mainArea #plantitle .feed .like{float:left; padding:0 0px 0 10px;}
 #mainArea #plantitle .feed .like .connect_widget_vertical_center{ visibility:hidden;}
 #mainArea #plantitle .feed .likeNum{float:left;background : url(../images/plan/title_line.gif) no-repeat right top;padding:0 0 0 0 ;background :#fff url(../images/plan/feed_bg_fb_r.gif) no-repeat left top; float:left;  border-top:solid; border-top-color:#a6bee3; border-top-width:1px;  border-right:solid; border-right-color:#a6bee3; border-right-width:1px;
  border-bottom:solid; border-bottom-color:#a6bee3; border-bottom-width:1px;}
@@ -50,7 +50,7 @@ background-image:url(../images/plan/schedule_pop.png);
 width:98px;
 height:64px;
 text-align:center;
-padding:20px 10px 0 0;
+padding:30px 10px 0 0;
 float:left;
 }
 *html body #mainArea .scheduleInner .pop{/* IE6以下に適用 */

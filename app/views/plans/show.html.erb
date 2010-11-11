@@ -1,6 +1,5 @@
-<%- content_for :sidebar do -%>
-<%= render 'sidebar' %>
-<%- end -%>
+<%- content_for :sidebar do -%><%= render 'sidebar' %><%- end -%>
+<%- content_for :preload_javascripts do -%><%= render 'preload_javascripts' %><%- end -%>
 
 <%- content_for :image_src do -%>
   <%- if @plan.photo_id %>
@@ -35,11 +34,9 @@
                 <a href="http://twitter.com/share" class="twitter-share-button"
                   data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
                   data-counturl="<%= @parmalink %>"
-                  data-lang="en">Tweet</a>
-              <%= javascript_include_tag 'http://platform.twitter.com/widgets.js' %></script>
-              </p>
+                  data-lang="en">Tweet</a><%= javascript_include_tag 'http://platform.twitter.com/widgets.js' %></script></p>
               <p class="share"><a name="fb_share" type="button" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
-              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=button_count&show_faces=true&width=840&action=like&colorscheme=light&height=18" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:84px; height:23px;" allowTransparency="true"></iframe></p>
+              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=button_count&show_faces=true&width=56&action=like&colorscheme=light&height=18" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:56px; height:23px;" allowTransparency="true"></iframe></p>
               </div>
               </div>
               <!--icon-->
@@ -82,13 +79,19 @@
               <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %></div>
               <div class="plan">
                 <div class="planWrapper clearfix">
-                <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
+                  <div class="clearfix"> 
+                    <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
+                    <div class="txt">
+                      <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
+                      <h5 class="spotName"><%= destination.spot.name %></h5>
+                      <p class="detail"><%= destination.time %></p>
+                    </div>
+                  </div>
+
+                <p class="switchHat openBtn"><a href="#"></a></p>
+                <div class="switchDetail">
                 <div class="txt">
-                  <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
-                  <h5 class="spotName"><%= destination.spot.name %></h5>
-                  <p class="detail"><%= destination.time %></p>
-                </div>
-                <div class="txt">
+AAAA
                   <%- if destination.spot -%>
                     <p class="mapSmall">
                     <%= map_image_tag({
@@ -148,14 +151,14 @@
                         });
                       </script>
                     </div>
-                    <p class="closeBtn"><%= image_tag 'plan/close_btn_off.gif', :alt => 'CLOSE', :title => 'CLOSE' %></p>
 
                   </div>
+                </div>
                 </div>
               </div>
             </div>
             <!--planset-->
-            <div class="planDirect"><%= image_tag 'plan/plan_direct.gif', :alt => '02', :title => '02' %></div>
+            <div class="planDirect"><%- if @plan.destinations.size > index + 1 %><%= image_tag 'plan/plan_direct.gif', :alt => '02', :title => '02' %><%- end %></div>
             <script type='text/javascript'>
               /**
                * Ratings
@@ -190,11 +193,6 @@
          <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
          -->
 
-
-<%- if @plan.owner == current_user -%>
-<%= link_to 'Edit', edit_plan_path(@plan) %> |
-<%- end -%>
-<%= link_to 'Back', plans_path %>
 
 <script type="text/javascript">
   $('form#new_comment #comment_submit').attr('disabled','disabled');
