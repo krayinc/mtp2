@@ -36,6 +36,8 @@ group :development, :test do
   gem 'webrat'
   gem 'factory_girl_rails'
   gem 'unicorn'
+  gem 'wirble'
+  gem 'hirb'
 end
 
 group :production do

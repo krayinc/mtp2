@@ -259,23 +259,30 @@ position:relative;
 .ui-dialog .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
 .ui-dialog .photoCtl .directR{ float:left;padding:10px 0 0 0;}
 
-.photoDropArea {
+#mainArea #destinations .editSet .photoList {
+  margin: 0 10px 9px;
+  width: 624px;
+  font-size: 0;
+  line-height: 100%;
+  border-top: 1px dotted grey;
+  padding-top: 16px;
+}
+
+#mainArea #destinations .editSet .photoList img {
+	cursor: pointer;
+}
+
+#mainArea #destinations .editSet .photoList .photoDropArea {
   float: left;
   display: inline;
   width: 45px;
   height: 45px;
-  margin: 0 4px 4px 0;
-  border: 1px solid #D3D3D3;
+  margin: 0px 7px 7px 0;
+  cursor: pointer;
 }
 
-#mainArea .photoCtl .directL {
-  float: left;
-  padding: 10px 0 0 9px;
-}
-
-#mainArea .photoCtl .directR {
-  float:left;
-  padding:10px 0 0;
+#mainArea .lightbox img {
+  margin: 0;
 }
 
 #plan_photos_dialog .photo_selector img {border:2px solid grey;}
