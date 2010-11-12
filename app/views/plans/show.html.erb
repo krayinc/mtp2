@@ -1,5 +1,6 @@
-<%- content_for :sidebar do -%><%= render 'sidebar' %><%- end -%>
-
+<%- content_for :sidebar do -%>
+  <%= render 'sidebar' %>
+<%- end -%>
 
 <%- content_for :image_src do -%>
   <%- if @plan.photo_id %>
@@ -89,23 +90,30 @@
                   </div>
 
                 <div class="txt">
-                  <%- if destination.spot -%>
-                    <p class="mapSmall">
-                    <%= map_image_tag({
-                      :latitude => destination.spot.longitude,
-                      :longitude => destination.spot.latitude,
-                      :markers => destination.spot.latitude + ',' + destination.spot.longitude,
-                      :zoom => 14,
-                      :size => '510x150'}) %>
-                    </p>
-                  <%- end -%>
+                  <p class="mapSmall">
+                  <%= map_image_tag({
+                    :latitude => destination.spot.longitude,
+                    :longitude => destination.spot.latitude,
+                    :markers => destination.spot.latitude + ',' + destination.spot.longitude,
+                    :zoom => 14,
+                    :size => '510x150'}) %>
+                  </p>
                   <table cellspacing="0" cellpadding="0" class="spotDetail">
+<%- unless destination.spot.annotation.blank? -%>
                     <tr>
                       <td><%= destination.spot.annotation %></td>
                     </tr>
+<%- end -%>
+<%- unless destination.comment.blank? -%>
                     <tr>
                       <td><%= destination.comment %></td>
                     </tr>
+<%- end -%>
+<%- unless destination.photos.empty? -%>
+                    <tr>
+                      <td class="photo" style="padding-left:20px; padding-top:14px;"><%= destination_photo_list destination %></td>
+                    </tr>
+<%- end -%>
                   </table>
                     <div class="spotfeed clearfix">
 

@@ -20,9 +20,7 @@ module ApplicationHelper
       :path       => '',
       :markers    => ''
     }.merge(options)
-    raw %Q|
-      <img src='http://maps.google.com/maps/api/staticmap?center=#{options[:latitude]},#{options[:longitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}&path=#{options[:path]}&markers=#{options[:markers]}' />
-    |
+    raw image_tag(%(http://maps.google.com/maps/api/staticmap?center=#{options[:latitude]},#{options[:longitude]}&zoom=#{options[:zoom]}&size=#{options[:size]}&sensor=#{options[:sensor]}&path=#{options[:path]}&markers=#{options[:markers]}), :class => 'spotMap', :size => options[:size])
   end
   def map_tag(options = {}, polyline = {})
     options = {

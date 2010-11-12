@@ -259,7 +259,7 @@ position:relative;
 .ui-dialog .photoCtl .photo img{border:solid; border-color:#d3d3d3; border-width:1px;}
 .ui-dialog .photoCtl .directR{ float:left;padding:10px 0 0 0;}
 
-#mainArea #destinations .editSet .photoList {
+#mainArea #destinations .photoList {
   margin: 0 10px 9px;
   width: 624px;
   font-size: 0;
@@ -268,11 +268,11 @@ position:relative;
   padding-top: 16px;
 }
 
-#mainArea #destinations .editSet .photoList img {
+#mainArea #destinations .photoList img {
 	cursor: pointer;
 }
 
-#mainArea #destinations .editSet .photoList .photoDropArea {
+#mainArea #destinations .photoList .photoDropArea {
   float: left;
   display: inline;
   width: 45px;
