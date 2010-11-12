@@ -56,9 +56,8 @@ mtp.maps = {};
 
 mtp.loadMapWithRoutes = function(elemId) {
   var destinations = $('#destinations [data-mtp-spot]');
-  if (destinations.length < 2) {
-    return false;
-  }
+  if (destinations.length == 0) { return false; }
+
   var spots = new Array();
   $(destinations).each(function(index, destination) {
     var $destination = $(destination);
@@ -69,12 +68,14 @@ mtp.loadMapWithRoutes = function(elemId) {
       name:      $("#destinations [data-mtp-spot='" + $destination.attr('data-mtp-spot') + "'] .spotName").html()
     });
   });
-  var router = new mtp.Router();
   var map = new google.maps.Map($('#' + elemId)[0], {
     zoom: 14,
     center: new google.maps.LatLng(spots[0].latitude, spots[0].longitude),
     mapTypeId: google.maps.MapTypeId.ROADMAP
   });
+  if (destinations.length == 1) { return false; }
+
+  var router = new mtp.Router();
   router.query(map, spots);
 }
 
