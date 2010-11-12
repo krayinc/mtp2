@@ -2,6 +2,10 @@
   <%= render 'sidebar' %>
 <%- end -%>
 
+<%- content_for :preload_javascripts do -%>
+  <%= javascript_include_tag 'jquery.tools.min' %>
+<%- end -%>
+
 <%- content_for :image_src do -%>
   <%- if @plan.photo_id %>
     <link rel="image_src" href="<%= @plan.photo.photo.url(:plan) %>">
@@ -54,19 +58,29 @@
         <!--plantitle-->
         <!--map-->
         <h3 class="mapH"><%= image_tag 'plan/couse_t.gif', :alt => 'コースマップ', :title => 'コースマップ' %></h3>
-        <div class="planMap">
+        <div class="planMap clearfix">
           <div id="routeMap" class="map" style="width: 690px; height: 345px;"></div>
-          <div class="photoCtl clearfix">
-          <p class="directL"><%= image_tag 'plan/map_derect_l.gif', :alt => '前へ', :title => '前へ' %></p>
-          <div class="photo">
-          <%- @plan.destinations.each do |destination| -%>
-            <%- destination.photos.each do |photo| %>
-            <p class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></p>
-            <%- end %>
-          <%- end %>
+          <a class="prev browse left"><%= image_tag 'plan/map_derect_l.gif', :alt => '前へ', :title => '前へ' %></a>
+          <div class="scrollable">
+            <div class="items">
+              <%- @plan.destinations.each do |destination| -%>
+                <%- destination.photos.each do |photo| %>
+                  <div class="pic"><%= photo_tag photo.photo, :list %></div>
+                <%- end %>
+              <%- end %>
+            </div>
           </div>
-          <p class="directR"><%= image_tag 'plan/map_derect_r.gif', :alt => '次へ', :title => '次へ' %></p>
-          </div>
+          <a class="next browse right"><%= image_tag 'plan/map_derect_r.gif', :alt => '次へ', :title => '次へ' %></a>
+
+          <script>
+          // execute your scripts when the DOM is ready. this is mostly a good habit
+          $(function() {
+
+            // initialize scrollable
+            $(".scrollable").scrollable();
+
+          });
+          </script>
         </div>
         <!--map-->
         <h3 class="scheduleH"><%= image_tag 'plan/schedule_t.gif', :alt => 'スケジュール', :title => 'スケジュール' %></h3>
