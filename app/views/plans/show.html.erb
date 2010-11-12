@@ -42,7 +42,7 @@
         </div>
         <div class="comment">
           <div class="commentInner">
-            <p><%= @plan.outline %></p>
+            <p><%=raw @plan.outline.escape_html.nl2br %></p>
           </div>
         </div>
       </div>
@@ -93,12 +93,12 @@
             <table cellspacing="0" cellpadding="0" class="spotDetail">
 <%- unless destination.spot.annotation.blank? -%>
               <tr>
-                <td><%= destination.spot.annotation %></td>
+                <td><%=raw destination.spot.annotation.escape_html.nl2br %></td>
               </tr>
 <%- end -%>
 <%- unless destination.comment.blank? -%>
               <tr>
-                <td><%= destination.comment %></td>
+                <td><%=raw destination.comment.escape_html.nl2br %></td>
               </tr>
 <%- end -%>
 <%- unless destination.photos.empty? -%>

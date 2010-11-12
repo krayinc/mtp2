@@ -13,4 +13,13 @@ module PlansHelper
     end
     raw result
   end
+
+  def plan_map_image_tag(plan, size)
+    if plan.first_spot
+      opts = {:latitude => plan.first_spot.latitude, :longitude => plan.first_spot.longitude, :zoom => 14}
+    else
+      opts = {:latitude => Spot::DEFAULT_POSITION[:latitude], :longitude => Spot::DEFAULT_POSITION[:longitude], :zoom => 3}
+    end
+    link_to map_image_tag(opts.merge(:size => size)), plan_path(plan)
+  end
 end

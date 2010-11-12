@@ -56,7 +56,14 @@ mtp.maps = {};
 
 mtp.loadMapWithRoutes = function(elemId) {
   var destinations = $('#destinations [data-mtp-spot]');
-  if (destinations.length == 0) { return false; }
+  if (destinations.length == 0) {
+    var map = new google.maps.Map($('#' + elemId)[0], {
+      zoom: 4,
+      center: new google.maps.LatLng(35.563824490610386, 137.413671875),
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    });
+    return false;
+  }
 
   var spots = new Array();
   $(destinations).each(function(index, destination) {
