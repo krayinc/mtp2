@@ -15,7 +15,7 @@
         <p class="submitBtn"><%= image_submit_tag '/images/side/comment_sub_btn.gif', :class => 'submit' %></p>
       <%- end -%>
     <%- end -%>
-    </div> 
+    </div>
     <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
       <%= render :partial => 'comment', :locals => {:comment => comment} %>
     <%- end -%>

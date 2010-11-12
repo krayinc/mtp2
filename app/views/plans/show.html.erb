@@ -1,5 +1,5 @@
 <%- content_for :sidebar do -%><%= render 'sidebar' %><%- end -%>
-<%- content_for :preload_javascripts do -%><%= render 'preload_javascripts' %><%- end -%>
+
 
 <%- content_for :image_src do -%>
   <%- if @plan.photo_id %>
@@ -88,8 +88,6 @@
                     </div>
                   </div>
 
-                <p class="switchHat openBtn"><a href="#"></a></p>
-                <div class="switchDetail">
                 <div class="txt">
                   <%- if destination.spot -%>
                     <p class="mapSmall">
@@ -152,7 +150,6 @@
                     </div>
 
                   </div>
-                </div>
                 </div>
               </div>
             </div>
