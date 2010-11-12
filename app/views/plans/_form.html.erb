@@ -9,8 +9,8 @@
         <%- end -%>
       </div>
     <%- end -%>
-    <%= form_for @plan, :remote => !@plan.new_record? do |f| %>
-    <div class="editOutline clearfix">
+    <%= form_for @plan, :remote => true do |f| %>
+    <div class="editOutline clearfix" id="plan_form">
       <div class="editName clearfix">
         <p class="planNameT"><img src="/images/plan/edit_title.gif" alt="タイトル" title="タイトル"></p>
         <p class="planName"><%= f.text_field :title, :class => 'planNameBox' %></p>
@@ -28,3 +28,8 @@
     <%- end -%>
   </div>
 </div>
+<script type="text/javascript">
+$('#plan_form').parent().bind('ajax:before', function(event) {
+  $("#plan_form input[type='submit'], #plan_form input[type='image']").attr({disabled: 'disabled'});
+});
+</script>

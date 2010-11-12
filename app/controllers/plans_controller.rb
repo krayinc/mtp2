@@ -59,9 +59,11 @@ class PlansController < ApplicationController
       if @plan.save
         format.html { redirect_to(edit_plan_path(@plan), :notice => 'Plan was successfully created.') }
         format.xml  { render :xml => @plan, :status => :created, :location => @plan }
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @plan.errors, :status => :unprocessable_entity }
+        format.js   { render :template => '/error.js', :locals => {:title => '作成できませんでした', :message => @plan.errors.full_messages.join("\n"), :script => %q|$("#plan_form input[type='submit'], #plan_form input[type='image']").removeAttr('disabled');|} }
       end
     end
   end
@@ -79,7 +81,7 @@ class PlansController < ApplicationController
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @plan.errors, :status => :unprocessable_entity }
-        format.js   { render :template => '/error.js', :locals => {:title => '更新できませんでした', :message => @plan.errors.full_messages.join("\n")} }
+        format.js   { render :template => '/error.js', :locals => {:title => '更新できませんでした', :message => @plan.errors.full_messages.join("\n"), :script => nil} }
       end
     end
   end
@@ -128,7 +130,7 @@ class PlansController < ApplicationController
       if @plan.save
         format.js
       else
-        format.js { render :template => '/error.js', :locals => {:title => '写真を更新できませんでした', :message => @plan.errors.full_messages.join("\n")} }
+        format.js { render :template => '/error.js', :locals => {:title => '写真を更新できませんでした', :message => @plan.errors.full_messages.join("\n"), :script => nil} }
       end
     end
   end

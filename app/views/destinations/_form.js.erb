@@ -55,3 +55,10 @@ mtp.maps['destination_select_map'].currentMarker = new google.maps.Marker({
   map: mtp.maps['destination_select_map']
 });
 <%- end -%>
+
+$('#destination_form_dialog form').bind('ajax:before', function(event) {
+  $("#destination_form_dialog form input[type='submit'], #destination_form_dialog form input[type='image']").attr({disabled: 'disabled'});
+});
+$('#destination_form_dialog form').bind('ajax:complete', function(event) {
+  $("#destination_form_dialog form input[type='submit'], #destination_form_dialog form input[type='image']").removeAttr('disabled');
+});

@@ -36,14 +36,14 @@ class DestinationsController < ApplicationController
     @destination         = Destination.new(params[:destination])
     @destination.plan_id = params[:plan_id]
     
-    render :template => '/error.js', :locals => {:title => '行き先を追加できませんでした', :message => @destination.errors.full_messages.join("\n")} unless @destination.save
+    render :template => '/error.js', :locals => {:title => '行き先を追加できませんでした', :message => @destination.errors.full_messages.join("\n"), :script => nil} unless @destination.save
   end
 
   # PUT /plan/1/destinations/1
   def update
     @destination = Destination.find(params[:id])
 
-    render :template => '/error.js', :locals => {:title => '行き先を更新できませんでした', :message => @destination.errors.full_messages.join("\n")} unless @destination.save
+    render :template => '/error.js', :locals => {:title => '行き先を更新できませんでした', :message => @destination.errors.full_messages.join("\n"), :script => nil} unless @destination.save
   end
 
   # DELETE /plan/1/destinations/1
@@ -56,6 +56,6 @@ class DestinationsController < ApplicationController
   def reorder
     @destination = Destination.find(params[:id])
 
-    render :template => '/error.js', :locals => {:title => '行き先を並べ替えられませんでした', :message => @destination.errors.full_messages.join("\n")} unless @destination.save
+    render :template => '/error.js', :locals => {:title => '行き先を並べ替えられませんでした', :message => @destination.errors.full_messages.join("\n"), :script => nil} unless @destination.save
   end
 end
