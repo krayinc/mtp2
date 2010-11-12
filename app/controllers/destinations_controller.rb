@@ -43,7 +43,7 @@ class DestinationsController < ApplicationController
   def update
     @destination = Destination.find(params[:id])
 
-    render :template => '/error.js', :locals => {:title => '行き先を更新できませんでした', :message => @destination.errors.full_messages.join("\n"), :script => nil} unless @destination.save
+    render :template => '/error.js', :locals => {:title => '行き先を更新できませんでした', :message => @destination.errors.full_messages.join("\n"), :script => nil} unless @destination.update_attributes(params[:destination])
   end
 
   # DELETE /plan/1/destinations/1
