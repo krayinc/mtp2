@@ -226,6 +226,11 @@
   
 mtp.loadMapWithRoutes('routeMap');
   $(function() {
-    $(".scrollable").scrollable();
+    $(".scrollable").scrollable({
+      speed: 100,
+      onSeek: function() {
+        $(window).trigger('scroll');
+      }
+    });
   });
 </script>
