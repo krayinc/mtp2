@@ -14,6 +14,7 @@ gem 'annotate'
 gem 'attribute_normalizer'
 gem 'typus'
 gem 'paperclip'
+gem 'hoptoad_notifier'
 
 # Use unicorn as the web server
 # gem 'unicorn'
