@@ -202,7 +202,7 @@ mtp.Router.prototype = {
 //        break;
       case google.maps.DirectionsStatus.UNKNOWN_ERROR:
       default:
-        $.gritter.add('ルートの一部、または全部が取得できませんでした');
+        $.gritter.add({title: 'MTP', text: 'ルートの一部、または全部が取得できませんでした'});
         break;
     }
     if (this.currentRouter.completedCount == this.map.spots.length - 2) {

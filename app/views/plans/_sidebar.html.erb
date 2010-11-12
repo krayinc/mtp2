@@ -16,10 +16,21 @@
       <%- end -%>
     <%- end -%>
     </div>
-    <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
-      <%= render :partial => 'comment', :locals => {:comment => comment} %>
-    <%- end -%>
+    <div id="commentList">
+      <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
+        <%= render :partial => 'comment', :locals => {:comment => comment} %>
+      <%- end -%>
+    </div>
   </div>
+
+  <script type="text/javascript">
+  $('#comment form').bind('ajax:before', function(event) {
+    $("#comment form input[type='submit'], #comment form input[type='image']").attr({disabled: 'disabled'});
+  });
+  $('#comment form').bind('ajax:complete', function(event) {
+    $("#comment form input[type='submit'], #comment form input[type='image']").removeAttr('disabled');
+  });
+  </script>
 
   <div id="twitter_widget">
     <script src="http://widgets.twimg.com/j/2/widget.js"></script>
