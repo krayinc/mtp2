@@ -34,7 +34,7 @@
   new TWTR.Widget({
     version: 2,
     type: 'search',
-    search: location.href,
+    search: <%=raw search_keyword.to_json %>,
     interval: 6000,
     title: '旅PLUS',
     subject: 'みんなのつぶやき',

@@ -1,6 +1,6 @@
 <div id="rightArea">
   <%- contents.each do |content| -%>
-    <%- if content.respond_to? :key and content.respond_to? :value -%>
+    <%- if content.respond_to? :keys and content.respond_to? :values -%>
       <%= render "sidebar/#{content.keys[0]}", content.values[0] %>
     <%- else -%>
       <%= render "sidebar/#{content}" %>

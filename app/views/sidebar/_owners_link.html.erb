@@ -1,0 +1,6 @@
+<%- if @plan.owner == current_user -%>
+<div id="ownersLink">
+  <%= link_to image_tag('plan/edit_btn_off.gif'), edit_plan_path(@plan) %>
+  <%= link_to image_tag('plan/delete_btn_off.gif'), @plan, :confirm => '本当に削除してよろしいですか？', :method => :delete %>
+</div>
+<%- end -%>

@@ -1,6 +1,31 @@
-<%#
-# To change this template, choose Tools | Templates
-# and open the template in the editor.
-%>
+<p class="blockHeader"><img src="/images/side/comment_h.gif" alt="コメント" title="コメント"></p>
+<div id="comment">
+  <div class="commentSubmit">
+  <%- unless logged_in? -%>
+    <p class="txtErea"><strong><%= link_to 'ログイン', login_path %> してこのプランにコメントしよう！</strong></p>
+  <%- else -%>
+    <p class="lead"><%= image_tag '/images/side/comment_txt.gif', :alt=>'コメントを入力して送信！', :title=>'コメントを入力して送信！' %></p>
+    <%- comment = @plan.comments.build %>
+    <%- form_for comment, :remote => true, :html => {:style => 'margin:0px'} do |f| -%>
+      <%= f.hidden_field :commentable_id %>
+      <%= f.hidden_field :commentable_type %>
+      <p class="txtErea"><%= f.text_area :body, :size => '30x5', :class => 'commentbox' %></p>
+      <p class="submitBtn"><%= image_submit_tag '/images/side/comment_sub_btn.gif', :class => 'submit' %></p>
+    <%- end -%>
+  <%- end -%>
+  </div>
+  <div id="commentList">
+    <%- @plan.comments.limit(5).order('created_at DESC').each do |comment| -%>
+      <%= render :partial => 'comment', :locals => {:comment => comment} %>
+    <%- end -%>
+  </div>
+</div>
 
-<%= "comments" %>
+<script type="text/javascript">
+$('#comment form').bind('ajax:before', function(event) {
+  $("#comment form input[type='submit'], #comment form input[type='image']").attr({disabled: 'disabled'});
+});
+$('#comment form').bind('ajax:complete', function(event) {
+  $("#comment form input[type='submit'], #comment form input[type='image']").removeAttr('disabled');
+});
+</script>

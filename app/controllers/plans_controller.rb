@@ -18,7 +18,7 @@ class PlansController < ApplicationController
   def show
     @map = {}
     @plan = Plan.find(params[:id])
-    @parmalink = request.protocol << request.raw_host_with_port << request.request_uri
+    @permalink = request.protocol << request.raw_host_with_port << request.request_uri
     @path = []
     @plan.destinations.each do |destination|
       @path << { :latitude => destination.spot.latitude, :longitude => destination.spot.longitude }

@@ -4,7 +4,7 @@
     <p class="txt"><%= destination.time %><br><span class="spotName"><%= destination.spot.name %></span><%= link_to raw('<img src="/images/plan/edit_spot_btn_off.gif" alt="場所を編集" title="場所を編集">'), edit_spot_path(:id => destination.spot_id, :format => :js), :remote => true %><br><%= destination.comment %></p>
     <p class="btn"><%#-
       -%><%= link_to raw('<img src="/images/plan/edit_btn_off.gif" alt="編集" title="編集">'), edit_plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :remote => true %><%-
-      -%><%= link_to raw('<img src="/images/plan/delete_btn_off.gif" alt="削除" title="削除">'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => 'OK?', :remote => true, :method => :delete %><%-
+      -%><%= link_to raw('<img src="/images/plan/delete_btn_off.gif" alt="削除" title="削除">'), plan_destination_path(:plan_id => destination.plan_id, :id => destination.id, :format => :js), :confirm => '本当に削除してよろしいですか？', :remote => true, :method => :delete %><%-
     -%></p>
     <br clear="both">
     <div class="photo photoList clearfix"><%= destination_photo_list destination, :edit => true %></div>

@@ -1,5 +1,5 @@
 <%- content_for :sidebar do -%>
-<%= render '/sidebar', :contents => [:news, :hot_users, :tweets] %>
+<%= render '/sidebar', :contents => [:news, :hot_users, {:tweets => {:search_keyword => '#tabiplus'}}] %>
 <%- end -%>
 
 <div id="mainArea">

@@ -40,3 +40,5 @@
 #tabiplus #rightArea > .help .set{padding:10px 10px 5px;background : url(../images/side/side_line.gif) no-repeat 2px top;}
 #tabiplus #rightArea > .help .set .txt{width:223px;}
 #tabiplus #rightArea > .help li {margin-left: 20px;}
+
+#tabiplus #rightArea #ownersLink { text-align: center; }

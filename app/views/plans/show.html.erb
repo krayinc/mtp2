@@ -1,5 +1,5 @@
 <%- content_for :sidebar do -%>
-  <%= render 'sidebar' %>
+  <%= render '/sidebar', :contents => [:owners_link, :comments, {:tweets => {:search_keyword => @permalink}}] %>
 <%- end -%>
 
 <%- content_for :preload_javascripts do -%>
@@ -13,203 +13,181 @@
 <%- end -%>
 
 <div id="mainArea">
-        <!--plantitle-->
-        <div id="plantitle">
-          <div id="plantitleWrapper" class="clearfix">
-            <p class="planPic"><%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:plan], :class => 'spotPhoto' %></p>
-            <div class="planOutline">
-              <!--planName-->
-              <div class="planNameWrapper clearfix">
-                <div class="planName">
-                  <h2 class="planNameH"><%= @plan.title %><%- if @plan.status == 1 %><%= image_tag 'plan/icon_under_plan.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 2 %><%= image_tag 'plan/icon_under_travel.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 3 %><%= image_tag 'plan/icon_memory.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- end %></h2>
-                </div>
-                <div class="eval">
-                  <%= image_tag 'plan/lead_eval.gif', :alt => 'このプランを評価', :title=>'このプランを評価' %><span id='btn-unvote' style='display:none;'><%= link_to image_tag('plan/btn_eval_done.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span><span id='btn-vote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
-                </div>
-              </div>
-              <!--planName-->
-              <!--icon-->
-              <div class="icon clearfix">
-              <div class="profilePic"><%= image_tag @plan.owner.profile_image_url, :width => 26 %></div>
-              <div class="profileName"><%= @plan.owner.name %></div>
-              <div class="feed clearfix">
-              <p class="face"><%= image_tag 'plan/face_icon.gif', :alt => 'みんなの評価', :title => 'みんなの評価' %></p>
-              <p class="faceNum">&nbsp;<%= @plan.total_votes %>pt&nbsp;</p>
-              <p class="tweet">
-                <a href="http://twitter.com/share" class="twitter-share-button"
-                  data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
-                  data-counturl="<%= @parmalink %>"
-                  data-lang="en">Tweet</a><%= javascript_include_tag 'http://platform.twitter.com/widgets.js' %></script></p>
-              <p class="share"><a name="fb_share" type="button" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
-              <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=button_count&show_faces=true&width=56&action=like&colorscheme=light&height=18" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:56px; height:23px;" allowTransparency="true"></iframe></p>
-              </div>
-              </div>
-              <!--icon-->
-              <!--comment-->
-              <div class="comment">
-              <div class="commentInner">
-              <p><%= @plan.outline %></p>
-              </div>
-              </div>
-              <!--comment-->
-            </div>
+  <div id="plantitle">
+    <div id="plantitleWrapper" class="clearfix">
+      <p class="planPic"><%= image_tag @plan.photo ? @plan.photo.photo.url(:plan) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:plan], :class => 'spotPhoto' %></p>
+      <div class="planOutline">
+        <div class="planNameWrapper clearfix">
+          <div class="planName">
+            <h2 class="planNameH"><%= @plan.title %><%- if @plan.status == 1 %><%= image_tag 'plan/icon_under_plan.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 2 %><%= image_tag 'plan/icon_under_travel.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- elsif @plan.status == 3 %><%= image_tag 'plan/icon_memory.jpg', :alt => plan_status_label(@plan.status), :title=>plan_status_label(@plan.status) %><%- end %></h2>
+          </div>
+          <div class="eval">
+            <%= image_tag 'plan/lead_eval.gif', :alt => 'このプランを評価', :title=>'このプランを評価' %><span id='btn-unvote' style='display:none;'><%= link_to image_tag('plan/btn_eval_done.jpg', :alt => 'いいね！'), unvote_plan_path, :remote => true, :method => :put %></span><span id='btn-vote' style='display:none;'><%= link_to image_tag('plan/btn_eval.jpg', :alt => 'いいね！'), vote_plan_path, :remote => true, :method => :put %></span>
           </div>
         </div>
-        <!--plantitle-->
-        <!--map-->
-        <h3 class="mapH"><%= image_tag 'plan/couse_t.gif', :alt => 'コースマップ', :title => 'コースマップ' %></h3>
-        <div class="planMap clearfix">
-          <div id="routeMap" class="map" style="width: 690px; height: 345px;"></div>
-          <a class="prev browse left"><%= image_tag 'plan/map_derect_l.gif', :alt => '前へ', :title => '前へ' %></a>
-          <div class="scrollable">
-            <div class="items">
-              <%- @plan.destinations.each do |destination| -%>
-                <%- destination.photos.each do |photo| %>
-                  <div class="pic"><%= photo_tag photo.photo, :list %></div>
-                <%- end %>
-              <%- end %>
-            </div>
+        <div class="icon clearfix">
+          <div class="profilePic"><%= image_tag @plan.owner.profile_image_url, :width => 26 %></div>
+          <div class="profileName"><%= @plan.owner.name %></div>
+          <div class="feed clearfix">
+            <p class="face"><%= image_tag 'plan/face_icon.gif', :alt => 'みんなの評価', :title => 'みんなの評価' %></p>
+            <p class="faceNum">&nbsp;<span id="totalPoint"><%= @plan.total_votes %></span>pt&nbsp;</p>
+            <p class="tweet">
+              <a href="http://twitter.com/share" class="twitter-share-button"
+                data-count="horizontal" data-text="#tabiplus" data-url="<%= @parmalink %>"
+                data-counturl="<%= @parmalink %>"
+                data-lang="en">Tweet</a><%= javascript_include_tag 'http://platform.twitter.com/widgets.js' %></script></p>
+            <p class="share"><a name="fb_share" type="button" href="http://www.facebook.com/sharer.php?u=<%= url_encode @parmalink %>&t=<%= url_encode @plan.title %>">Share</a><script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" type="text/javascript"></script></p>
+            <p class="like"><iframe src="http://www.facebook.com/plugins/like.php?href=<%= url_encode @parmalink %>&layout=button_count&show_faces=true&width=56&action=like&colorscheme=light&height=18" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:56px; height:23px;" allowTransparency="true"></iframe></p>
           </div>
-          <a class="next browse right"><%= image_tag 'plan/map_derect_r.gif', :alt => '次へ', :title => '次へ' %></a>
-
-          <script>
-          // execute your scripts when the DOM is ready. this is mostly a good habit
-          $(function() {
-
-            // initialize scrollable
-            $(".scrollable").scrollable();
-
-          });
-          </script>
         </div>
-        <!--map-->
-        <h3 class="scheduleH"><%= image_tag 'plan/schedule_t.gif', :alt => 'スケジュール', :title => 'スケジュール' %></h3>
-        <h4 class="scheduleDate">行き先 (<%= @plan.destinations.length %>)</h4>
-        <div class="schedule" id="destinations">
-          <div class="scheduleInner">
+        <div class="comment">
+          <div class="commentInner">
+            <p><%= @plan.outline %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h3 class="mapH"><%= image_tag 'plan/couse_t.gif', :alt => 'コースマップ', :title => 'コースマップ' %></h3>
+  <div class="planMap clearfix">
+    <div id="routeMap" class="map" style="width: 690px; height: 345px;"></div>
+    <a class="prev browse left"><%= image_tag 'plan/map_derect_l.gif', :alt => '前へ', :title => '前へ' %></a>
+    <div class="scrollable">
+      <div class="items">
+        <%- @plan.destinations.each do |destination| -%>
+          <%- destination.photos.each do |photo| %>
+            <div class="pic"><%= photo_tag photo.photo, :list %></div>
+          <%- end %>
+        <%- end %>
+      </div>
+    </div>
+    <a class="next browse right"><%= image_tag 'plan/map_derect_r.gif', :alt => '次へ', :title => '次へ' %></a>
+  </div>
+  <h3 class="scheduleH"><%= image_tag 'plan/schedule_t.gif', :alt => 'スケジュール', :title => 'スケジュール' %></h3>
+  <h4 class="scheduleDate">行き先 (<%= @plan.destinations.length %>)</h4>
+  <div class="schedule" id="destinations">
+    <div class="scheduleInner">
+      <%- @plan.destinations.each_with_index do |destination, index| -%>
+      <div class="planset clearfix" data-mtp-spot="<%= destination.spot_id %>" data-mtp-spot-latitude="<%= destination.spot.latitude %>" data-mtp-spot-longitude="<%= destination.spot.longitude %>">
+        <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %></div>
+        <div class="plan">
+          <div class="planWrapper clearfix">
+            <div class="clearfix">
+              <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
+              <div class="txt">
+                <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
+                <p class="detail"><%= destination.time %></p>
+                <h5 class="spotName"><%= destination.spot.name %></h5>
+              </div>
+            </div>
 
-            <%- @plan.destinations.each_with_index do |destination, index| -%>
-            <!--planset-->
-            <div class="planset clearfix" data-mtp-spot="<%= destination.spot_id %>" data-mtp-spot-latitude="<%= destination.spot.latitude %>" data-mtp-spot-longitude="<%= destination.spot.longitude %>">
-              <div class="pop"><%= image_tag 'plan/plan_num' + (index+1).to_s + '.gif', :alt => (index+1).to_s, :title => (index+1).to_s %></div>
-              <div class="plan">
-                <div class="planWrapper clearfix">
-                  <div class="clearfix"> 
-                    <div class="pic"><%= image_tag !destination.photos.blank? ? destination.photos.first.photo.url(:destination) : image_path('no_image.gif'), :size => SpotPhoto::STYLES[:destination], :class => 'spotPhoto' %></div>
-                    <div class="txt">
-                      <p class="star"><%- (1..destination.spot.average_rating.to_i).each do |n| -%><%= image_tag 'plan/star_on.gif' %><%- end -%><%- ((destination.spot.average_rating.to_i + 1)..5).each do |n| -%><%= image_tag 'plan/star_no.gif' %><%- end -%></p>
-                      <p class="detail"><%= destination.time %></p>
-                      <h5 class="spotName"><%= destination.spot.name %></h5>
-                    </div>
-                  </div>
-
-                <div class="txt">
-                  <p class="mapSmall">
-                  <%= map_image_tag({
-                    :latitude => destination.spot.longitude,
-                    :longitude => destination.spot.latitude,
-                    :markers => destination.spot.latitude + ',' + destination.spot.longitude,
-                    :zoom => 14,
-                    :size => '510x150'}) %>
-                  </p>
-                  <table cellspacing="0" cellpadding="0" class="spotDetail">
+          <div class="txt">
+            <p class="mapSmall">
+            <%= map_image_tag({
+              :latitude => destination.spot.longitude,
+              :longitude => destination.spot.latitude,
+              :markers => destination.spot.latitude + ',' + destination.spot.longitude,
+              :zoom => 14,
+              :size => '510x150'}) %>
+            </p>
+            <table cellspacing="0" cellpadding="0" class="spotDetail">
 <%- unless destination.spot.annotation.blank? -%>
-                    <tr>
-                      <td><%= destination.spot.annotation %></td>
-                    </tr>
+              <tr>
+                <td><%= destination.spot.annotation %></td>
+              </tr>
 <%- end -%>
 <%- unless destination.comment.blank? -%>
-                    <tr>
-                      <td><%= destination.comment %></td>
-                    </tr>
+              <tr>
+                <td><%= destination.comment %></td>
+              </tr>
 <%- end -%>
 <%- unless destination.photos.empty? -%>
-                    <tr>
-                      <td class="photo" style="padding-left:20px; padding-top:14px;"><%= destination_photo_list destination %></td>
-                    </tr>
+              <tr>
+                <td class="photo" style="padding-left:20px; padding-top:14px;"><%= destination_photo_list destination %></td>
+              </tr>
 <%- end -%>
-                  </table>
-                    <div class="spotfeed clearfix">
+            </table>
+              <div class="spotfeed clearfix">
 
-                      <p class="spotEval"><%= image_tag 'plan/spot_eval_t.gif', :alt => 'このスポットを評価する', :title => 'このスポットを評価する' %></p>
-                      <div class='spotEvalNum' id='star-<%= index %>'>
-                      <form>
-                        <select name='selrate'>
-                          <%- (1..5).each do |n| -%>
-                            <%- if destination.spot.average_rating.to_i == n -%>
-                            <option value='<%= n %>' selected='selected'></option>
-                            <%- else -%>
-                            <option value='<%= n %>'></option>
-                            <%- end -%>
-                          <%- end -%>
-                        </select>
-                      </form>
-                      </div>
-                    </p>
-                      <script type='text/javascript'>
-                        /**
-                         * Ratings
-                         */
-                        $('#star-<%= index %>').stars({
-                          inputType: 'select',
-                          cancelShow: false,
-                          oneVoteOnly: true,
-                          callback: function(ui, type, value) {
-                            $.ajax({
-                              type: 'POST',
-                              url: '<%= rate_spot_path(destination.spot) %>',
-                              data: {
-                                _method: 'put',
-                                score: value
-                              },
-                              dataType: 'json',
-                              complete: function(msg) {
-                              }
-                            })
-                          }
-                        });
-                      </script>
-                    </div>
-
-                  </div>
+                <p class="spotEval"><%= image_tag 'plan/spot_eval_t.gif', :alt => 'このスポットを評価する', :title => 'このスポットを評価する' %></p>
+                <div class='spotEvalNum' id='star-<%= index %>'>
+                <form>
+                  <select name='selrate'>
+                    <%- (1..5).each do |n| -%>
+                      <%- if destination.spot.average_rating.to_i == n -%>
+                      <option value='<%= n %>' selected='selected'></option>
+                      <%- else -%>
+                      <option value='<%= n %>'></option>
+                      <%- end -%>
+                    <%- end -%>
+                  </select>
+                </form>
                 </div>
-              </div>
-            </div>
-            <!--planset-->
-            <div class="planDirect"><%- if @plan.destinations.size > index + 1 %><%= image_tag 'plan/plan_direct.gif', :alt => '02', :title => '02' %><%- end %></div>
-            <script type='text/javascript'>
-              /**
-               * Ratings
-               */
-              $('#star-<%= index %>').stars({
-                inputType: 'select',
-                cancelShow: false,
-                oneVoteOnly: true,
-                callback: function(ui, type, value) {
-                  $.ajax({
-                    type: 'POST',
-                    url: '<%= rate_spot_path(destination.spot) %>',
-                    data: {
-                      _method: 'put',
-                      score: value
-                    },
-                    dataType: 'json',
-                    complete: function(msg) {
+              </p>
+                <script type='text/javascript'>
+                  /**
+                   * Ratings
+                   */
+                  $('#star-<%= index %>').stars({
+                    inputType: 'select',
+                    cancelShow: false,
+                    oneVoteOnly: true,
+                    callback: function(ui, type, value) {
+                      $.ajax({
+                        type: 'POST',
+                        url: '<%= rate_spot_path(destination.spot) %>',
+                        data: {
+                          _method: 'put',
+                          score: value
+                        },
+                        dataType: 'json',
+                        complete: function(msg) {
+                        }
+                      })
                     }
-                  })
-                }
-              });
-            </script>
-          <%- end -%>
+                  });
+                </script>
+              </div>
 
+            </div>
           </div>
         </div>
-         <!--planset-->
-         <!--
-         <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
-         <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
-         <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
-         -->
+      </div>
+      <!--planset-->
+      <div class="planDirect"><%- if @plan.destinations.size > index + 1 %><%= image_tag 'plan/plan_direct.gif', :alt => '02', :title => '02' %><%- end %></div>
+      <script type='text/javascript'>
+        /**
+         * Ratings
+         */
+        $('#star-<%= index %>').stars({
+          inputType: 'select',
+          cancelShow: false,
+          oneVoteOnly: true,
+          callback: function(ui, type, value) {
+            $.ajax({
+              type: 'POST',
+              url: '<%= rate_spot_path(destination.spot) %>',
+              data: {
+                _method: 'put',
+                score: value
+              },
+              dataType: 'json',
+              complete: function(msg) {
+              }
+            })
+          }
+        });
+      </script>
+    <%- end -%>
+
+    </div>
+  </div>
+<%#
+  <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
+   <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
+   <div class="scheduleDateBtn">2010/10/13（水）<img src="../images/plan/date_derect.gif" alt="OPEN" title="OPEN"></div>
+%>
+</div>
 
 
 <script type="text/javascript">
@@ -227,7 +205,7 @@
   });
   
   function changeTotalVoteView(point){
-    $('#tolal-point').text(point + 'ポイント');
+    $('#totalPoint').text(point);
   }
   
   function onVote(){
@@ -246,10 +224,8 @@
   onUnVote();
   <%- end -%>
   
-</script>
-
-</div>
-
-<script type="text/javascript">
 mtp.loadMapWithRoutes('routeMap');
+  $(function() {
+    $(".scrollable").scrollable();
+  });
 </script>
