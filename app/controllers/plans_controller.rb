@@ -5,7 +5,7 @@ class PlansController < ApplicationController
   # GET /plans
   # GET /plans.xml
   def index
-    @plans = Plan.all
+    @plans = Plan.order('created_at DESC').paginate :page => params[:page], :per_page => SiteConfig[:plans_per_page].to_i
 
     respond_to do |format|
       format.html # index.html.erb

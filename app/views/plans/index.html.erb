@@ -32,4 +32,8 @@
       </div>
     </div>
   <%- end -%>
+  <%= will_paginate @plans,
+    :separator      => ' | ',
+    :previous_label => @plans.previous_page ? image_tag('plan/map_derect_l.gif', :size => '22x22') : nil,
+    :next_label     => @plans.next_page     ? image_tag('plan/map_derect_r.gif', :size => '22x22') : nil %>
 </div>

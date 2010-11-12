@@ -60,3 +60,9 @@ div#main{width:980px;padding:0 25px 55px;height: auto; }
 }
 
 .placeholder { color: #aaa; }
+
+#mainArea .pagination {
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100%;
+}

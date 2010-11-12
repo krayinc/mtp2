@@ -11,3 +11,9 @@ SiteConfig.create(
   :value   => '1',
   :comment => 'トップページのPICKUPに表示されるプランのID'
 ) unless SiteConfig['novelty_spec_note']
+
+SiteConfig.create(
+  :name    => 'plans_per_page',
+  :value   => '20',
+  :comment => 'プラン一覧の 1 ページの表示件数'
+) unless SiteConfig['plans_per_page']
