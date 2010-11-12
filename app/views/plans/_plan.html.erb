@@ -1,0 +1,20 @@
+<div class="tour popular">
+  <div class="tourInner">
+    <div class="tourNameWrapper clearfix">
+      <p class="tourName"><%= link_to plan.title, plan_path(plan) %></p>
+      <p class="eval"><img src="/images/plan/face_icon.gif" alt="みんなの評価" title="みんなの評価"></p>
+      <p class="evalNum"><%= plan.total_votes %>pt</p>
+    </div>
+    <div class="pickupTour clearfix">
+      <div class="leftBoxPopurar"><%- if plan.first_spot -%><%= link_to map_image_tag(:longitude => plan.first_spot.longitude, :latitude => plan.first_spot.latitude, :zoom => 14, :size => '270x160'), plan_path(plan) %><%- end -%></div>
+      <div class="rightBoxPopurar">
+        <div class="profile clearfix">
+          <p class="photo"><%= image_tag plan.owner.profile_image_url, :size => '26x26' %></p>
+          <p class="profileName">by <%= plan.owner.name %></p>
+        </div>
+        <p class="photo"><%= plan_photo_list plan, :max => 7 %></p>
+        <p class="comment"><%= truncate strip_tags(plan.outline), :length => 40 %><br><span class="date"><%= plan.updated_at.strftime("%Y/%m/%d") %></span></p>
+      </div>
+    </div>
+  </div>
+</div>
