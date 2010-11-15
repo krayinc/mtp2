@@ -1,6 +1,7 @@
-#mainArea #plantitle{width:712px;background : url(../images/plan/title_bg_h.jpg) no-repeat left top;padding:17px 0 0; margin:0 0 25px;}
-#mainArea #plantitleNobg{width:632px;background : url(../images/plan/title_bg_h_nobg.jpg) no-repeat left top;padding:17px 0 0 80px; margin:0 0 25px;}
-#mainArea #plantitle Wrapper{ width:626px;background : url(../images/plan/title_bg_b.jpg) no-repeat left bottom; padding:0 0 0 86px; margin:0;}
+#mainArea #plantitle{width:712px;background : url(../images/plan/title_bg_h.jpg) no-repeat left top;padding:19px 0 0; margin:0 0 25px;}
+#mainArea #plantitleNobg{width:712px;background : url(../images/plan/title_bg_h_nobg.jpg) no-repeat left top;padding:19px 0 0 ; margin:0 0 25px;}
+#mainArea #plantitleNobg #plantitleWrapper{background : url(../images/plan/title_bg_b.jpg) no-repeat left bottom; padding:0 0 0 86px; margin:0;}
+#mainArea #plantitle #plantitleWrapper{background : url(../images/plan/title_bg_b.jpg) no-repeat left bottom; padding:0; margin:0;}
 #mainArea #plantitle .planPic{float:left; padding:2px 19px 0 23px;}
 #mainArea #plantitle .planOutline{float:left;padding:0 0 10px; margin:0; width:580px;}
 #mainArea #plantitle .planNameWrapper{ width:580px;float:left;padding:0 0 10px; margin:0;}
@@ -132,17 +133,12 @@ padding-bottom:6px;
 #mainArea .editOutline .statusT{ float:left; padding:10px 6px 0 0;}
 #mainArea .editOutline .status{ float:left; padding:4px 0 0 0;}
 #mainArea .editComment .outline{ float:left;width:420px; height:45px;}
-
-#mainArea textarea{ padding:10px 15px 10px 15px}
-
+@-moz-document url-prefix() { #mainArea .editComment .outline {float:left;width:420px; height:65px; padding:0;}}
+#mainArea textarea{ padding:10px 15px 10px 15px;}
 #mainArea .editComment .saveBtn{ float:left; padding:41px 0 20px 44px;}
 #mainArea .editOutline .outlineT{padding:10px 0 5px;}
-
-
-
 #mainArea .editPict .select{padding:10px 0 10px;}
 #mainArea .editPict .pict{padding:2px 0 0 0;}
-
 #mainArea .scheduleInnerEdit{background : url(../images/plan/schedule_bg_bottom.gif) no-repeat left bottom; padding:20px 31px 30px 33px;}
 #mainArea .scheduleInnerEdit .editSet { background : url(../images/plan/edit_bg_h.gif) no-repeat left top;}
 #mainArea .scheduleInnerEdit .editSetInner { background : url(../images/plan/edit_bg_b.gif) no-repeat left bottom;}
@@ -214,6 +210,7 @@ position:relative;
 
 .ui-dialog .popInner .spotNameSelect{text-align: left;}
 .ui-dialog .popInner .spotNameSelect .spotNameSelectForm{width:500px; height:80px; padding:10px 15px 10px 15px;}
+@-moz-document url-prefix() {.ui-dialog .popInner .spotNameSelect .spotNameSelectForm{width:530px; height:100px; padding:0;}}
 .ui-dialog .popInner .search .searchBtn{}
 .ui-dialog .popInner .spotBtn{padding:10px 0 10px  346px;background :url(../images/plan/panel_line.gif) no-repeat left bottom; text-align: left; }
 
@@ -227,8 +224,9 @@ position:relative;
 .ui-dialog .popInner .panelComment{ padding:7px 0 10px ;}
 .ui-dialog .popInner .panelCommentT{ padding:6px 10px 0 0; float:left;}
 .ui-dialog .popInner .panelCommentFormBox{ float:left;}
-.ui-dialog .popInner .panelCommentForm{width:434px; height:80px; padding:10px 15px 10px 15px;}
+.ui-dialog .popInner .panelCommentForm{width:440px; height:80px; padding:10px 15px 10px 15px;}
 
+@-moz-document url-prefix() {.ui-dialog .popInner .panelCommentForm{width:470px; height:100px; padding:0;}}
 .ui-dialog .popInner .destinationSaveButton {padding:10px 0 14px 326px;}
 
 .ui-dialog .popInner .spotForm{padding:20px 0 0 106px;}
@@ -236,10 +234,10 @@ position:relative;
 .ui-dialog .popInner .spotWrapper{ padding:10px 0 10px ;}
 .ui-dialog .popInner .spotFormBox{float:left;}
 
-.ui-dialog .popInner .spotNameForm{width:200px;  height:16px; padding:4px 10px 4px 10px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;padding:0 0 10px ;}
+.ui-dialog .popInner .spotNameForm{width:200px;  height:16px; padding:4px 10px 4px 10px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
 .ui-dialog .popInner .spotAdressForm{width:470px;  height:16px; padding:4px 10px 4px 10px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top;}
 .ui-dialog .popInner .spotOutlineForm{width:470px;  height:80px; padding:10px 15px 10px 15px;}
-  
+@-moz-document url-prefix() { .ui-dialog .popInner .spotOutlineForm {width:470px;  height:90px; padding:0;}}
 
 
 .ui-dialog .popInner .spotPhoto{padding:10px 0 20px ;}
@@ -397,4 +395,3 @@ a.down:active  	{ background-position:-60px -30px; }
 a.disabled {
 	visibility:hidden !important;
 }
-

@@ -23,11 +23,11 @@ input[type="text"][disabled], textarea[disabled] { background-image: url(../imag
 body > #tabiplus {height: auto;}
 
 div#main{width:980px;padding:0 25px 55px;height: auto; }
-#header{ width:1030px;padding:0; margin:0;background :#ffffff url(../images/header_bg.gif) no-repeat center top;}
+#header{ width:1030px; height:75px;padding:0; margin:0;background :#ffffff url(../images/header_bg.gif) no-repeat center top;}
 #header ul#gnavi{padding:0; margin:0; font-size:0;line-height :0;}
 #header #logo{padding:5px 18px 15px 25px; margin:0; float:left;}
 #header #gnaviWrapper{margin :16px 0 0;padding:0 0 0 20px; float:left;background : url(../images/menu_line.gif) no-repeat left top;}
-#header ul#gnavi li{float:left; list-style:none; padding:9px 29px 0 0; margin:0;}
+#header ul#gnavi li{float:left; list-style:none; padding:4px 29px 0 0; margin:0;}
 #header #login {float:right;background : url(../images/login_bg.gif) no-repeat left top; width:223px; padding:0 23px 0 0; height:34px;}
 #header #login .pict {float:left; padding:3px 8px 0 13px;}
 #header #login .name {float:left; padding:6px 0 0;}
