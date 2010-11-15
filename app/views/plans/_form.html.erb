@@ -14,8 +14,8 @@
       <div class="editName clearfix">
         <p class="planNameT"><img src="/images/plan/edit_title.gif" alt="タイトル" title="タイトル"></p>
         <p class="planName"><%= f.text_field :title, :class => 'planNameBox' %></p>
-        <p class="statusT"><img src="/images/plan/edit_status.gif" alt="ステータス" title="ステータス"></p>
         <p class="status"><%= f.select :status, Plan::Status %></p>
+        <p class="statusT"><img src="/images/plan/edit_status.gif" alt="ステータス" title="ステータス"></p>
       </div>
       <p class="outlineT"><img src="/images/plan/edit_outline.gif" alt="概要" title="概要"></p>
       <div class="editComment clearfix">

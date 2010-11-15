@@ -127,11 +127,11 @@ padding-bottom:6px;
 /* edit */
 #mainArea .editPict{ float:left; padding:0 31px 0 23px; width:90px;}
 #mainArea .editOutline{ float:left;width:540px;}
-#mainArea .editOutline .planNameBox{width:328px; height:14px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top; padding: 8px 10px 6px 10px;}
+#mainArea .editOutline .planNameBox{width:321px; height:14px;border:1px;border-collapse:collapse;border-color:#b2b2b2;border-style:solid;background : #fff url(../images/form_bg.gif) no-repeat left top; padding: 8px 10px 6px 10px;}
 #mainArea .editOutline .planNameT{ float:left; padding:10px 6px 0 0;}
 #mainArea .editOutline .planName{ float:left; padding:0 12px 0 0;}
-#mainArea .editOutline .statusT{ float:left; padding:10px 6px 0 0;}
-#mainArea .editOutline .status{ float:left; padding:4px 0 0 0;}
+#mainArea .editOutline .statusT{ float:right; padding:10px 6px 0 0;}
+#mainArea .editOutline .status{ float:right; padding:4px 0 0 0;}
 #mainArea .editComment .outline{ float:left;width:420px; height:45px;}
 @-moz-document url-prefix() { #mainArea .editComment .outline {float:left;width:420px; height:65px; padding:0;}}
 #mainArea textarea{ padding:10px 15px 10px 15px;}
