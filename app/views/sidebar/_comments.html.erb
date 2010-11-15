@@ -6,7 +6,7 @@
   <%- else -%>
     <p class="lead"><%= image_tag '/images/side/comment_txt.gif', :alt=>'コメントを入力して送信！', :title=>'コメントを入力して送信！' %></p>
     <%- comment = @plan.comments.build %>
-    <%- form_for comment, :remote => true, :html => {:style => 'margin:0px'} do |f| -%>
+    <%= form_for comment, :remote => true, :html => {:style => 'margin:0px'} do |f| -%>
       <%= f.hidden_field :commentable_id %>
       <%= f.hidden_field :commentable_type %>
       <p class="txtErea"><%= f.text_area :body, :size => '30x5', :class => 'commentbox' %></p>
