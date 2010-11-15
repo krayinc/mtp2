@@ -17,8 +17,8 @@ class PlansController < ApplicationController
   # GET /plans/1.xml
   def show
     @map = {}
-    @plan = Plan.find(params[:id])
-    @permalink = request.protocol << request.raw_host_with_port << request.request_uri
+    @plan = Plan.includes(:spots, :destinations => :photos).find(params[:id])
+    @permalink = request.protocol << request.raw_host_with_port << request.fullpath
     @path = []
     @plan.destinations.each do |destination|
       @path << { :latitude => destination.spot.latitude, :longitude => destination.spot.longitude }
