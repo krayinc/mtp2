@@ -1,11 +1,9 @@
-#about h3 {
-  border-bottom: 1px dotted grey;
-}
-
-#about .section {
-  margin-bottom: 20px;
-}
-
-#about li {
-  margin-left: 20px;
-}
+.aboutTitle{padding:30px 100px 30px ;}
+.aboutContents{padding:0 100px 30px 115px; margin:0;}
+.aboutContents .lead{padding:0 0 30px;}
+.aboutContents .plusLogo{padding:0 0 20px;}
+.aboutContents .leadTxt{padding:0 0 35px;}
+.aboutContents .pointTitle{padding:0 0 14px;}
+.aboutContents .pointBox{padding:0 0 30px;}
+.aboutContents .pointBox .pointPic{padding:0; float:left; width:300px;}
+.aboutContents .pointBox .pointTxt{padding:0 0 0 28px; float:left; width:386px;}
